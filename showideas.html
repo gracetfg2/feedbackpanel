@@ -48,8 +48,12 @@
 	cursor: pointer;
 }
 
-a:visited { 
-    color: pink;
+.visited { 
+    background-color: lightgrey;
+}
+
+.active{
+	background-color: yellow;
 }
 
 
@@ -74,7 +78,8 @@ a:visited {
 <div class="main-section" style="margin-top: 50px">
     
 <div class="row">    
- 
+
+
 <div class="col-md-6"> 
 	<table class='table table-hover table-nonfluid'>
 	<tbody>
@@ -154,7 +159,7 @@ a:visited {
   </div>
 </div>
 
-<div class="col-md-6">
+ <div class="col-md-6">
 <!--Panel-->
 <table class="table" style="font-size: 20px">
 	<thead>
@@ -170,8 +175,6 @@ a:visited {
 	
 </tbody>
 </table>
-
-
 </div>
 
 </div><!--END OF MAIN SECTION-->
@@ -233,17 +236,31 @@ $(function(){
 		var span_id = $(this).attr("id");
 		//$(".idea-unit").addClass("idea_unit");
 		//("background-color","yellow");
-		$(".idea-unit").each(function() {
-    		$(this).css("background-color");
-  		});
+
 		all_idea_units[span_id].visited=true; 	
 
-		$(".idea-unit#"+span_id).css("background-color","yellow");
+		$(".idea-unit#"+span_id).addClass("visited");
 
 		$(".tableelement#"+span_id+" > span").css("color","grey");
 
 	})
 
+	$( ".tableelement" ).hover(
+
+  				 function() {
+  				 	var span_id = $(this).attr("id");
+  				 	$(".idea-unit#"+span_id).removeClass("visited");
+  				 	$(".idea-unit#"+span_id).addClass("active");
+ 				 }, 
+
+ 				 function() {
+ 				 	var span_id = $(this).attr("id");
+ 				 	$(".idea-unit#"+span_id).removeClass("active");
+ 				 	if(all_idea_units[span_id].visited == true)
+ 				 			$(".idea-unit#"+span_id).addClass("visited");
+					 //$(".idea-unit#"+span_id).addClass("visited");
+  				}
+	);
 
 	// //debug: console.log(text);
 	// var items=text.split('.');
