@@ -9,7 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="Grace Yen, Adobe System Corp.">
-    <link rel="icon" href="logo.png">
+  
     <title>Prototype</title>
   
 
@@ -351,24 +351,37 @@ $(function(){
 		//$("#exampleModal").modal('data-show');
 	})
 
+	renderElement();
+	voting();
+
+
 	$(".tableelement").click(function(){
 		//step 1: get the idea unit id
 		var span_id = $(this).attr("id").split('-');
-		var topic= topicName.indexOf(span_id[0]);
+		var topic_index= topicName.indexOf(span_id[0]);
+		var sentiment_index=span_id[1];
 		//todo
-		$(".idea-unit").each(function() {
-    		$(this).css("background-color");
-  		});
-		all_idea_units[span_id].visited=true; 	
+		var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 	console.log(currentIdeaLists.length);
+		for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+		{
+			//console.log(tmp);
+			tmp_id=(currentIdeaLists[tmp].id).split('-');
+			if(tmp_id[0] == span_id[2])
+			{
+				//console.log(currentIdeaLists[tmp].id);
+			$(".idea-unit#"+currentIdeaLists[tmp].id).css("background-color","yellow");
+			
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
 
-		$(".idea-unit#"+span_id).css("background-color","yellow");
+		//all_idea_units[span_id].visited=true; 	
 
-		$(".tableelement#"+span_id+" > span").css("color","grey");
+		$(this).css("color","grey");
 
 	})
 
-renderElement();
-voting();
+
 	// //debug: console.log(text);
 	// var items=text.split('.');
 	// for(var i=0; i<items.length;i++)
@@ -440,7 +453,7 @@ function voting(){
 			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
 			{
 				var people_id=(currentArray[idx_unit].id).split('-');
-				print(people_id[0]);
+				//print(people_id[0]);
 				$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").css('color','black');	
 				
 			}
