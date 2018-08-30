@@ -1,0 +1,100 @@
+//This JS File is used to process idea units, the output is a list of topic array
+var topicName=['Image', 'Layout',  'Copy', 'Font', 'Overall Color Theme'];
+
+//TEST ARRAY
+var ImagePositive = [
+{id:"2-1" , content:"image positive one."}, 
+{id:"5-1" , content:"image positive two."},
+{id:"5-2" , content:"image positive three."}];// ima array
+
+var ImageNegative = [
+{id:"1-2" , content:"image negative one."}, 
+{id:"1-4" , content:"image negative two."}];// ima array
+
+var ImageSuggesion = [
+{id:"1-5" , content:"image suggesion one."}, 
+{id:"4-2" , content:"image suggesion two."},
+{id:"4-5" , content:"image suggesion two."},
+{id:"6-4" , content:"image suggesion two."}];// ima array
+
+//IMAGE POSITIVE
+var LayoutPositive = [
+{id:"3-1",  content:"layout negative two."}
+];// ima array
+
+var LayoutNegative = [
+{id:"1-1" , content:"layout negative one."},
+{id:"2-2" , content:"layout negative two."},
+{id:"2-4", content:"layout negative two."},
+{id:"3-5",  content:"layout negative two."},
+{id:"4-0",  content:"layout negative two."},
+{id:"4-3",  content:"layout negative two."},
+{id:"5-2",  content:"layout negative two."},
+];// ima array
+
+var LayoutSuggestion = [
+];// ima array
+
+
+var CopyPositive = [{id:"3-0" , content:"layout negative one."}];// ima array
+
+var CopyNegative = [
+{id:"2-6" , content:"layout negative one."}];// ima array
+
+var CopySuggesion = [{id:"3-5" , content:"layout negative one."},
+{id:"4-6" , content:"layout negative one."}
+];// ima array
+
+
+var FontPositive = [ ];// ima array
+
+var FontNegative = [
+{id:"3-2" , content:"image negative one."},
+{id:"3-4" , content:"image negative one."}];// ima array
+
+var FontSuggesion = [
+{id:"4-4" , content:"image suggesion one."},
+{id:"6-3" , content:"image suggesion one."}];// ima array
+
+
+var ColorPositive = [ ];// ima array
+
+var ColorNegative = [
+{id:"1-3" , content:"image negative one."}];// ima array
+
+var ColorSuggesion = [
+{id:"4-1" , content:"image suggesion one."},
+{id:"5-3" , content:"image suggesion one."},
+{id:"6-1" , content:"image suggesion one."}];// ima array
+
+
+var imageArray = new Array(3);
+imageArray[0]= ImagePositive;
+imageArray[1]= ImageNegative;
+imageArray[2]= ImageSuggesion;
+var layoutArray = new Array(3);
+layoutArray[0]= LayoutPositive;
+layoutArray[1]= LayoutNegative;
+layoutArray[2]= LayoutSuggestion;
+
+var copyArray = new Array(3);
+copyArray[0]= CopyPositive;
+copyArray[1]= CopyNegative;
+copyArray[2]= CopySuggesion;
+
+var fontArray = new Array(3);
+fontArray[0]= FontPositive;
+fontArray[1]= FontNegative;
+fontArray[2]= FontSuggesion;
+
+var colorArray = new Array(3);
+colorArray[0]= ColorPositive;
+colorArray[1]= ColorNegative;
+colorArray[2]= ColorSuggesion;
+
+var topicArray = new Array(3);
+topicArray[0]=imageArray; 
+topicArray[1]=layoutArray;
+topicArray[2]=copyArray;
+topicArray[3]=fontArray;
+topicArray[4]=colorArray;

@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+    <link rel="icon" href="logo.png">
+
+    <title>Prototype</title>
+  
+
+ <!-- Bootstrap core CSS and js -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Custom styles for this template -->
+
+    <style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+    </style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color:#E87722" href="/interpretation/index.php">FeedbackPanel</a>
+            </div>  
+        </div>
+</nav>
+
+
+<div class="container" style="line-height: 2em;">
+
+<div class="main-section" style="margin-top: 50px">
+    
+<div class="row">    
+ 
+ <div class="col-md-8"> 
+ <table class='table table-hover table-nonfluid'><tbody><tr id='div-4' >
+<td><strong>#1</strong></td>
+
+<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>	I can see where you were going with the overall concept. I like the music notes bleeding off the page and giving the flyer a sense of 3rds. The informational text in the bottom left is a good/standard place for such information. The typography I think could use some work, as it seems very standard. There isn't much variation in terms of color. Additionally, I think the image of the sax player seems too.... clip-art for my taste. Overall, it's a great start, however I think it needs to be fine tuned a little further. Great first draft. (On a side-note, if your designing for print, keep in mind bleed and safe zones. Your text on the bottom is very close to what is considered to be the Safe-Zone.)
+</td>  
+</tr><tr id='div-5' >
+<td><strong>#2</strong></td>
+
+<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>Overall Concept: The Jazz feel is there but feel it can be improved. For instance the color palette can be more inviting and jazzy. Maybe consider yellows, oranges and reds or blues and creams.<br />
+<br />
+Layout: Make sure to give breathing room, especially around the margins to avoid 'cut off' during production. As for the jazz player - love that you incorporated him, work on adjusting so he isn't floating but bleeds off the page. Give it dimension, dont be afraid to layer. Attention to detail is key, there are missing elements such as: University and band logos, location of the concert: Main Quad, and full building name (where to purchase). Add a call to action, this should stand out from everything - you want to encourage guests to purchase a ticket.<br />
+<br />
+Aesthetics: Typography needs improvement, select no more than 3 fonts that compliment eachother, as well as work on the hierarchy. This will create a stonger design. Not sure if the white spots are snow or just an added element, but it makes it seem as if it is a winter event rather than it being held in October. As for the design elements, there are flat vector and a 3D approach, try to be consistent on the elemets so they marry and flow. Good job on making the band name, ticket, and event details prominent within the design.
+</td>  
+</tr>
+</tbody></table>
+</div>
+
+
+
+<!--user input-->
+<div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+    		<p id='selected-text'></p>
+    	</div>
+      	
+      	<div class="modal-body">
+      	<form>      	
+	      	<div class="form-group">
+	    		<label for="topic">Topic of this piece of feedback</label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
+	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	    		
+	  		</div>
+
+	  		<div class="form-group">
+	    		<label for="topic">Topic of this piece of feedback</label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
+	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	  		</div>
+      	
+      	</form>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+ <div class="col-md-4">
+
+<!--Panel-->
+<div name='panel'>
+
+<div class='summary-panel' id='image'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='layout'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='concept'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+
+
+
+</div>
+
+
+</div>
+
+</div><!--END OF MAIN SECTION-->
+</div><!--END OF CONTAINER-->
+
+
+
+<script>
+var currentTag='image';
+var currentSentiment='strength';
+
+var all_idea_units = {}
+
+$(function(){
+
+	$(".table-text").each(function (table_i) {
+		var reviewer_i = table_i + 1;
+		var text = ($(this).text()).split('.');
+		var text_spanned = text.map((item, i) => 
+			"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + item + ".</span");
+		$(this).html(text_spanned);
+
+
+		for (var i = 0; i < text.length; i++) {
+			var ideaunit = {
+				id: reviewer_i + "-" + i,
+				content: text[i],
+				topic: [],
+				sentiment: 0,
+				importance: 0
+			};
+			all_idea_units[reviewer_i + "-" + i] = ideaunit;
+		}
+	})
+
+	$("span.idea-unit").click(function(){
+		//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		/* 
+		step 2: user input and update the list 
+		1. get topic tag
+		2. get sentiment
+		3. get agreement
+		*/
+		all_idea_units[span_id].topic.push(currentTag);
+		$('#selected-text').html($(this).text());
+		//$('#annotate').modal();
+	
+		//refresh the table view
+		generateSummaryTable();
+		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
+
+		//$("#exampleModal").modal('data-show');
+
+
+
+	})
+
+
+	// //debug: console.log(text);
+	// var items=text.split('.');
+	// for(var i=0; i<items.length;i++)
+	// {
+	// 	items[i];
+	// }
+	// $(".table-text")
+
+});
+
+
+function generateSummaryTable()
+{
+	console.log("refresh summary table");
+
+}
+
+
+</script>
+
+</body>
+
+</html>

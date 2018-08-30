@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .droptarget {
+            float: left; 
+        width: 300px; 
+        height: 300px;
+        margin: 15px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+        }
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <script type="text/javascript" src="behavior_record_updated.js"></script>
+    <!---->
+    <title>Prototype</title>
+    <!-- Custom styles for this template -->
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="logo.png">
+
+ <!-- Bootstrap core CSS and js -->
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+
+<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/designer.css">
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+
+
+
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color:#E87722" href="/interpretation/index.php">CRAFT</a>
+            </div>
+            <button type="button" class="btn btn-default navbar-btn navbar-right" id="logout">Logout</button>
+            
+        </div>
+      
+</nav>
+<script>
+  $(document).ready(function(){
+    $('#logout').click(function(){
+        
+        $.post('/interpretation/webpage-utility/logout.php', function (response) {
+            window.location.href='/interpretation/index.php';
+        });
+    });
+
+});
+</script>
+
+<div class="container" style="line-height: 2em;">
+
+<div class="main-section">
+    <div class="alert alert-info" id="instruction">
+        <h3>Review Feedback</h3>
+         <p>We have collected feedback from three independent reviewers to help you revise your design. These reviewers are from the target audiences and all have more than three years of professional experience in design. Please review the feedback and highlight the part that you think its useful for improving your design. After that, please click "Next" to go to the next step.</p>
+        <br>
+    </div><!--End alert section for instruction-->
+
+<div class='row'>
+    <div class='col-md-8'>
+
+        <button type = "button" onclick="return window.location.href='page2.php'"> Begin Interpretation </button>
+        <table class='table table-hover table-nonfluid'><tbody><tr id='div-4' >
+                            <td><strong>#1</strong></td>
+
+                            <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>	I can see where you were going with the overall concept. I like the music notes bleeding off the page and giving the flyer a sense of 3rds. The informational text in the bottom left is a good/standard place for such information. The typography I think could use some work, as it seems very standard. There isn't much variation in terms of color. Additionally, I think the image of the sax player seems too.... clip-art for my taste. Overall, it's a great start, however I think it needs to be fine tuned a little further. Great first draft. (On a side-note, if your designing for print, keep in mind bleed and safe zones. Your text on the bottom is very close to what is considered to be the Safe-Zone.)
+                            </td>  
+                    </tr><tr id='div-5' >
+                            <td><strong>#2</strong></td>
+
+                            <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>Overall Concept: The Jazz feel is there but feel it can be improved. For instance the color palette can be more inviting and jazzy. Maybe consider yellows, oranges and reds or blues and creams.<br />
+<br />
+Layout: Make sure to give breathing room, especially around the margins to avoid 'cut off' during production. As for the jazz player - love that you incorporated him, work on adjusting so he isn't floating but bleeds off the page. Give it dimension, dont be afraid to layer. Attention to detail is key, there are missing elements such as: University and band logos, location of the concert: Main Quad, and full building name (where to purchase). Add a call to action, this should stand out from everything - you want to encourage guests to purchase a ticket.<br />
+<br />
+Aesthetics: Typography needs improvement, select no more than 3 fonts that compliment eachother, as well as work on the hierarchy. This will create a stonger design. Not sure if the white spots are snow or just an added element, but it makes it seem as if it is a winter event rather than it being held in October. As for the design elements, there are flat vector and a 3D approach, try to be consistent on the elemets so they marry and flow. Good job on making the band name, ticket, and event details prominent within the design.
+                            </td>  
+                    </tr><tr id='div-6' >
+                            <td><strong>#3</strong></td>
+
+                            <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>Concept: As a poster the message is -almost- all there, the only thing that might be missing is something like &quot;Jazz Night&quot; as a header, &quot;Smooth Digital&quot; may not be an established local band to be immediately recognizable, without that, you can't really tell what it is... Now that I think about it, there's actually no way to know that this is a &quot;Jazz&quot; music event. <br />
+Strengths: It's definitely a music night. Weakness: We don't know its Jazz.<br />
+<br />
+Layout: Again, most of the information needed is there, it reads good from top to bottom, nice use of margins, but, wording might be able to help a little with sending out the message, so: if we start out with the Jazz Music Night part on top, we already know there's a ticket fee, once we get to that, a simple &quot;$10 entry fee&quot; sounds nicer than &quot;Ticket: $10/Person&quot;, and if right below that, you put the &quot;All proceeds will go toward supporting local music programs...&quot; bit, you are giving the event a purpose and an extra reason to go: remember people will be tempted to go once they hear its for a good cause, use that to sell them on it. If anything that message should be from top to bottom &quot;Charity event&gt;Jazz Music&gt;When&gt;$10&gt;Where&gt;Drinks+Food available.&quot; this way you tackle in order the main things that might interest people to come. <br />
+Strengths: Distribution of the information and margins. Weaknesses: Order of the elements.<br />
+<br />
+Aesthetics: Carefull with the cropping below the image, looks unfinished. Also, try playing with both the size and The gradients on the notes adds a little movement and depth to the piece but still looks flat overall. You can choose to stick to a color scheme, this way some text can be highlighted in yellow/orange to bring out key pieces of information. Here the main focus falls on the notes, and instead it should go to the title, and the key info. Background color could have been switched with the man for more contrast on the piece, after all, when you picture a Jazz band is usually in a dark stage with the spotlight only on them.<br />
+Strengths: Well defined elements. Weaknesses: Man cut in half and Notes having more visual importance than the rest.
+                            </td>  
+                    </tr></tbody></table>
+
+
+	<footer  style="text-align: center;padding-top:20px">
+	<hr>
+			<span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+			Designed and developed by UIUC ORCHID group. @2017 <br>Contact us: 			
+	</footer>
+</div> 
+<!--
+    <div class='col-md-4'>
+        
+        <button onclick="saveTextAsFile()">Save Text to File</button>
+
+       
+        <div class='droptarget' id = 'inputTextToSave-1' ondrop='drop(event)' ondragover='allowDrop(event)'>
+             <input type="text" id="myText-1" value="Some text...">
+        </div>
+
+        
+        <div class='droptarget' id = 'inputTextToSave-2' ondrop='drop(event)' ondragover='allowDrop(event)'>
+            <input type="text" id="myText-2" value="Some text...">
+        </div>
+       
+        <div class='droptarget' id = 'inputTextToSave-3' ondrop='drop(event)' ondragover='allowDrop(event)'>
+            <input type="text" id="myText-4" value="Some text...">
+        </div>
+        
+    </div>      
+    </div><!End Task Section-->  
+    
+    
+</div><!--End Main Section-->
+
+</div><!--End Container-->
+
+<!--Begin Script-->       
+<script>
+
+var tracker;
+function changeColor(color)
+{  
+    tracker = color;
+
+}
+var glob;
+
+function mouseUp() {
+  var sel, range, node;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        console.log(sel);
+        glob = sel;
+        replace(glob);
+        
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.collapse(false);
+        range.pasteHTML(html);
+    }
+
+}
+
+function replace(sel){
+    if (sel.getRangeAt && sel.rangeCount) {
+            range = window.getSelection().getRangeAt(0);
+            
+            
+            //var spanner = document.createElement('span');
+            //spanner.innerHTML = range;
+            //spanner.style.backgroundColor = tracker;
+            //spanner.addEventListener("ondragstart",dragStart(event));
+            //spanner.addEventListener("draggable",true);
+            //spanner.id = "dragtarget";
+
+            var html = '<span style="background-color:' + tracker + ';" ondragstart="dragStart(event)" draggable="true" id="dragtarget">' + range + '</span>';
+            range.deleteContents();
+
+
+            
+            //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
+            //html += dropdown;
+
+            var el = document.createElement("div");
+            el.innerHTML = html;
+
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+            //console.log(document.documentElement.innerHTML.getIndex(sel));
+        }
+}
+
+function dragStart(event) {
+    replace(glob);
+    event.dataTransfer.setData("Text", event.target.id);
+
+}
+
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+}
+
+function saveTextAsFile()
+{
+    //document.getElementById("inputTextToSave").value;
+    //document.getElementsByClass('droptarget').first()
+    var textToSave = document.getElementById('inputTextToSave').innerHTML;
+    //document.body.getElementsByClassName("droptarget").text();
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "fileResult.txt";
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+</script>
+
+
+
+
+</body>
+
+</html>

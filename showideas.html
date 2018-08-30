@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+    <link rel="icon" href="logo.png">
+    <title>Prototype</title>
+  
+
+ <!-- Bootstrap core CSS and js -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Custom styles for this template -->
+
+    <style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+.tableelement{
+	cursor: pointer;
+}
+
+a:visited { 
+    color: pink;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+
+<div class="container" style="line-height: 2em;">
+
+<div class="main-section" style="margin-top: 50px">
+    
+<div class="row">    
+ 
+<div class="col-md-6"> 
+	<table class='table table-hover table-nonfluid'>
+	<tbody>
+	<tr id='div-1'>
+		<td><strong>#1</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.!
+		</td>
+	</tr>
+
+	<tr id='div-2'>
+		<td><strong>#2</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			The design is visually appealing.! I really like the location of the shoot.! I guess he thought it's cool to put "Central Park" five times, but I really don't think it is useful. !He should have at least put running before or after "Central Part".! The date is much worse, I don't like the use of "Oct.1.2016 four times.! What does there have to be an overlap of the date on the bottom?! If he changers the wording and put run on the flyer, I think it would be much more informative.!
+		</td>  
+	</tr>
+	<tr id='div-3'>
+		<td><strong>#3</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Strength: It has all the necessary information and I will know what the flyer is about from a quick glance.! It is simple and easy to read from a distance.!
+
+			Weakness: I think the white font on a light background is an odd choice. It makes it hard to read.! I'm not quite sure what is going on with the dates and the overlapping of the last two. The repetition of the dates seems redundant and unnecessary. !I think the prize amount should be larger as it will probably be the biggest draw for competitors.! It might be worth it to include the time of the race in addition to the date.! I prefer more colors on the flyer as the grayscale makes it easy to blend into the surrounding environment and not be noticed.!
+		</td>  
+	</tr>
+	<tr id='div-4'>
+		<td><strong>#4</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			First of all the layout is average and not much attractive in looking. !it will be nicer if the flyer is in color format.! also it will be better if any flag picture can include.! no need to include same words repeatedly.! also the fonts looks nicer but better use different fonts for different words.! as its for a marathon race better include picture more people running along the road.! you can include the address of the venue in the flyer. also please include the name of any celebrities whoever participating in this event.!
+		</td>  
+	</tr>
+	<tr id='div-5'>
+		<td><strong>#5</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			I liked the image of a runner, it gives the feeling of movement and is sort of energizing. !Crossing a bridge also brings an idea of a running enjoying city´s landscapes and a pleasant setting.! Liked the fonts although the repetition of "central park" and "oct.1.2016" seems a little misplaced, I would prefer a cleaner flyer.! I am in doubt if I enjoyed or not the black & white flyer, it is not bad at all but maybe it calls for some color.! It does not accentuate the 300 prize but does not seem to be a problem.! Overall I liked it.!
+		</td>  
+	</tr>
+	<tr id='div-6'>
+		<td><strong>#6</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.!
+		</td>  
+	</tr>
+	</tbody>
+	</table>
+</div>
+
+<!--user input-->
+<div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
+  	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+    		<p id='selected-text'></p>
+    	</div>
+      	
+      	<div class="modal-body">
+      	<form>      	
+	      	<div class="form-group">
+	    		<label for="topic">Topic of this piece of feedback</label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
+	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	    		
+	  		</div>
+
+	  		<div class="form-group">
+	    		<label for="topic">Topic of this piece of feedback</label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
+	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	  		</div>
+      	
+      	</form>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+<!--Panel-->
+<table class="table">
+	<thead>
+    <tr>
+      <th scope="col">Topic</th>
+      <th scope="col">Positive</th>
+      <th scope="col">Negative</th>
+      <th scope="col">Suggestion</th>
+    </tr>
+  </thead>
+
+<tbody id='paneltest'>
+	
+</tbody>
+</table>
+
+
+</div>
+<!--Panel-->
+<!--<div name='panel'>
+
+<div class='summary-panel' id='image'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='layout'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='concept'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+
+</div>
+-->
+
+
+
+
+</div><!--END OF MAIN SECTION-->
+</div><!--END OF CONTAINER-->
+
+<script>
+
+
+var currentTag='image';
+var currentSentiment='strength';
+
+var all_idea_units = {}
+
+
+$(function(){
+
+	$(".table-text").each(function (table_i) {
+		var reviewer_i = table_i + 1;
+		var text = ($(this).text()).split('!');
+		var text_spanned = text.map((item, i) => 
+			"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + item + "</span");
+		$(this).html(text_spanned);
+
+		for (var i = 0; i < text.length; i++) {
+			var ideaunit = {
+				id: reviewer_i + "-" + i,
+				content: text[i],
+				topic: [],
+				sentiment: 0,
+				importance: 0,
+				visited:false
+			};
+			all_idea_units[reviewer_i + "-" + i] = ideaunit;
+		}
+	})
+
+	$("span.idea-unit").click(function(){
+		//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		/* 
+		step 2: user input and update the list 
+		1. get topic tag
+		2. get sentiment
+		3. get agreement
+		*/
+		all_idea_units[span_id].topic.push(currentTag);
+		$('#selected-text').html($(this).text());
+		//$('#annotate').modal();
+	
+		//refresh the table view
+		generateSummaryTable();
+		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
+		//$("#exampleModal").modal('data-show');
+	})
+
+	$(".tableelement").click(function(){
+		//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		//$(".idea-unit").addClass("idea_unit");
+		//("background-color","yellow");
+		$(".idea-unit").each(function() {
+    		$(this).css("background-color");
+  		});
+		all_idea_units[span_id].visited=true; 	
+
+		$(".idea-unit#"+span_id).css("background-color","yellow");
+
+		$(".tableelement#"+span_id+" > span").css("color","grey");
+
+	})
+
+
+	// //debug: console.log(text);
+	// var items=text.split('.');
+	// for(var i=0; i<items.length;i++)
+	// {
+	// 	items[i];
+	// }
+	// $(".table-text")
+
+});
+
+
+function generateSummaryTable()
+{
+	console.log("refresh summary table");
+
+}
+
+
+
+var topicName=['Image', 'Layout',  'Copy', 'Font', 'Overall Color Theme'];
+
+//TEST ARRAY
+var ImagePositive = [
+{id:"2-1" , content:"image positive one."}, 
+{id:"5-1" , content:"image positive two."},
+{id:"5-2" , content:"image positive three."}];// ima array
+
+var ImageNegative = [
+{id:"1-2" , content:"image negative one."}, 
+{id:"1-4" , content:"image negative two."}];// ima array
+
+var ImageSuggesion = [
+{id:"1-5" , content:"image suggesion one."}, 
+{id:"4-2" , content:"image suggesion two."},
+{id:"4-5" , content:"image suggesion two."},
+{id:"6-4" , content:"image suggesion two."}];// ima array
+
+//IMAGE POSITIVE
+var LayoutPositive = [
+{id:"3-1",  content:"layout negative two."}
+];// ima array
+
+var LayoutNegative = [
+{id:"1-1" , content:"layout negative one."},
+{id:"2-2" , content:"layout negative two."},
+{id:"2-4", content:"layout negative two."},
+{id:"3-5",  content:"layout negative two."},
+{id:"4-0",  content:"layout negative two."},
+{id:"4-3",  content:"layout negative two."},
+{id:"5-2",  content:"layout negative two."},
+];// ima array
+
+var LayoutSuggestion = [
+];// ima array
+
+
+var CopyPositive = [{id:"3-0" , content:"layout negative one."}];// ima array
+
+var CopyNegative = [
+{id:"2-6" , content:"layout negative one."}];// ima array
+
+var CopySuggesion = [{id:"3-5" , content:"layout negative one."},
+{id:"4-6" , content:"layout negative one."}
+];// ima array
+
+
+var FontPositive = [ ];// ima array
+
+var FontNegative = [
+{id:"3-2" , content:"image negative one."},
+{id:"3-4" , content:"image negative one."}];// ima array
+
+var FontSuggesion = [
+{id:"4-4" , content:"image suggesion one."},
+{id:"6-3" , content:"image suggesion one."}];// ima array
+
+
+var ColorPositive = [ ];// ima array
+
+var ColorNegative = [
+{id:"1-3" , content:"image negative one."}];// ima array
+
+var ColorSuggesion = [
+{id:"4-1" , content:"image suggesion one."},
+{id:"5-3" , content:"image suggesion one."},
+{id:"6-1" , content:"image suggesion one."}];// ima array
+
+
+var imageArray = new Array(3);
+imageArray[0]= ImagePositive;
+imageArray[1]= ImageNegative;
+imageArray[2]= ImageSuggesion;
+var layoutArray = new Array(3);
+layoutArray[0]= LayoutPositive;
+layoutArray[1]= LayoutNegative;
+layoutArray[2]= LayoutSuggestion;
+
+var copyArray = new Array(3);
+copyArray[0]= CopyPositive;
+copyArray[1]= CopyNegative;
+copyArray[2]= CopySuggesion;
+
+var fontArray = new Array(3);
+fontArray[0]= FontPositive;
+fontArray[1]= FontNegative;
+fontArray[2]= FontSuggesion;
+
+var colorArray = new Array(3);
+colorArray[0]= ColorPositive;
+colorArray[1]= ColorNegative;
+colorArray[2]= ColorSuggesion;
+
+var topicArray = new Array(3);
+topicArray[0]=imageArray; 
+topicArray[1]=layoutArray;
+topicArray[2]=copyArray;
+topicArray[3]=fontArray;
+topicArray[4]=colorArray;
+	// for(var i=0; i<imageArray[1].length;i++)// lopping the topic
+	// {
+	// 	console.log(layoutArray[0][i].content);		
+	// 	// $("#paneltest").append(renderCell);
+	// }	
+	
+
+	for(var i=0; i<topicArray.length;i++)// lopping the topic
+	{		
+
+		var inser_html="";
+	
+		 inser_html=inser_html+"<tr><th scope='row'>"+topicName[i]+"</th>";
+		//$("#paneltest").append("<tr><th scope='row'>"+topicName[i]+"</th>");
+			//console.log(inser_html);
+
+		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+		{
+			var currentArray=topicArray[i][sentiment];
+			inser_html+="<td>";
+			//console.log(inser_html);
+			//$("#paneltest").append("<td>");
+			//console.log(currentArray.length);
+			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' id='"+currentArray[idx_unit].id+"'><span class='glyphicon glyphicon-stop'></span></a>";
+				//inser_html=inser_html+"<div class='tableelement' id='"+currentArray[idx_unit].id+"'>"+currentArray[idx_unit].content+"</div>";
+				//$("#paneltest").append("<div class='tableelement' id='"+currentArray[idx_unit].id+"'>"+currentArray[idx_unit].content+"</div>");
+				//console.log(currentArray[idx_unit].id);
+			}
+			inser_html+="</td>";
+			//$("#paneltest").append(renderCell);
+		}
+		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+	
+	//$("#paneltest").wrapInner(inser_html);
+</script>
