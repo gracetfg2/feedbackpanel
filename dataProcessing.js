@@ -1,5 +1,5 @@
-//This JS File is used to process idea units, the output is a list of topic array
-var topicName=['Image', 'Layout',  'Copy', 'Font', 'Overall Color Theme'];
+
+var topicName=['Image', 'Layout',  'Copy', 'Font', 'Color'];
 
 //TEST ARRAY
 var ImagePositive = [
@@ -26,7 +26,7 @@ var LayoutNegative = [
 {id:"1-1" , content:"layout negative one."},
 {id:"2-2" , content:"layout negative two."},
 {id:"2-4", content:"layout negative two."},
-{id:"3-5",  content:"layout negative two."},
+{id:"3-3",  content:"layout negative two."},
 {id:"4-0",  content:"layout negative two."},
 {id:"4-3",  content:"layout negative two."},
 {id:"5-2",  content:"layout negative two."},
@@ -92,7 +92,7 @@ colorArray[0]= ColorPositive;
 colorArray[1]= ColorNegative;
 colorArray[2]= ColorSuggesion;
 
-var topicArray = new Array(3);
+var topicArray = new Array(5);
 topicArray[0]=imageArray; 
 topicArray[1]=layoutArray;
 topicArray[2]=copyArray;
