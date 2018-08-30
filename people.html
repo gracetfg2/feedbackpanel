@@ -46,10 +46,13 @@
 	cursor: pointer;
 }
 
-a:visited { 
-    color: pink;
+.visited { 
+    background-color: lightgrey;
 }
 
+.active{
+	background-color: yellow;
+}
 
 
     </style>
@@ -256,6 +259,7 @@ $(function(){
 
 	$(".tableelement").click(function(){
 		//step 1: get the idea unit id
+		var span_id_origin=$(this).attr("id");
 		var span_id = $(this).attr("id").split('-');
 		var topic_index= topicName.indexOf(span_id[0]);
 		var sentiment_index=span_id[1];
@@ -269,25 +273,74 @@ $(function(){
 			if(tmp_id[0] == span_id[2])
 			{
 				//console.log(currentIdeaLists[tmp].id);
-			$(".idea-unit#"+currentIdeaLists[tmp].id).css("background-color","yellow");
-			
+				var currentid=currentIdeaLists[tmp].id;
+			$(".idea-unit#"+currentid).addClass("visited");
+			all_idea_units[currentid].visited=true; 
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
 		}
 
 		//all_idea_units[span_id].visited=true; 	
 
-		$(this).css("color","grey");
+		$(".tableelement#"+span_id_origin+" > span").css("color","blue");
 
 	})
 
 
-	// //debug: console.log(text);
-	// var items=text.split('.');
-	// for(var i=0; i<items.length;i++)
-	// {
-	// 	items[i];
-	// }
-	// $(".table-text")
+	$( ".tableelement" ).hover(
+
+  				 function() {
+  				 	
+  				 		var span_id = $(this).attr("id").split('-');
+						var topic_index= topicName.indexOf(span_id[0]);
+						var sentiment_index=span_id[1];
+						//todo
+						var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 					
+				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+				{
+						//console.log(tmp);
+					tmp_id=(currentIdeaLists[tmp].id).split('-');
+					if(tmp_id[0] == span_id[2])
+					{
+						//console.log(currentIdeaLists[tmp].id);
+						var currentid=currentIdeaLists[tmp].id;
+							$(".idea-unit#"+currentid).removeClass("visited");
+							$(".idea-unit#"+currentid).addClass("active");
+						}
+
+
+ 				 }
+ 				}, 
+
+ 				 function() {
+
+ 				 		var span_id = $(this).attr("id").split('-');
+						var topic_index= topicName.indexOf(span_id[0]);
+						var sentiment_index=span_id[1];
+						//todo
+						var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 					
+				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+				{
+						//console.log(tmp);
+					tmp_id=(currentIdeaLists[tmp].id).split('-');
+					if(tmp_id[0] == span_id[2])
+					{
+						//console.log(currentIdeaLists[tmp].id);
+						var currentid=currentIdeaLists[tmp].id;
+							$(".idea-unit#"+currentid).removeClass("active");
+							if(all_idea_units[currentid].visited == true)
+ 				 			{
+ 				 				$(".idea-unit#"+span_id).addClass("visited");
+ 				 			}
+							
+						}
+
+
+ 				 }
+
+  				}
+	);
 
 });
 
