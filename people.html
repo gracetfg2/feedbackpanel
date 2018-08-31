@@ -281,12 +281,13 @@ $(function(){
 				var currentid=currentIdeaLists[tmp].id;
 			$(".idea-unit#"+currentid).addClass("visited");
 			all_idea_units[currentid].visited=true; 
+			$(".tableelement#"+span_id_origin+" > span").css("color","blue");
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
 		}
 
 		//all_idea_units[span_id].visited=true; 	
 
-		$(".tableelement#"+span_id_origin+" > span").css("color","blue");
+		
 
 	})
 
