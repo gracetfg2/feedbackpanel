@@ -170,17 +170,8 @@
  <div class="col-md-6">
 <!--Panel-->
 
-<form>
-<input type="checkbox" class="form-check-input" id="effort" data-toggle="toggle"> 
-<label class="form-check-label" for="effort">Show Estimated Effort</label>
-
-<input type="checkbox" class="form-check-input" id="urgency"> 
-<label class="form-check-label" for="urgency">Show Urgency</label>
-
-</form>
-
-
-<hr>
+<input type="checkbox" class="form-check-input" id="effort"> Show Estimated Effort
+<input type="checkbox" class="form-check-input" id="urgency"> Show Urgency
 <table class="table" style="font-size: 20px">
 	<thead>
     <tr>
@@ -206,7 +197,7 @@
 var currentTag='image';
 var currentSentiment='strength';
 var effort_size=['20px','20px','25px','30px','30px'];
-var urgency_color=['#ffb3b3','#ffb3b3','#ff4d4d','#b30000','#b30000'];
+
 var all_idea_units = {}
 
 
@@ -290,26 +281,6 @@ $(function(){
 	// 	items[i];
 	// }
 	// $(".table-text")
-	//rendEffort();
-
-
-    $('#effort').change(function() {
-      if($(this).prop('checked')==true){
-      	rendEffort();
-      }else{
-      	removeEffort();
-      }
-    })
-
-
-    $('#urgency').change(function() {
-      if($(this).prop('checked')==true){
-      	rendUrgency();
-      }else{
-      	removeUrgency();
-      }
-    })
-
 
 });
 
@@ -336,9 +307,6 @@ function generateSummaryTable()
 			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
 			{
 				inser_html=inser_html+"<a class='tableelement' id='"+currentArray[idx_unit].id+"'><span class='glyphicon glyphicon-stop'></span></a>";
-
-//inser_html=inser_html+"<a class='tableelement' id='"+currentArray[idx_unit].id+"'><span class='glyphicon glyphicon-stop' style='font-size:"+ effort_size[currentArray[idx_unit].effort-1] +"'></span></a>";
-
 				//inser_html=inser_html+"<div class='tableelement' id='"+currentArray[idx_unit].id+"'>"+currentArray[idx_unit].content+"</div>";
 				//$("#paneltest").append("<div class='tableelement' id='"+currentArray[idx_unit].id+"'>"+currentArray[idx_unit].content+"</div>");
 				//console.log(currentArray[idx_unit].id);
@@ -349,116 +317,6 @@ function generateSummaryTable()
 		inser_html+="</tr>";
 		
 		$("#paneltest").append(inser_html);
-	}
-	
-}
-
-
-function rendEffort()
-{
-	console.log("rendEffort");
-	for(var i=0; i<topicArray.length;i++)// lopping the topic
-	{		
-
-
-		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
-		{
-			var currentArray=topicArray[i][sentiment];
-			
-			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
-			{
-				var currentID=currentArray[idx_unit].id;
-				var currentEffort=currentArray[idx_unit].effort;
-
-				$(".tableelement#"+currentID+" > span").css('font-size', effort_size[currentEffort-1]);
-				console.log(currentID+effort_size[currentEffort-1]);
-			}
-		
-			//$("#paneltest").append(renderCell);
-		}
-		
-	}
-	
-}
-
-function removeEffort()
-{
-	console.log("removeEffort");
-	for(var i=0; i<topicArray.length;i++)// lopping the topic
-	{		
-
-
-		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
-		{
-			var currentArray=topicArray[i][sentiment];
-			
-			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
-			{
-				var currentID=currentArray[idx_unit].id;
-				var currentEffort=currentArray[idx_unit].effort;
-
-				$(".tableelement#"+currentID+" > span").css('font-size', '20px');
-				console.log(currentID+effort_size[currentEffort-1]);
-			}
-		
-			//$("#paneltest").append(renderCell);
-		}
-		
-	}
-	
-}
-
-
-function rendUrgency()
-{
-	console.log("rendUrgency");
-	for(var i=0; i<topicArray.length;i++)// lopping the topic
-	{		
-
-
-		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
-		{
-			var currentArray=topicArray[i][sentiment];
-			
-			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
-			{
-				var currentID=currentArray[idx_unit].id;
-				var currentUrgency=currentArray[idx_unit].urgency;
-
-				$(".tableelement#"+currentID+" > span").css('color', urgency_color[currentUrgency-1]);
-				//console.log(currentID+effort_size[currentEffort-1]);
-			}
-		
-			//$("#paneltest").append(renderCell);
-		}
-		
-	}
-	
-}
-
-function removeUrgency()
-{
-	console.log("removeUrgency");
-	for(var i=0; i<topicArray.length;i++)// lopping the topic
-	{		
-
-
-		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
-		{
-			var currentArray=topicArray[i][sentiment];
-			
-			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
-			{
-				var currentID=currentArray[idx_unit].id;
-				var currentEffort=currentArray[idx_unit].effort;
-
-				$(".tableelement#"+currentID+" > span").css('color', "");
-				console.log(currentID+effort_size[currentEffort-1]);
-			}
-		
-			//$("#paneltest").append(renderCell);
-		}
-		
 	}
 	
 }
