@@ -65,7 +65,7 @@
 }
 
 .active-icon{
-	color: yellow;
+	color: red !important;
 }
 
     </style>
@@ -417,7 +417,7 @@ $(function(){
 							
 							if(span_id == currentArray[idx_unit].id){
 								console.log("get it");
-								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active");	
+								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
 				
 							}
 							
@@ -428,7 +428,7 @@ $(function(){
 						
 			},
 			function() {
-				$(".tableelement > span").removeClass("active");
+				$(".tableelement > span").removeClass("active-icon");
 			}
 
 			
