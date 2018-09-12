@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+  
+    <title>Prototype</title>
+  
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+	<!-- Custom styles for this template -->
+
+<style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+		.tableelement{
+			cursor: pointer;
+
+		}
+
+		.visited { 
+		    background-color: lightgrey;
+		}
+
+		.active{
+			background-color: yellow;
+		}
+
+		.highlight{
+			background-color: red;
+		}
+
+		.active-icon{
+			color: red !important;
+		}
+
+</style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+
+<div class="container">
+
+<div class="main-section" style="margin-top: 60px">
+  
+<div class="alert alert-info" role="alert" >
+	<h4>Instruction</h4>
+ We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+</div>
+  
+<div class="row">    
+ 
+
+	<table class='table table-hover table-nonfluid'>
+		<thead>
+		    <tr>
+		      <th style="width:5%" scope="col">#</th>
+		      <th style="width:35%" scope="col">Content</th>
+		      <th style="width:15%" scope="col">Estimtated Effort</th>
+		      <th style="width:15%" scope="col">Criticality</th>
+		      <th style="width:15%" scope="col">Need Discussion</th>
+		      <th style="width:15%" scope="col">Agree</th>
+		    </tr>
+		  </thead>
+	
+	<tbody id='ideaunits'>
+		
+	</tbody>
+	</table>
+</div>
+</div>
+</div>
+
+<div style='display: none'>
+<span class='table-text'>
+		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.</span>
+		<span class='table-text'>		
+			The design is visually appealing.! I really like the location of the shoot.! I guess he thought it's cool to put "Central Park" five times, but I really don't think it is useful. !He should have at least put running before or after "Central Part".! The date is much worse, I don't like the use of "Oct.1.2016 four times.! What does there have to be an overlap of the date on the bottom?! If he changers the wording and put run on the flyer, I think it would be much more informative.
+		</span>
+		<span class='table-text'>
+			Strength: It has all the necessary information and I will know what the flyer is about from a quick glance.! It is simple and easy to read from a distance.!
+
+			Weakness: I think the white font on a light background is an odd choice. It makes it hard to read.! I'm not quite sure what is going on with the dates and the overlapping of the last two. The repetition of the dates seems redundant and unnecessary. !I think the prize amount should be larger as it will probably be the biggest draw for competitors.! It might be worth it to include the time of the race in addition to the date.! I prefer more colors on the flyer as the grayscale makes it easy to blend into the surrounding environment and not be noticed.
+		</span> 
+		<span class='table-text'>
+			First of all the layout is average and not much attractive in looking. !it will be nicer if the flyer is in color format.! also it will be better if any flag picture can include.! no need to include same words repeatedly.! also the fonts looks nicer but better use different fonts for different words.! as its for a marathon race better include picture more people running along the road.! you can include the address of the venue in the flyer. also please include the name of any celebrities whoever participating in this event.
+		</span>
+		<span class='table-text'>
+			I liked the image of a runner, it gives the feeling of movement and is sort of energizing. !Crossing a bridge also brings an idea of a running enjoying city´s landscapes and a pleasant setting.! Liked the fonts although the repetition of "central park" and "oct.1.2016" seems a little misplaced, I would prefer a cleaner flyer.! I am in doubt if I enjoyed or not the black & white flyer, it is not bad at all but maybe it calls for some color.! It does not accentuate the 300 prize but does not seem to be a problem.! Overall I liked it.
+		</span>
+		<span class='table-text'>
+			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.
+		</span>
+</div>
+<script>
+var all_idea_units = {}
+
+$(function(){
+		$(".table-text").each(function (table_i) {
+
+		var reviewer_i = table_i + 1;
+		var text = ($(this).text()).split('!');
+
+		for (var i = 0; i < text.length; i++) {
+
+			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='effort'><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option>yes</option><option>no</option></td> <td><select name='agree'><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+
+			$('#ideaunits').append(text_spanned);
+
+			var ideaunit = {
+				id: reviewer_i + "-" + i,
+				content: text[i],
+				topic: [],
+				sentiment: 0,
+				importance: 0,
+				visited:false
+			};
+			all_idea_units[reviewer_i + "-" + i] = ideaunit;
+		}
+	})
+
+});
+
+</script>
