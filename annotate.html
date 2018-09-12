@@ -81,7 +81,7 @@
   
 <div class="alert alert-info" role="alert" >
 	<h4>Instruction</h4>
- We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+ Please select values that make most sense to you blablabla. 
 </div>
   
 <div class="row">    
@@ -92,10 +92,12 @@
 		    <tr>
 		      <th style="width:5%" scope="col">#</th>
 		      <th style="width:35%" scope="col">Content</th>
-		      <th style="width:15%" scope="col">Estimtated Effort</th>
-		      <th style="width:15%" scope="col">Criticality</th>
-		      <th style="width:15%" scope="col">Need Discussion</th>
-		      <th style="width:15%" scope="col">Agree</th>
+		      <th style="width:10%" scope="col">Topic</th>
+		      <th style="width:10%" scope="col">Sentiment</th>
+		      <th style="width:10%" scope="col">Estimtated Effort</th>
+		      <th style="width:10%" scope="col">Criticality</th>
+		      <th style="width:10%" scope="col">Need Discussion</th>
+		      <th style="width:10%" scope="col">Agree</th>
 		    </tr>
 		  </thead>
 	
@@ -139,7 +141,7 @@ $(function(){
 
 		for (var i = 0; i < text.length; i++) {
 
-			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='effort'><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option>yes</option><option>no</option></td> <td><select name='agree'><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>neutral</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
 
 			$('#ideaunits').append(text_spanned);
 
