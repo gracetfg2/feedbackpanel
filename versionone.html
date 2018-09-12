@@ -61,7 +61,7 @@
 }
 
 .highlight{
-	background-color: red;
+	color: blue !important;;
 }
 
 .active-icon{
@@ -151,18 +151,26 @@
       	<div class="modal-body">
       	<form>      	
 	      	<div class="form-group">
-	    		<label for="topic">Topic of this piece of feedback</label>
-	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
-	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	    		<label for="topic"><b>Create an Action Item</b></label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. Select an image with a sun">
+	    		<small class="form-text text-muted">Use a few words to decribe what you will do with this feedback.</small>
 	    		
 	  		</div>
 
+
+	  		<hr>
 	  		<div class="form-group">
-	    		<label for="topic">Topic of this piece of feedback</label>
-	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. image choice">
-	    		<small class="form-text text-muted">Use a few words to decribe what this piece of feedback is about.</small>
+	    		<label for="topic"><b>Associate This Action Item with ...</label></b>
+	   	 		<select>
+	   	 			<option>Select an image without sun glare.</option>
+	   	 			<option>Select an image with multiple people.</option>
+	   	 		</select>
 	  		</div>
-      	
+      		<hr>
+      		<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox"  value="no-value">
+						  <label class="form-check-label" for="criticality"><b>Mark as no action needed for solving this item</b></label>
+						</div>
       	</form>
       	</div>
       <div class="modal-footer">
@@ -396,9 +404,28 @@ $(function(){
 
 		//all_idea_units[span_id].visited=true; 	
 
+			//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		/* 
+		step 2: user input and update the list 
+		1. get topic tag
+		2. get sentiment
+		3. get agreement
+		*/
+		//all_idea_units[span_id].topic.push(currentTag);
+		$('#selected-text').html($(this).text());
+		//$('#annotate').modal();
+	
+		//refresh the table view
+		//generateSummaryTable();
+		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
+		//$("#exampleModal").modal('data-show');
 		
 
 	})
+
+
+
 	
 	$("span.idea-unit").hover(
 
