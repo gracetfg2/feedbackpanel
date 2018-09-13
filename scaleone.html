@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+  
+    <title>Prototype</title>
+  
+
+ <!-- Bootstrap core CSS and js 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+
+ <script src="scaledata.js"></script>
+<!-- Custom styles for this template -->
+
+    <style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+.tableelement{
+	cursor: pointer;
+
+}
+
+.visited { 
+    background-color: lightgrey;
+}
+
+.active{
+	background-color: yellow;
+}
+
+.highlight{
+	color: blue !important;;
+}
+
+.active-icon{
+	color: red !important;
+}
+
+    </style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+
+<div class="container-fluid" style="line-height: 2em;">
+
+<div class="main-section" style="margin-top: 60px">
+  
+<div class="alert alert-info" role="alert" >
+	<h4>Instruction</h4>
+ We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+</div>
+  
+<div class="row">    
+ 
+<div class="col-md-4"> 
+	<table class='table table-hover table-nonfluid'>
+	<tbody>
+	<tr id='div-1'>
+		<td><strong>#1</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.!
+		</td>
+	</tr>
+
+	<tr id='div-2'>
+		<td><strong>#2</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			The design is visually appealing.! I really like the location of the shoot.! I guess he thought it's cool to put "Central Park" five times, but I really don't think it is useful. !He should have at least put running before or after "Central Part".! The date is much worse, I don't like the use of "Oct.1.2016 four times.! What does there have to be an overlap of the date on the bottom?! If he changers the wording and put run on the flyer, I think it would be much more informative.!
+		</td>  
+	</tr>
+	<tr id='div-3'>
+		<td><strong>#3</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Strength: It has all the necessary information and I will know what the flyer is about from a quick glance.! It is simple and easy to read from a distance.!
+
+			Weakness: I think the white font on a light background is an odd choice. It makes it hard to read.! I'm not quite sure what is going on with the dates and the overlapping of the last two. The repetition of the dates seems redundant and unnecessary. !I think the prize amount should be larger as it will probably be the biggest draw for competitors.! It might be worth it to include the time of the race in addition to the date.! I prefer more colors on the flyer as the grayscale makes it easy to blend into the surrounding environment and not be noticed.!
+		</td>  
+	</tr>
+	<tr id='div-4'>
+		<td><strong>#4</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			First of all the layout is average and not much attractive in looking. !it will be nicer if the flyer is in color format.! also it will be better if any flag picture can include.! no need to include same words repeatedly.! also the fonts looks nicer but better use different fonts for different words.! as its for a marathon race better include picture more people running along the road.! you can include the address of the venue in the flyer. also please include the name of any celebrities whoever participating in this event.!
+		</td>  
+	</tr>
+	<tr id='div-5'>
+		<td><strong>#5</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			I liked the image of a runner, it gives the feeling of movement and is sort of energizing. !Crossing a bridge also brings an idea of a running enjoying city´s landscapes and a pleasant setting.! Liked the fonts although the repetition of "central park" and "oct.1.2016" seems a little misplaced, I would prefer a cleaner flyer.! I am in doubt if I enjoyed or not the black & white flyer, it is not bad at all but maybe it calls for some color.! It does not accentuate the 300 prize but does not seem to be a problem.! Overall I liked it.!
+		</td>  
+	</tr>
+	<tr id='div-6'>
+		<td><strong>#6</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.!
+		</td>  
+	</tr>
+		<tr id='div-1'>
+		<td><strong>#1</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.!
+		</td>
+	</tr>
+
+	<tr id='div-2'>
+		<td><strong>#2</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			The design is visually appealing.! I really like the location of the shoot.! I guess he thought it's cool to put "Central Park" five times, but I really don't think it is useful. !He should have at least put running before or after "Central Part".! The date is much worse, I don't like the use of "Oct.1.2016 four times.! What does there have to be an overlap of the date on the bottom?! If he changers the wording and put run on the flyer, I think it would be much more informative.!
+		</td>  
+	</tr>
+	<tr id='div-3'>
+		<td><strong>#3</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Strength: It has all the necessary information and I will know what the flyer is about from a quick glance.! It is simple and easy to read from a distance.!
+
+			Weakness: I think the white font on a light background is an odd choice. It makes it hard to read.! I'm not quite sure what is going on with the dates and the overlapping of the last two. The repetition of the dates seems redundant and unnecessary. !I think the prize amount should be larger as it will probably be the biggest draw for competitors.! It might be worth it to include the time of the race in addition to the date.! I prefer more colors on the flyer as the grayscale makes it easy to blend into the surrounding environment and not be noticed.!
+		</td>  
+	</tr>
+	<tr id='div-4'>
+		<td><strong>#4</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			First of all the layout is average and not much attractive in looking. !it will be nicer if the flyer is in color format.! also it will be better if any flag picture can include.! no need to include same words repeatedly.! also the fonts looks nicer but better use different fonts for different words.! as its for a marathon race better include picture more people running along the road.! you can include the address of the venue in the flyer. also please include the name of any celebrities whoever participating in this event.!
+		</td>  
+	</tr>
+	<tr id='div-5'>
+		<td><strong>#5</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			I liked the image of a runner, it gives the feeling of movement and is sort of energizing. !Crossing a bridge also brings an idea of a running enjoying city´s landscapes and a pleasant setting.! Liked the fonts although the repetition of "central park" and "oct.1.2016" seems a little misplaced, I would prefer a cleaner flyer.! I am in doubt if I enjoyed or not the black & white flyer, it is not bad at all but maybe it calls for some color.! It does not accentuate the 300 prize but does not seem to be a problem.! Overall I liked it.!
+		</td>  
+	</tr>
+	<tr id='div-6'>
+		<td><strong>#6</strong></td>
+		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
+			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.!
+		</td>  
+	</tr>
+	</tbody>
+	</table>
+</div>
+
+<!--user input-->
+<div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
+  	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+    		<p id='selected-text'></p>
+    	</div>
+      	
+      	<div class="modal-body">
+      	<form>      	
+	      	<div class="form-group">
+	    		<label for="topic"><b>Create an Action Item</b></label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. Select an image with a sun">
+	    		<small class="form-text text-muted">Use a few words to decribe what you will do with this feedback.</small>
+	    		
+	  		</div>
+
+
+	  		<hr>
+	  		<div class="form-group">
+	    		<label for="topic"><b>Associate This Action Item with ...</label></b>
+	   	 		<select>
+	   	 			<option>Select an image without sun glare.</option>
+	   	 			<option>Select an image with multiple people.</option>
+	   	 		</select>
+	  		</div>
+      		<hr>
+      		<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox"  value="no-value">
+						  <label class="form-check-label" for="criticality"><b>Mark as no action needed for solving this item</b></label>
+						</div>
+      	</form>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-8">
+
+<div class="card">
+	     <div class="card-header">
+    Show Areas of Feedback
+  </div>
+  <div class="card-body">
+
+  		<form>
+				<div class="form-group row">
+				    <legend class="col-sm-3 col-form-label"><b>Estimated Revision Effort</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="high">
+						  <label class="form-check-label" for="effort">High</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="medium">
+						  <label class="form-check-label" for="effort">Medium</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="low">
+						  <label class="form-check-label" for="effort">Low</label>
+						</div>
+				    </div>
+				 </div>
+
+				<div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Criticality</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="high">
+						  <label class="form-check-label" for="criticality">High</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="medium">
+						  <label class="form-check-label" for="criticality">Medium</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="low" >
+						  <label class="form-check-label" for="criticality">Low</label>
+						</div>
+				    </div>
+				 </div>
+
+				 <div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Need Discussion</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="discussion" value="yes">
+						  <label class="form-check-label" for="discussion">Yes</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="discussion" value="no">
+						  <label class="form-check-label" for="discussion">No</label>
+						</div>
+				    </div>
+				 </div>
+
+
+				 <div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Agree</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="completely">
+						  <label class="form-check-label" for="agree">Completely</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="partially">
+						  <label class="form-check-label" for="agree">Partially</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="no">
+						  <label class="form-check-label" for="agree">No</label>
+						</div>
+				    </div>
+				 </div>
+
+		</form>
+
+  
+  </div>
+</div>
+		
+
+
+<!--Panel-->
+<table class="table" style="font-size: 20px">
+	<thead>
+    <tr>
+      <th scope="col">Topic</th>
+      <th scope="col">Positive</th>
+      <th scope="col">Negative</th>
+      <th scope="col">Suggestion</th>
+    </tr>
+  </thead>
+
+<tbody id='paneltest'>
+	
+</tbody>
+</table>
+
+
+</div>
+<!--Panel-->
+<!--<div name='panel'>
+
+<div class='summary-panel' id='image'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='layout'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+<div class='summary-panel' id='concept'>
+	<div class='strength'>lala</div>
+	<div class='weakness'>lala</div>
+	<div class='strenth'>lala</div>
+</div>
+
+</div>
+-->
+
+
+
+
+</div><!--END OF MAIN SECTION-->
+</div><!--END OF CONTAINER-->
+
+<script>
+
+
+var currentTag='image';
+var number_of_providers=50;
+var currentSentiment='strength';
+
+var all_idea_units = {}
+
+
+$(function(){
+
+	$(".filter-input").click(function(){
+		var name= $(this).attr('name');
+		var value= $(this).attr('value');
+		var status= $(this).prop('checked');
+		
+
+		renderInterpretation();
+
+	})
+
+	$(".table-text").each(function (table_i) {
+		var reviewer_i = table_i + 1;
+		var text = ($(this).text()).split('!');
+		var text_spanned = text.map((item, i) => 
+			"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + item + "</span");
+		$(this).html(text_spanned);
+
+		for (var i = 0; i < text.length; i++) {
+			var ideaunit = {
+				id: reviewer_i + "-" + i,
+				content: text[i],
+				topic: [],
+				sentiment: 0,
+				importance: 0,
+				visited:false
+			};
+			all_idea_units[reviewer_i + "-" + i] = ideaunit;
+		}
+	})
+
+	$("span.idea-unit").click(function(){
+		//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		/* 
+		step 2: user input and update the list 
+		1. get topic tag
+		2. get sentiment
+		3. get agreement
+		*/
+		all_idea_units[span_id].topic.push(currentTag);
+		$('#selected-text').html($(this).text());
+		//$('#annotate').modal();
+	
+		//refresh the table view
+		//generateSummaryTable();
+		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
+		//$("#exampleModal").modal('data-show');
+	})
+
+	renderElement();
+	renderFactual();
+
+
+
+	$(".tableelement").click(function(){
+		//step 1: get the idea unit id
+		var span_id_origin=$(this).attr("id");
+		var span_id = $(this).attr("id").split('-');
+		var topic_index= topicName.indexOf(span_id[0]);
+		var sentiment_index=span_id[1];
+		//todo
+		var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 	console.log(currentIdeaLists.length);
+		for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+		{
+			//console.log(tmp);
+			tmp_id=(currentIdeaLists[tmp].id).split('-');
+			if(tmp_id[0] == span_id[2])
+			{
+				//console.log(currentIdeaLists[tmp].id);
+				var currentid=currentIdeaLists[tmp].id;
+			$(".idea-unit#"+currentid).addClass("visited");
+			all_idea_units[currentid].visited=true; 
+			$(".tableelement#"+span_id_origin+" > span").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+		//all_idea_units[span_id].visited=true; 	
+
+			//step 1: get the idea unit id
+		var span_id = $(this).attr("id");
+		/* 
+		step 2: user input and update the list 
+		1. get topic tag
+		2. get sentiment
+		3. get agreement
+		*/
+		//all_idea_units[span_id].topic.push(currentTag);
+		$('#selected-text').html($(this).text());
+		//$('#annotate').modal();
+	
+		//refresh the table view
+		//generateSummaryTable();
+		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
+		//$("#exampleModal").modal('data-show');
+		
+
+	})
+
+
+
+	
+	$("span.idea-unit").hover(
+
+		 	function() {
+		 		
+  				var span_id = $(this).attr("id");
+  				var people_id=span_id.split('-');
+  				console.log(span_id);
+				for(var i=0; i<topicArray.length;i++)// lopping the topic
+				{				
+					for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+					{
+						var currentArray=topicArray[i][sentiment];
+						for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+						{
+							
+							if(span_id == currentArray[idx_unit].id){
+								console.log("get it");
+								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
+				
+							}
+							
+						}		
+					}
+
+				}
+						
+			},
+			function() {
+				$(".tableelement > span").removeClass("active-icon");
+			}
+
+			
+		);
+
+
+	$( ".tableelement" ).hover(
+
+  				 function() {
+  				 	
+  				 		var span_id = $(this).attr("id").split('-');
+						var topic_index= topicName.indexOf(span_id[0]);
+						var sentiment_index=span_id[1];
+						//todo
+						var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 					
+				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+				{
+						//console.log(tmp);
+					tmp_id=(currentIdeaLists[tmp].id).split('-');
+					if(tmp_id[0] == span_id[2])
+					{
+						//console.log(currentIdeaLists[tmp].id);
+						var currentid=currentIdeaLists[tmp].id;
+							$(".idea-unit#"+currentid).removeClass("visited");
+							$(".idea-unit#"+currentid).addClass("active");
+						}
+
+
+ 				 }
+ 				}, 
+
+ 				 function() {
+
+ 				 		var span_id = $(this).attr("id").split('-');
+						var topic_index= topicName.indexOf(span_id[0]);
+						var sentiment_index=span_id[1];
+						//todo
+						var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 					
+				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+				{
+						//console.log(tmp);
+					tmp_id=(currentIdeaLists[tmp].id).split('-');
+					if(tmp_id[0] == span_id[2])
+					{
+						//console.log(currentIdeaLists[tmp].id);
+						var currentid=currentIdeaLists[tmp].id;
+							$(".idea-unit#"+currentid).removeClass("active");
+							if(all_idea_units[currentid].visited == true)
+ 				 			{
+ 				 				$(".idea-unit#"+span_id).addClass("visited");
+ 				 			}
+							
+						}
+
+
+ 				 }
+
+  				}
+	);
+
+});
+
+
+function generateSummaryTable()
+{
+	console.log("refresh summary table");
+
+}
+
+
+
+	// for(var i=0; i<imageArray[1].length;i++)// lopping the topic
+	// {
+	// 	console.log(layoutArray[0][i].content);		
+	// 	// $("#paneltest").append(renderCell);
+	// }	
+	
+function print(par)
+{
+	console.log(par);
+}	
+
+function renderElement(){
+	
+	for(var i=0; i<topicArray.length;i++)// looping the topic
+	{		
+		var inser_html="";
+		 inser_html=inser_html+"<tr id='"+topicName[i]+"'><th scope='row'>"+topicName[i]+"</th>";
+		//$("#paneltest").append("<tr><th scope='row'>"+topicName[i]+"</th>");
+			//console.log(inser_html);
+		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+		{
+			var currentArray=topicArray[i][sentiment];
+			inser_html+="<td id='sentiment"+sentiment+"'>";
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' id='"+topicName[i]+'-'+sentiment+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				if(people_id%10==0){inser_html=inser_html+"<br>";}
+				people_id++;
+			}
+			inser_html+="</td>";
+			//$("#paneltest").append(renderCell);
+		}
+		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderFactual(){
+
+
+		for(var i=0; i<topicArray.length;i++)// lopping the topic
+		{		
+
+		
+		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+		{
+			var currentArray=topicArray[i][sentiment];
+
+			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+			{
+				var people_id=(currentArray[idx_unit].id).split('-');
+				//print(people_id[0]);
+				$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").css('color','black');	
+				
+			}
+
+			//$("tr#"+topicName[i]+' > td#sentiment'+sentiment+" > a#"+people_id[0]).css('color','yellow');		
+			//console.log("tr#"+topicArray[i]+' > td#sentiment'+sentiment);	
+			//$("#paneltest").append(renderCell);
+		}
+
+	}
+
+}
+	
+
+function renderInterpretation(){
+
+	var numToString=['low','low','low','medium','high','high'];
+	
+	var checked_effort = [];
+	var checked_criticality = [];
+	var need_discussion = [];
+	var agreement = [];
+
+
+	$('input[name=effort]:checked').each(function() {checked_effort.push($(this).attr('value'));});
+	$('input[name=criticality]:checked').each(function() {checked_criticality.push($(this).attr('value'));});
+	$('input[name=discussion]:checked').each(function() {need_discussion.push($(this).attr('value'));});
+	$('input[name=agree]:checked').each(function() {agreement.push($(this).attr('value'));});
+//if nothing is selected 
+if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion.length>0 || agreement.length>0 )
+{
+	
+  	for( i = 0; i < topicArray.length;i++)// looping the topic
+	{				
+		for( sentiment=0; sentiment < topicArray[i].length;sentiment++)//sentiment
+		{
+			 currentArray=topicArray[i][sentiment];
+
+			for(idx_unit=0; idx_unit<currentArray.length;idx_unit++)//idea units
+			{
+				var current_effort = numToString[currentArray[idx_unit].effort];
+				var current_criticality = numToString[currentArray[idx_unit].urgency];
+
+				var current_discussion = currentArray[idx_unit].discussion;
+				var current_agreement = currentArray[idx_unit].agree;
+
+				var content = currentArray[idx_unit].content;
+				var tmp=currentArray[idx_unit];
+				//console.log( current_effort, current_criticality, current_discussion,current_agreement);
+
+				//console.log(checked_effort.indexOf(current_effort),checked_criticality.indexOf(current_criticality),need_discussion.indexOf(current_discussion),agreement.indexOf(current_agreement));
+				//console.log(current_effort, checked_effort.indexOf(current_effort));
+				var people_id=(currentArray[idx_unit].id).split('-');
+
+				if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
+					&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
+					&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
+					&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
+				{
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass('highlight');	
+				}
+				else
+				{
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").removeClass('highlight');	
+				}	
+							
+			}
+			
+		}
+
+	}
+}else{
+	$('.tableelement span').removeClass('highlight');
+}
+
+}
+
+
+
+</script>
