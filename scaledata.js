@@ -12,14 +12,27 @@ var ImagePositive = [
 
 var ImageNegative = [
 {id:"1-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
-{id:"1-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."}];// ima array
+{id:"1-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"12-2", urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"12-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"13-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"14-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"23-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"24-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"25-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"26-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."}];// ima array
 
 var ImageSuggesion = [
 {id:"1-5" , urgency: 4 , effort: 5, discussion: "no", agree:"completely" ,content:"image suggesion one."},
 {id:"1-6" , urgency: 4 , effort: 5, discussion: "yes", agree:"particially" ,content:"image suggesion one."},  
 {id:"4-2" , urgency: 2 , effort: 5, discussion: "no", agree:"completely" ,content:"image suggesion two."},
 {id:"4-5" , urgency: 2 , effort: 4, discussion: "no", agree:"no" ,content:"image suggesion two."},
-{id:"6-4" , urgency: 3 , effort: 4, discussion: "no", agree:"completely" ,content:"image suggesion two."}];// ima array
+{id:"6-4" , urgency: 3 , effort: 4, discussion: "no", agree:"completely" ,content:"image suggesion two."},
+{id:"14-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"23-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"50-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"45-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"30-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."}];// ima array
 
 //IMAGE POSITIVE
 var LayoutPositive = [
@@ -35,16 +48,29 @@ var LayoutNegative = [
 {id:"4-0",  urgency: 3 , effort: 4, discussion: "yes", agree:"completely" ,content:"layout negative two."},
 {id:"4-3",  urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative two."},
 {id:"5-2",urgency: 3 , effort: 1,  discussion: "yes", agree:"no" , content:"layout negative two."},
-];// ima array
+{id:"23-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"34-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"35-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"36-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."}];// ima array
 
 var LayoutSuggestion = [
 ];// ima array
 
 
-var CopyPositive = [{id:"3-0" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative one."}];// ima array
+var CopyPositive = [{id:"3-0" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative one."},
+{id:"4-3",  urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative two."},
+{id:"5-2",urgency: 3 , effort: 1,  discussion: "yes", agree:"no" , content:"layout negative two."},
+{id:"23-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"34-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"35-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}];// ima array
 
 var CopyNegative = [
-{id:"2-6" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative one."}];// ima array
+{id:"2-6" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative one."},
+{id:"4-3",  urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative two."},
+{id:"5-2",urgency: 3 , effort: 1,  discussion: "yes", agree:"no" , content:"layout negative two."},
+{id:"43-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."}, 
+{id:"46-4" , urgency: 3 ,  effort: 2, discussion: "yes", agree:"no" ,content:"image negative two."},
+{id:"48-2" , urgency: 2 , effort: 2, discussion: "no", agree:"completely" ,content:"image negative one."},];// ima array
 
 var CopySuggesion = [{id:"3-5" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" ,content:"layout negative one."},
 {id:"4-6" , urgency: 3 , effort: 2, discussion: "yes", agree:"partially" ,content:"layout negative one."}
@@ -55,11 +81,15 @@ var FontPositive = [ ];// ima array
 
 var FontNegative = [
 {id:"3-2" , urgency: 3 , effort: 1, discussion: "yes", agree:"partially" , content:"image negative one."},
-{id:"3-4" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" , content:"image negative one."}];// ima array
+{id:"3-4" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" , content:"image negative one."},
+{id:"23-2" , urgency: 3 , effort: 1, discussion: "yes", agree:"partially" , content:"image negative one."},
+{id:"24-4" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" , content:"image negative one."}];// ima array
 
 var FontSuggesion = [
 {id:"4-4" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" , content:"image suggesion one."},
-{id:"6-3" , urgency: 3 , effort: 2, discussion: "yes", agree:"no" , content:"image suggesion one."}];// ima array
+{id:"6-3" , urgency: 3 , effort: 2, discussion: "yes", agree:"no" , content:"image suggesion one."},
+{id:"29-2" , urgency: 3 , effort: 1, discussion: "yes", agree:"partially" , content:"image negative one."},
+{id:"30-4" , urgency: 3 , effort: 2, discussion: "no", agree:"completely" , content:"image negative one."}];// ima array
 
 
 var ColorPositive = [ ];// ima array
