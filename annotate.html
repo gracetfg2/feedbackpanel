@@ -86,9 +86,12 @@
 <a type="button" class="btn btn-info" href="versionone.html">Load Interpretation</a>
 </div>
   
-<div class="row">    
- 
+<div class="row" id='all_feedback_table'>    
 
+
+
+ 
+<template name='feedback_table'>
 	<table class='table table-hover table-nonfluid'>
 		<thead>
 		    <tr>
@@ -107,7 +110,20 @@
 		
 	</tbody>
 	</table>
+</template>
+
+
+
+
+
 </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item" id="previous"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 </div>
 </div>
 
@@ -137,15 +153,20 @@ var all_idea_units = {}
 
 $(function(){
 		$(".table-text").each(function (table_i) {
-
+		
+		var current_html_table = $($('template[name="feedback_table"]').html());
 		var reviewer_i = table_i + 1;
 		var text = ($(this).text()).split('!');
+
+		$('#page-list').insertBefore("<li class='page-item'><a class='page-link' href=''>"+reviewer_i+"</a></li>");
+		
 
 		for (var i = 0; i < text.length; i++) {
 
 			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>neutral</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			$('table', current_html_table).attr('id',reviewer_i);
 
-			$('#ideaunits').append(text_spanned);
+			$('#ideaunits', current_html_table).append(text_spanned);
 
 			var ideaunit = {
 				id: reviewer_i + "-" + i,
@@ -157,6 +178,7 @@ $(function(){
 			};
 			all_idea_units[reviewer_i + "-" + i] = ideaunit;
 		}
+		$('#all_feedback_table').append(current_html_table);
 	})
 
 });
