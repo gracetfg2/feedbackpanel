@@ -461,7 +461,7 @@ $(function(){
 		for(var key in all_idea_units){
 			//console.log(tmp);
 			var tmp_id=key.split('-');
-			if( (tmp_id[0] == people_id) && (sentiment == all_idea_units[key]['sentiment']))
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
 			{				
 				console.log(key);
 		//todo
