@@ -60,6 +60,13 @@
 			color: red !important;
 		}
 
+
+.vis-content{
+	text-align: justify; 
+	padding-bottom:10px; 
+	padding-right:25px;
+}
+
 </style>
 
 </head>
@@ -149,58 +156,21 @@
 	<div class="main-section" style="margin-top: 50px">
 
 
-<div class="alert alert-info" role="alert" >
-	<h4>Instruction</h4>
- We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
-</div>
+	<div class="alert alert-info" role="alert" >
+		<h4>Instruction</h4>
+	 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+
+	 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
+	</div>
   
-<div class="row">    
- 
-<div class="col-md-4"> 
-	<table class='table table-nonfluid'>
-	<tbody>
-	<tr id='div-1'>
-		<td><strong>#1</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.!
-		</td>
-	</tr>
+	<div class="row">    
 
-	<tr id='div-2'>
-		<td><strong>#2</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-			The design is visually appealing.! I really like the location of the shoot.! I guess he thought it's cool to put "Central Park" five times, but I really don't think it is useful. !He should have at least put running before or after "Central Part".! The date is much worse, I don't like the use of "Oct.1.2016 four times.! What does there have to be an overlap of the date on the bottom?! If he changers the wording and put run on the flyer, I think it would be much more informative.!
-		</td>  
-	</tr>
-	<tr id='div-3'>
-		<td><strong>#3</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-			Strength: It has all the necessary information and I will know what the flyer is about from a quick glance.! It is simple and easy to read from a distance.!
-
-			Weakness: I think the white font on a light background is an odd choice. It makes it hard to read.! I'm not quite sure what is going on with the dates and the overlapping of the last two. The repetition of the dates seems redundant and unnecessary. !I think the prize amount should be larger as it will probably be the biggest draw for competitors.! It might be worth it to include the time of the race in addition to the date.! I prefer more colors on the flyer as the grayscale makes it easy to blend into the surrounding environment and not be noticed.!
-		</td>  
-	</tr>
-	<tr id='div-4'>
-		<td><strong>#4</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-			First of all the layout is average and not much attractive in looking. !it will be nicer if the flyer is in color format.! also it will be better if any flag picture can include.! no need to include same words repeatedly.! also the fonts looks nicer but better use different fonts for different words.! as its for a marathon race better include picture more people running along the road.! you can include the address of the venue in the flyer. also please include the name of any celebrities whoever participating in this event.!
-		</td>  
-	</tr>
-	<tr id='div-5'>
-		<td><strong>#5</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-			I liked the image of a runner, it gives the feeling of movement and is sort of energizing. !Crossing a bridge also brings an idea of a running enjoying city´s landscapes and a pleasant setting.! Liked the fonts although the repetition of "central park" and "oct.1.2016" seems a little misplaced, I would prefer a cleaner flyer.! I am in doubt if I enjoyed or not the black & white flyer, it is not bad at all but maybe it calls for some color.! It does not accentuate the 300 prize but does not seem to be a problem.! Overall I liked it.!
-		</td>  
-	</tr>
-	<tr id='div-6'>
-		<td><strong>#6</strong></td>
-		<td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>
-			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.!
-		</td>  
-	</tr>
-	</tbody>
-	</table>
-</div>
+		<div class="col-md-4"> 
+			<table class='table table-nonfluid'>
+			<tbody id='feedback-list'>
+			</tbody>
+			</table>
+		</div>
 
 <!--user input-->
 <div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
@@ -367,6 +337,10 @@
 var all_idea_units = {}
 var number_of_providers=0;
 
+var topicName=['image','layout'];
+var sentimentName=['positive','negative','suggestion'];
+var topicArray={};
+
 
 class LabelClass {
   constructor(topic, sentiment, criticality,effort, discussion, agree, visited) {
@@ -391,8 +365,13 @@ $(function(){
 		number_of_providers=reviewer_i;
 		var text = ($(this).text()).split('!');
 		current_html_table.attr('id', reviewer_i);
+
 		
+		var text_vis_table='';
+
 		for (var i = 0; i < text.length; i++) {
+			
+			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + text[i] + "</span>";
 
 			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
 			$('table', current_html_table).attr('id',reviewer_i);
@@ -412,8 +391,11 @@ $(function(){
 			};
 			all_idea_units[reviewer_i + "-" + i] = ideaunit;
 		}
+
 		$('#all_feedback_table').append(current_html_table);
 		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
+
+		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
 		
 	})
 
@@ -433,43 +415,19 @@ $(function(){
 	      	var current_idea= $(this).closest("tr").attr("id");
 	      	//var current_value = $(this).find(":selected").text();
 	      	all_idea_units[current_idea][current_tag] = $(this).find(":selected").text();
-	      	console.log(JSON.stringify(all_idea_units[current_idea]));
+	      	console.log(JSON.stringify(all_idea_units[current_idea]));	     	
 		 });
 		
 // Page 2
 
 
-	$(".filter-input", "page-2").click(function(){
-		var name= $(this).attr('name');
-		var value= $(this).attr('value');
-		var status= $(this).prop('checked');
-		renderInterpretation();
 
-	});
 
-	$(".table-text", "#page-2").each(function (table_i) {
-		var reviewer_i = table_i + 1;
-		var text = ($(this).text()).split('!');
-		var text_spanned = text.map((item, i) => 
-			"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + item + "</span");
-		$(this).html(text_spanned);
-
-		for (var i = 0; i < text.length; i++) {
-			var ideaunit = {
-				id: reviewer_i + "-" + i,
-				content: text[i],
-				topic: null,
-				sentiment: 0,
-				importance: 0,
-				visited:false
-			};
-			all_idea_units[reviewer_i + "-" + i] = ideaunit;
-		}
-	})
-
+	
 	$("span.idea-unit","#page-2").click(function(){
 		//step 1: get the idea unit id
 		var span_id = $(this).attr("id");
+		console.log("haha");
 		/* 
 		step 2: user input and update the list 
 		1. get topic tag
@@ -486,28 +444,85 @@ $(function(){
 		//$("#exampleModal").modal('data-show');
 	})
 
-	
+	$("div#page-2").on('click', ".filter-input", function(){
 
-	$(".tableelement", "#page-2").click(function(){
-		//step 1: get the idea unit id
-		var span_id_origin=$(this).attr("id");
+		renderInterpretation();
+
+	});
+
+	$("div#page-2").on('click','.tableelement', function() {
+		
 		var span_id = $(this).attr("id").split('-');
-		var topic_index= topicName.indexOf(span_id[0]);
-		var sentiment_index=span_id[1];
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		console.log(span_id);
 		//todo
-		var currentIdeaLists= topicArray[topic_index][sentiment_index];
-	 	console.log(currentIdeaLists.length);
-		for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
-		{
+		for(var key in all_idea_units){
 			//console.log(tmp);
-			tmp_id=(currentIdeaLists[tmp].id).split('-');
-			if(tmp_id[0] == span_id[2])
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id) && (sentiment == all_idea_units[key]['sentiment']))
+			{				
+				console.log(key);
+		//todo
+				$("span.idea-unit#"+key, "#page-2").addClass("visited");
+				all_idea_units[key].visited=true; 
+				$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+	})
+
+	$("div#page-2").on('mouseenter','.tableelement', function() {
+		
+
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		console.log(span_id);
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				$("span.idea-unit#"+key, "#page-2").addClass("active");
+				//all_idea_units[key].visited=true; 
+				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+	});
+
+	$("div#page-2").on('mouseleave','.tableelement', function() {
+		
+	    $("span.idea-unit", "#page-2").removeClass("active");
+	    
+	  
+	});
+
+
+/**********use delegate
+	$(".tableelement", "div#page-2").click(function(){
+		//step 1: get the idea unit id
+		//var span_id_origin=$(this).attr("id");
+		console.log("haha");
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if(tmp_id[0] == people)
 			{
 				//console.log(currentIdeaLists[tmp].id);
 				var currentid=currentIdeaLists[tmp].id;
-			$(".idea-unit#"+currentid).addClass("visited");
-			all_idea_units[currentid].visited=true; 
-			$(".tableelement#"+span_id_origin+" > span").css("color","blue");
+			$(".idea-unit#"+key).addClass("visited");
+			all_idea_units[key].visited=true; 
+			$(".tableelement#"+key+" > span").css("color","blue");
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
 		}
 		var span_id = $(this).attr("id");
@@ -516,58 +531,24 @@ $(function(){
 
 	})
 
-	$("span.idea-unit", "page-2").hover(
-
-		 	function() {
-		 		
-  				var span_id = $(this).attr("id");
-  				var people_id=span_id.split('-');
-  				console.log(span_id);
-				for(var i=0; i<topicArray.length;i++)// lopping the topic
-				{				
-					for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
-					{
-						var currentArray=topicArray[i][sentiment];
-						for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
-						{
-							
-							if(span_id == currentArray[idx_unit].id){
-								console.log("get it");
-								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
-				
-							}
-							
-						}		
-					}
-
-				}
-						
-			},
-			function() {
-				$(".tableelement > span").removeClass("active-icon");
-			}
-	);
-
-	$( ".tableelement","#page-2").hover(
+		$( ".tableelement","#page-2").hover(
 
   				 function() {
-  				 	
-  				 		var span_id = $(this).attr("id").split('-');
-						var topic_index= topicName.indexOf(span_id[0]);
-						var sentiment_index=span_id[1];
-						//todo
-						var currentIdeaLists= topicArray[topic_index][sentiment_index];
-	 					
-				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
-				{
+  				 	console.log("come in table element");
+  				 		//var span_id_origin=$(this).attr("id");
+						var span_id = $(this).attr("id").split('-');
+						console.log(span_id);
+						var topic= span_id[0];
+						var sentiment=span_id[1];
+						var people_id=span_id[2];
+		//todo
+				for(var key in all_idea_units){
 						//console.log(tmp);
-					tmp_id=(currentIdeaLists[tmp].id).split('-');
-					if(tmp_id[0] == span_id[2])
+					var tmp_id=key.split('-');
+					if(tmp_id[0] == people)
 					{
-						//console.log(currentIdeaLists[tmp].id);
-						var currentid=currentIdeaLists[tmp].id;
-							$(".idea-unit#"+currentid).removeClass("visited");
-							$(".idea-unit#"+currentid).addClass("active");
+						$(".idea-unit#"+key).removeClass("visited");
+							$(".idea-unit#"+key).addClass("active");
 						}
 
 
@@ -604,13 +585,54 @@ $(function(){
   				}
 	);
 
+************************/
+	$("span.idea-unit", "page-2").hover(
+
+		 	function() {
+		 		
+  				var span_id = $(this).attr("id");
+  				var people_id=span_id.split('-');
+  				console.log(span_id);
+				for(var i=0; i<topicArray.length;i++)// lopping the topic
+				{				
+					for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+					{
+						var currentArray=topicArray[i][sentiment];
+						for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+						{
+							
+							if(span_id == currentArray[idx_unit].id){
+								console.log("get it");
+								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
+				
+							}
+							
+						}		
+					}
+
+				}
+						
+			},
+			function() {
+				$(".tableelement > span").removeClass("active-icon");
+			}
+	);
+
+
+
+
+
+
+
+
 	
 
 });
 
-var topicName=['image','layout'];
-var sentimentName=['positive','negative','suggestion'];
-var topicArray={};
+
+
+
+
 
 
 function finishAnnoate(){
@@ -624,8 +646,11 @@ function finishAnnoate(){
 }
 
 
+function backAnnotate(){
 
-
+	$('#page-1').show();
+	$('#page-2').hide();
+}
 //For page 2
     
 function createTopicArray()
@@ -636,8 +661,8 @@ function createTopicArray()
     //console.log(all_idea_units[key]['topic']);
     var current_topic=all_idea_units[key]['topic'];
     var current_sentiment=all_idea_units[key]['sentiment'];
-    	
-    	if(current_topic!=null){
+    //console.log(current_topic,current_sentiment );	
+    	if(current_topic!=null && current_sentiment!=0){
 	    	if(!(current_topic in topicArray))
 	    	{
 	    		var currentArray={};
@@ -650,9 +675,8 @@ function createTopicArray()
 	    	topicArray[current_topic][current_sentiment].push(all_idea_units[key]);
 	    	//console.log(JSON.stringify(topicArray));
 		}
-    }
-    
 
+    }
 }
 
 function generateSummaryTable()
@@ -660,6 +684,7 @@ function generateSummaryTable()
 	console.log("refresh summary table");
 
 }
+
 
 
 	
@@ -671,7 +696,7 @@ function print(par)
 
 function renderElement(){
 	
-
+	$("#paneltest").empty();
 	for (var topicKey in topicArray) {
 		
 		var currentTopic=topicArray[topicKey];
@@ -705,7 +730,7 @@ function renderFactual(){
 
 	for (var key in all_idea_units) {
 		var people_id=key.split('-');
-		console.log("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]);
+		//console.log("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]);
 		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]+" > span").css('color','black');	
 	}
 
@@ -788,8 +813,35 @@ function renderInterpretation(){
 //if nothing is selected 
 if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion.length>0 || agreement.length>0 )
 {
+
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-')[0];
+
+		var current_topic = all_idea_units[key]['topic'];
+		var current_sentiment = all_idea_units[key]['sentiment'];
+
+		var current_effort = all_idea_units[key]['effort'];
+		var current_criticality = all_idea_units[key]['criticality'];
+
+		var current_discussion = all_idea_units[key]['discussion'];
+		var current_agreement = all_idea_units[key]['agree'];
+
+
+		if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
+			&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
+			&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
+			&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
+		{
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").addClass('highlight');	
+		}
+		else
+		{
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").removeClass('highlight');	
+		}		
+	}
 	
-  	for( i = 0; i < topicArray.length;i++)// looping the topic
+  /*	for( i = 0; i < topicArray.length;i++)// looping the topic
 	{				
 		for( sentiment=0; sentiment < topicArray[i].length;sentiment++)//sentiment
 		{
@@ -828,6 +880,7 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 		}
 
 	}
+	*/
 }else{
 	$('.tableelement span').removeClass('highlight');
 }

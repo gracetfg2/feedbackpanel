@@ -60,7 +60,7 @@
 	background-color: yellow;
 }
 
-.highlight{
+.highlight-icon{
 	color: blue !important;;
 }
 
@@ -643,11 +643,11 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 					&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
 					&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
 				{
-					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass('highlight');	
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass('highlight-icon');	
 				}
 				else
 				{
-					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").removeClass('highlight');	
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").removeClass('highlight-icon');	
 				}	
 							
 			}
