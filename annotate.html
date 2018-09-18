@@ -76,23 +76,26 @@
 
 
 <div class="container">
-
-<div class="main-section" style="margin-top: 50px">
+	<div class="main-section" style="margin-top: 50px">
   
-<div class="alert alert-info" role="alert" >
-	<h4>Instruction</h4>
- Please select values that make most sense to you blablabla. 
+		<div class="alert alert-info" role="alert" >
+			<h4>Instruction</h4>
+			 Please select values that make most sense to you blablabla. 
+			<a type="button" class="btn btn-info" onclick='finishAnnoate();'>View My MindSpace</a>
+		</div>
+  		<nav aria-label="Page navigation example">
+		  <ul class="pagination" id="page-list">
+		    <li class="page-item" id="previous"><a class="page-link" href="#">Previous</a></li>
+		    <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
+		  </ul>
+		</nav>
 
-<a type="button" class="btn btn-info" href="versionone.html">Load Interpretation</a>
+		<div class="row" id='all_feedback_table'></div>
+	</div>
 </div>
-  
-<div class="row" id='all_feedback_table'>    
 
-
-
- 
 <template name='feedback_table'>
-	<table class='table table-hover table-nonfluid'>
+	<table class='table table-hover table-nonfluid' style='display:none;'>
 		<thead>
 		    <tr>
 		      <th style="width:5%" scope="col">#</th>
@@ -112,20 +115,6 @@
 	</table>
 </template>
 
-
-
-
-
-</div>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item" id="previous"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-</div>
-</div>
 
 <div style='display: none'>
 <span class='table-text'>
@@ -147,23 +136,35 @@
 		<span class='table-text'>
 			Since the event is a half marathon there would be lot of young people participating.! Vibrant colors stand for youth, vigor, energy, this flyer looks very dull and boring and has a more corporate look.! Seems the designer was doing a flyer for a meeting .! The fonts could have been better, typography is a very important element and good typography can easily attract attention.! The image shows one man in formals running, while men, women even children come at attend or participate in a marathon.! It would be good to take these points into account if the flyer is redesigned.
 		</span>
+
+
+
+
+
+
+
+
+
+
+		
 </div>
 <script>
 var all_idea_units = {}
 
 $(function(){
+
+	
+
 		$(".table-text").each(function (table_i) {
 		
 		var current_html_table = $($('template[name="feedback_table"]').html());
 		var reviewer_i = table_i + 1;
 		var text = ($(this).text()).split('!');
-
-		$('#page-list').insertBefore("<li class='page-item'><a class='page-link' href=''>"+reviewer_i+"</a></li>");
+		current_html_table.attr('id', reviewer_i);
 		
-
 		for (var i = 0; i < text.length; i++) {
 
-			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>neutral</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
 			$('table', current_html_table).attr('id',reviewer_i);
 
 			$('#ideaunits', current_html_table).append(text_spanned);
@@ -173,14 +174,45 @@ $(function(){
 				content: text[i],
 				topic: [],
 				sentiment: 0,
-				importance: 0,
+				criticality: 0,
+				effort: 0,
+				discussion: false,
+				agree: 0,
 				visited:false
 			};
 			all_idea_units[reviewer_i + "-" + i] = ideaunit;
 		}
 		$('#all_feedback_table').append(current_html_table);
+		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
+		
 	})
 
+		$("table#1").show();
+
+		$(".page-link").click(function(){
+			$(".page-item").removeClass('active');
+			$(this).closest(".page-item").addClass('active');
+			var current_page= $(this).attr("id").split('-');
+			$("table").hide();
+			$("table#"+current_page[1]).show();
+		});
+
+		$("select")
+	  		.change(function () {
+	    	var current_tag= $(this).attr("name");
+	      	var current_idea= $(this).closest("tr").attr("id");
+	      	//var current_value = $(this).find(":selected").text();
+	      	all_idea_units[current_idea][current_tag] = $(this).find(":selected").text();
+	      	console.log(JSON.stringify(all_idea_units[current_idea]));
+		 });
+		
+
 });
+
+
+function finishAnnoate(){
+		
+}
+
 
 </script>
