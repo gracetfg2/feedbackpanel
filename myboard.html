@@ -48,10 +48,7 @@
 		    background-color: lightgrey;
 		}
 
-		.active{
-			background-color: yellow;
-		}
-
+	
 		.highlight{
 			color: blue !important;;
 		}
@@ -60,7 +57,9 @@
 			color: red !important;
 		}
 
-
+.active-text{
+	background-color: yellow;
+}
 .vis-content{
 	text-align: justify; 
 	padding-bottom:10px; 
@@ -125,17 +124,19 @@
 		<th name='ideaid' scope='row'></th>
 		<td name='content'></td>
 		<td>
-			<div style="padding-bottom: 5px">
-				<input type='text' id='new-topic'><button onclick="addOption(this)">add item</button>
-			</div>
 			<div>
-			<select name='topic'>
-				<option>Select...</option>
+			<select name='topic' style="margin-bottom: 5px">
+				<option>Select from ...</option>
 				<option>image</option>
 				<option>layout</option>
 				<option>font</option>
 				<option>color</option>
 				<option>copy issue</option>
+			</div>
+
+			<div >
+				<input type='text' style='display: inline-block;' id='new-topic'><button onclick="addOption(this)"><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>
+
 			</div>
 		</td>
 		<td><select name='sentiment'>
@@ -389,7 +390,7 @@
 var all_idea_units = {}
 var number_of_providers=0;
 
-var topicName=['image','layout'];
+//var topicName=['image','layout'];
 var sentimentName=['positive','negative','suggestion'];
 var topicArray={};
 
@@ -456,6 +457,7 @@ $(function(){
 		
 	})
 
+		$(".page-item:eq(1)").addClass('active');
 		$("table#1").show();
 
 		$(".page-link").click(function(){
@@ -544,7 +546,7 @@ $(function(){
 			var tmp_id=key.split('-');
 			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
 			{				
-				$("span.idea-unit#"+key, "#page-2").addClass("active");
+				$("span.idea-unit#"+key, "#page-2").addClass("active-text");
 				//all_idea_units[key].visited=true; 
 				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
@@ -554,7 +556,7 @@ $(function(){
 
 	$("div#page-2").on('mouseleave','.tableelement', function() {
 		
-	    $("span.idea-unit", "#page-2").removeClass("active");
+	    $("span.idea-unit", "#page-2").removeClass("active-text");
 	    
 	  
 	});
@@ -689,14 +691,16 @@ $(function(){
 
 function addOption(){
     
-
-    $(".feedback-row select[name='topic']").each(function(){
+	if($('#new-topic').val()!=""){
+		 $(".feedback-row select[name='topic']").each(function(){
     	
 		$(this).append( new Option( $('#new-topic').val(), 0, false, false) );
     	//$(this).options[$(this).options.length] = new Option('New Element', '0', false, false);
     }
 
     )
+	}
+   
     
 }
 
@@ -723,6 +727,7 @@ function backAnnotate(){
     
 function createTopicArray()
 {
+	topicArray={};
 	//var number_of_idea= Object.keys(all_idea_units).length;
 	for (var key in all_idea_units) {
     // check if the property/key is defined in the object itself, not in parent
