@@ -120,7 +120,59 @@
 	</table>
 </template>
 
-
+<template name='feedback-row-template'>
+	<tr class='feedback-row'> 
+		<th name='ideaid' scope='row'></th>
+		<td name='content'></td>
+		<td>
+			<div style="padding-bottom: 5px">
+				<input type='text' id='new-topic'><button onclick="addOption(this)">add item</button>
+			</div>
+			<div>
+			<select name='topic'>
+				<option>Select...</option>
+				<option>image</option>
+				<option>layout</option>
+				<option>font</option>
+				<option>color</option>
+				<option>copy issue</option>
+			</div>
+		</td>
+		<td><select name='sentiment'>
+				<option></option>
+				<option>positive</option>
+				<option>negative</option>
+				<option>suggestion</option>
+			</select>
+		</td>
+		<td><select name='effort'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+			</select>
+		</td>
+		<td><select name='criticality'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+			</select>
+		</td>
+		<td><select name='discussion'>
+				<option></option>
+				<option>yes</option>
+				<option>no</option>
+		</td> 
+		<td><select name='agree'>
+			<option></option>
+			<option>completely</option>
+			<option>partially</option>
+			<option>no</option>
+		</td> 
+	</tr>
+	
+</template>
 <div style='display: none'>
 <span class='table-text'>
 		There are too many repeating texts, there is no reason for that. ! The text should not be in the center of the flyer like that.! The man should be bigger. ! The black and white colors are not really appealing. !It's hard to understand the concept at first look. !The man in the flyer does not look like a marathon runner but someone who is late for work.! There should be a woman in the flyer as well for diversity purposes.</span>
@@ -364,7 +416,7 @@ $(function(){
 		var reviewer_i = table_i + 1;
 		number_of_providers=reviewer_i;
 		var text = ($(this).text()).split('!');
-		current_html_table.attr('id', reviewer_i);
+		current_html_table.attr('id',reviewer_i);
 
 		
 		var text_vis_table='';
@@ -373,10 +425,14 @@ $(function(){
 			
 			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + text[i] + "</span>";
 
-			var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
-			$('table', current_html_table).attr('id',reviewer_i);
-
-			$('#ideaunits', current_html_table).append(text_spanned);
+			var current_feedback_row = $($('div#page-1 template[name="feedback-row-template"]').html());
+			current_feedback_row.attr('id', reviewer_i + "-" + i );
+			$('[name="ideaid"]', current_feedback_row).html(reviewer_i+ "-" + i);
+			$('[name="content"]', current_feedback_row).html(text[i]);
+			
+			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			
+			$('#ideaunits', current_html_table).append(current_feedback_row);
 
 			var ideaunit = {
 				id: reviewer_i + "-" + i,
@@ -393,6 +449,7 @@ $(function(){
 		}
 
 		$('#all_feedback_table').append(current_html_table);
+
 		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
 
 		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
@@ -630,7 +687,18 @@ $(function(){
 });
 
 
+function addOption(){
+    
 
+    $(".feedback-row select[name='topic']").each(function(){
+    	
+		$(this).append( new Option( $('#new-topic').val(), 0, false, false) );
+    	//$(this).options[$(this).options.length] = new Option('New Element', '0', false, false);
+    }
+
+    )
+    
+}
 
 
 
