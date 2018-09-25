@@ -17,6 +17,7 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<!-- JQuery and Google font -->
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
 	<!-- Custom styles for this template -->
@@ -66,6 +67,18 @@
 	padding-right:25px;
 }
 
+p.success{
+	color:green;
+}
+p.fail{
+	color:red;
+}
+
+.original-feedback{
+	margin: 10px;
+	font-size: 20px;
+}
+
 </style>
 
 </head>
@@ -99,7 +112,9 @@
 		<div class="row" id='all_feedback_table'></div>
 
 <template name='feedback_table'>
-	<table class='table table-hover table-nonfluid' style='display:none;'>
+	<div class="annotate-panel" style='display:none;'>
+	<div class='original-feedback'></div>
+	<table class='table table-hover table-nonfluid'>
 		<thead>
 		    <tr>
 		      <th style="width:5%" scope="col">#</th>
@@ -117,6 +132,8 @@
 		
 	</tbody>
 	</table>
+	</div>
+
 </template>
 
 <template name='feedback-row-template'>
@@ -124,7 +141,7 @@
 		<th name='ideaid' scope='row'></th>
 		<td name='content'></td>
 		<td>
-			<div>
+			<div class='topic-section1'>
 			<select name='topic' style="margin-bottom: 5px">
 				<option>Select from ...</option>
 				<option>image</option>
@@ -132,12 +149,14 @@
 				<option>font</option>
 				<option>color</option>
 				<option>copy issue</option>
-			</div>
-
-			<div >
-				<input type='text' style='display: inline-block;' id='new-topic'><button onclick="addOption(this)"><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>
-
-			</div>
+			</select>
+				<br><br>
+				<span>Create a New Topic</span>
+				<input type='text' style='display: inline-block;' name='new-topic'>
+				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
+				<p name='check-result'></p>
+		
+		</div>
 		</td>
 		<td><select name='sentiment'>
 				<option></option>
@@ -393,7 +412,7 @@ var number_of_providers=0;
 //var topicName=['image','layout'];
 var sentimentName=['positive','negative','suggestion'];
 var topicArray={};
-
+var topics=[];
 
 class LabelClass {
   constructor(topic, sentiment, criticality,effort, discussion, agree, visited) {
@@ -409,16 +428,16 @@ class LabelClass {
 
 $(function(){
 
-	
-
-		$(".table-text", "#page-1").each(function (table_i) {
+		
+  //$('[data-toggle="tooltip"]').tooltip(); 
+	$(".table-text", "#page-1").each(function (table_i) {
 		
 		var current_html_table = $($('div#page-1 template[name="feedback_table"]').html());
 		var reviewer_i = table_i + 1;
 		number_of_providers=reviewer_i;
 		var text = ($(this).text()).split('!');
 		current_html_table.attr('id',reviewer_i);
-
+		$('.original-feedback', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
 		
 		var text_vis_table='';
 
@@ -430,6 +449,9 @@ $(function(){
 			current_feedback_row.attr('id', reviewer_i + "-" + i );
 			$('[name="ideaid"]', current_feedback_row).html(reviewer_i+ "-" + i);
 			$('[name="content"]', current_feedback_row).html(text[i]);
+			$('[name="add-btn"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
+			$('[name="topic"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
+			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+reviewer_i + "-" + i);
 			
 			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
 			
@@ -444,7 +466,8 @@ $(function(){
 				effort: 0,
 				discussion: false,
 				agree: 0,
-				visited:false
+				visited:false,
+				action:null
 			};
 			all_idea_units[reviewer_i + "-" + i] = ideaunit;
 		}
@@ -458,18 +481,19 @@ $(function(){
 	})
 
 		$(".page-item:eq(1)").addClass('active');
-		$("table#1").show();
+		$(".annotate-panel#1").show();
 
 		$(".page-link").click(function(){
 			$(".page-item").removeClass('active');
 			$(this).closest(".page-item").addClass('active');
 			var current_page= $(this).attr("id").split('-');
-			$("table", "#page-1").hide();
-			$("table#"+current_page[1], "#page-1").show();
+			$(".annotate-panel", "#page-1").hide();
+			$(".annotate-panel#"+current_page[1], "#page-1").show();
 		});
 
 		$("select", "#page-1")
 	  		.change(function () {
+
 	    	var current_tag= $(this).attr("name");
 	      	var current_idea= $(this).closest("tr").attr("id");
 	      	//var current_value = $(this).find(":selected").text();
@@ -479,29 +503,6 @@ $(function(){
 		
 // Page 2
 
-
-
-
-	
-	$("span.idea-unit","#page-2").click(function(){
-		//step 1: get the idea unit id
-		var span_id = $(this).attr("id");
-		console.log("haha");
-		/* 
-		step 2: user input and update the list 
-		1. get topic tag
-		2. get sentiment
-		3. get agreement
-		*/
-		all_idea_units[span_id].topic.push(currentTag);
-		$('#selected-text').html($(this).text());
-		//$('#annotate').modal();
-	
-		//refresh the table view
-		//generateSummaryTable();
-		//$(".summary-panel#"+currentTag+" ."+currentSentiment).html("hahahahaha");
-		//$("#exampleModal").modal('data-show');
-	})
 
 	$("div#page-2").on('click', ".filter-input", function(){
 
@@ -529,6 +530,10 @@ $(function(){
 				$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
 		}
+
+
+
+
 
 	})
 
@@ -562,6 +567,17 @@ $(function(){
 	});
 
 
+	//$("div#page-1").on('click','.add-btn', addOption);
+
+	$("div#page-1").on('focusout','[name="new-topic"]', addOption);	
+
+	$.map( $(".feedback-row select[name='topic']:first option"), function (option){
+		topics.push(option.value);
+		console.log(topics.length);
+		} 
+	);
+
+	
 /**********use delegate
 	$(".tableelement", "div#page-2").click(function(){
 		//step 1: get the idea unit id
@@ -688,19 +704,62 @@ $(function(){
 
 });
 
+//var topics=[];
 
 function addOption(){
-    
-	if($('#new-topic').val()!=""){
-		 $(".feedback-row select[name='topic']").each(function(){
-    	
-		$(this).append( new Option( $('#new-topic').val(), 0, false, false) );
-    	//$(this).options[$(this).options.length] = new Option('New Element', '0', false, false);
-    }
-
-    )
-	}
    
+	$("p[name='check-result']").text("").removeClass();
+    var element=$(this);
+    element.siblings("#check-result").text("").removeClass();
+    var id=element.attr('id');
+    //console.log("call addoption",id);
+   	var tmptopic = $(this).val();
+
+   	//console.log("new topic", tmptopic, topics.indexOf(tmptopic) );
+	/*$.map( $(".feedback-row select[name='topic']:first option"), function (option){
+		topics.push(option.value);
+	} 
+	);*/
+   //var options= $(el).parent().children("select option");
+
+  var msg='';
+  var status='success';
+
+   if( tmptopic!="")
+   {
+
+   		 if( topics.indexOf(tmptopic) == -1){
+
+   		 	var currentid=element.parent().children("select").attr("id");
+   			console.log("in if", currentid);
+
+   				topics.push(tmptopic);
+   				$(".feedback-row select[name='topic']").each(function(){
+    	
+					$(this).append( new Option( tmptopic, $('#new-topic').val(), false, false) );
+    			//$(this).options[$(this).options.length] = new Option('New Element', '0', false, false);
+    			});
+   				//console.log(element.parent().children("select").attr("id"));
+				element.parent().children("select").val(tmptopic);
+				//element.parent().children("select").css('background-color','yellow');
+				//$(el).parent().children("select option[value='"+tmptopic+"']").attr('selected','selected');
+				all_idea_units[currentid]['topic'] =tmptopic;
+	   		 	console.log(JSON.stringify(all_idea_units[currentid]));
+	    		//element.siblings("#check-result").text("Successfully added"+).addClass('success');
+	    		msg="'"+tmptopic+"' is added!";
+	    		status='success';
+   				
+   		 }else
+   		 {
+   		 		msg="'"+tmptopic+"' alrady exists!";
+   				status='fail';
+   		 } 
+
+   		 element.siblings("[name='check-result']").text(msg).addClass(status);
+		element.val("");
+   		
+   }
+  
     
 }
 
@@ -785,7 +844,7 @@ function renderElement(){
 			var people_id=1;
 			for(var index=0; index<number_of_providers;index++)// lopping the topic
 			{
-				inser_html=inser_html+"<a class='tableelement' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
 
 				
 				people_id++;
@@ -826,7 +885,7 @@ function renderElementbk(){
 			var people_id=1;
 			for(var index=0; index<number_of_providers;index++)// lopping the topic
 			{
-				inser_html=inser_html+"<a class='tableelement' id='"+topicName[i]+'-'+sentiment+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicName[i]+'-'+sentiment+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
 
 				
 				people_id++;
