@@ -21,7 +21,7 @@
 	<!-- JQuery and Google font -->
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
 	<!-- Custom styles for this template -->
-
+	<link rel="import" href="data1.html">
 <style>
         .droptarget {
             float: left; 
@@ -93,6 +93,19 @@ p.fail{
         </div>
 </nav>
 
+<div id='page-0'>
+	<div class="container">
+		<div class="main-section" style="margin-top: 50px">
+			<form class='form-group'>
+			<label class="col-sm-2 col-form-label" for='team-name'>Team Name</label>
+			<input type='text' id='team-name'> 
+			<button type="submit" class="btn btn-primary mb-2" onclick='LoadData();'>GO</button>
+	</form>
+		</div>
+	</div>
+</div>
+
+<div id="includedContent"></div>
 
 <div id='page-1'>  
 	<div class="container">
@@ -196,273 +209,7 @@ p.fail{
 	</tr>
 	
 </template>
-<div style='display: none'>
-	<span class='table-text'>
 
-   The paper contributes an experiment demonstrating the effectively of peer
-   mentorship for design feedback, where  peers were assigned to give feedback on all
-   stages of a project through an online platform.$ The paper contributes an
-   understanding of how context and strategies for assigning feedback providers
-   affect the perceived quality of feedback.$
-
-   Evaluation of the paper's contribution depends on the experiment design as well as
-   the quality of the arguments and findings for providing new empirical
-   understanding of how and why such feedback assignment strategies may affect
-   desired outcomes.$
-
-The authors should respond to all issues raised by the reviewers. Here is a brief
-   summary:$
-   - a clearer description of the role of social bond theory in motivating the paper$
-   - a clearer description of how certain dependent variables were chosen (and why
-   they weren't discussed in the intro/related work)$
-   - a clearer structure of the results section, with a clearer narrative linking to
-   arguments$
-   - using graphical visualizations of the most important findings $
-   - discussion of how the proposed approach may extend to other contexts, both in
-   the classroom and online$
-   - responding to the 2AC's question on "How can one claim to measure “strong social
-   bonds” between an “anonymous” feedback provider and a receiver/designer?"$
-
-	</span>
-
-<span class='table-text'>
-	   The paper presents an experiment testing online peer mentorship in a multi-
-   interaction project-based design course.$ The experiment is set out to challenge
-   two assumptions common in peer review platforms: 1) that peer-assignment should be
-   randomized, and that 2) design solutions should be assessed independently of prior
-   solutions. $ The author(s) conducted surveys and interviews at the end of the course
-   to evaluate the feedback of peer mentorship. $ The author(s) found that most
-   students preferred to be mentors, rather than being assigned randomly for peer-
-   feedback, as mentorship allowed them to follow closely the development progress of
-   a design project, something which they found valuable and instructive.$
-   Specifically, the author(s) found that students who were assigned to be mentors
-   wrote longer, more positive and thorough feedback, than those who were assigned to
-   provide random feedback to different projects.$ Furthermore, students who were
-   assigned as peer mentors were more receptive to the feedback they received on
-   their own projects.$ When it comes to showing the context of the project’s
-   progression, this deemed to be more relevant at later stages of the project.$
-
-   This is a very nicely written and clear paper, with a good flow and structure, and
-   well-crafted arguments that seem to be grounded in the literature. $ It also
-   contains thoughts for future work and a limitation section, thus giving the
-   impression of solid research.$ It is based on both qualitative and quantitative
-   data, which enrich and strengthen the findings.$
-
-   Below I list a few minor unclear issues: $
-   - Are you talking about undergraduate or graduate students? $ I believe there will
-   be a difference in the attitude amongst these two different levels. $I would assume
-   that such a project seems more suitable and beneficial to graduate students.$
-   - It was not very clear to me whether the feedback from mentors was perceived as
-   equally valuable as the ones received from those giving random feedback? $ One would
-   expect that mentors who were given the possibility to focus on a single project
-   and follow up its progression would be able to provide feedback which should be
-   perceived as more useful and relevant. It would be interesting to know why is this
-   not the case?$
-   - Why was the perceived quality and social bond only measured from the point of
-   view of those providing the feedback and not those receiving the feedback? $After
-   all, one could claim that the later—meaning the view of those receiving the
-   feedback—is more important (for the final project, the end results) than those
-   giving the feedback.$
-   - How can one claim to measure “strong social bonds” between an “anonymous”
-   feedback provider and a receiver/designer? $One would except to remove anonymity if
-   social bonds are to be established. It would be nice if this view was clarified.$
-
-   Minor typos:
-   - Missing reference in the text to figure 1 $
-   - In the discussion section, second paragraph, replace the word “move” with “more”$
-   - In the discussion section, paragraph 5, you spell out, what looks like, the
-   names of your informants “Grace, Helen”$
-
-
-</span>
-
-<span class='table-text'> 
-   In this paper authors discuss challenges of peer reviewing due to randomity. $They
-   hypothesize that if the reviewers continue to be same for same project in design
-   and provided the context of the previous submission feedback, the quality and
-   social bond increases.$
-   Review quality is measured by social bond and actions taken to the feedback,
-   designers response, length of the feedback.$ Social bonds were measured via a
-   questionnaire.$
-   Study designed and 2x2x3 tests. With Randomize and Mentor, context shown x context
-   not shown with a within subject factor which is the 3 project deliverable.$
-
-      The paper provides 3 contributions for the CSCW community – how peer mentorship
-   combined with context of the review artifact affect to the peer feedback, based on
-   the outcome of the test guideline for instructor on which stages the context in
-   more effective and finally these results provide a better ground to the platforms
-   to design better peer reviewing strategies.$
-   This research effort has a significant hypothesis and without a doubt it grounds
-   the challenges very well using the previous literature.$ This really has a
-   potential in the future and as a research community we must encourage such designs
-   which leads to social bonds and improve quality.$  Randomization has been the
-   practice and only few peer grading papers describe incentive based mechanisms /
-   weighted score mechanisms than random ( whish this paper not talk about Tomas
-   Stzubits paper in LScale 2016 and Tuned model for peer reviewing paper).$
-   Although I see the importance of this paper ad I really want the CSCW community to
-   encourage such designs, I am not convinced on the method of the research.$
-   From what I understand – this study conducted as an extra or additional feedback
-   session in the on site classroom. This means students interact during the class
-   and when they present their products in the class they know who’s project is that.
-   Specially in a class of 56 it is very likely that students can know each in their
-   presented projects. My concern is this jeopardize anonymity. Because it is one
-   factor that may affect to the feedback (Gamage et al 2017 L@S). $Besides online
-   peer reviewing is well suit in context when students do not meet and take a course
-   and review without meeting in a place onsite.$
-   Next question is – since there are groups which contain 2-3 students, did all of
-   them submit one project and at least one student is assigned through out one other
-   project? Or is it teams together who provide the reviews? Say for example you have
-   student 1 , 2 3 4 5 6, and team A ( Student 1,2) Team B ( Student 3, 4) Team C (
-   Student 5, 6) Team A prototype has been reviewed by student 3 through out or is it
-   a team.$
-   Social bonding in the virtual community is very important for any educational
-   technology which envision pedagogical styles in beyond 2020 and this paper is
-   stepping forward the right direction. $However, I would not be convince for that
-   fact that they did not do an online or at least the anonymity is under doubt.$ I
-   suggest to re-design the study where at least the students take the class and
-   design an assignment where they do not interact in the reviewing in the class.$
-   Although its minor typo ( in the Discussions and futurework) [Grace, Helen] should
-   be a numerical reference.$
-
-
-</span>
-
-<span class='table-text'>
-This paper claims three key contributions to the CSCW community:$
-   1. Empirical understanding of how two variables affect online peer feedback
-   exchange in a product design course: peer assignment strategy (“mentor” vs.
-   random) and showing design process documentation (“context” vs. no “context”),$
-   2. Practical guidelines for instructors of design courses to determine when to use
-   each feature,$
-   3. Design implications for online peer feedback platforms.$
-
-   The key evaluation criteria for such empirical contributions in HCI are
-   rigor/precision in methods and importance of findings (Wobbrock, 2012. “Seven
-   Research Contributions in HCI,”$
-
-This paper holds a potentially important and novel empirical contribution to the
-   CSCW community, supported by standard methods for peer feedback research and
-   interesting quantitative and qualitative results.$ With some improvement on the
-   paper’s communication, I believe it could be a strong contribution to this year’s
-   program.$
-
-The motivating research problem is timely, relevant, and practical to the CSCW
-   community: How can instructors increase student engagement and feedback quality on
-   online peer feedback exchange platforms to keep pace with the growing sizes of
-   project-based design courses?$
-
-   In addressing this problem, the paper demonstrates strong command over relevant
-   literature in the research space around peer feedback exchange from the
-   perspective of HCI and learning science communities.$ It proposes two interesting
-   new features that could potentially improve online peer feedback exchange (peer
-   assignment strategy and showing “context”), and tests them in a controlled
-   experiment with an appropriate suite of methods that have been used in previous
-   studies on peer feedback exchange (e.g., quantitative behavioral measures and
-   self-reports, followed by qualitative interviews).$
-
-   Through these methods, the paper surfaces many practically important results,
-   including a significant interaction effect of Context and Stage on perceived
-   feedback quality, greater receptivity to feedback amongst “mentors” vs. random-
-   assigned students, tradeoffs between the two assignment strategies, and generally
-   positive student perceptions of the peer feedback activity.$ The qualitative piece
-   of the study is especially strong in that it reveals practically important
-   findings that could not have been captured with the quantitative measures alone.$
-
-   In terms of the key evaluation criteria for empirical contributions, this paper
-   demonstrates  well-executed methods, which gives credibility to its interesting
-   results.$
-
-   My main concerns involve strengthening the communication of the paper: clarifying
-   the motivation and clarifying the results.$
-   I was a bit confused about the role of social bond theory in the paper’s
-   motivation. $It is stated as the key inspiration behind the two proposed variables
-   (assignment strategy and showing context), and it is suggested as a possible
-   mediator between online peer feedback platform features and feedback quality under
-   the Related Work section (“However, as the use of educational technology begins to
-   move these interactions online, a consequence is that peers may feel less attached
-   to each other, less committed to the course goals, and less involved in the
-   activity. $This could explain why studies of online peer review have shown that the
-   content often has limited scope and quality [33, 36, 39].”... “Peer mentorship may
-   increase the social bond between designers and feedback providers (e.g. they will
-   feel more committed to the design project for which they are giving feedback and
-   move involved in the feedback activity), and lead to higher quality feedback.”)$
-   This set-up suggested to me that one of the Research Questions would be on this
-   mediation relationship, but it was never addressed in the paper. $The reported null
-   and negative effects of mentorship on social bond, but statistically significant
-   effects on other feedback attributes/responses in the Results section further
-   confused me, as they seemed to directly contradict the suggested role of social
-   bond from the beginning of the paper.$ Explicitly clarifying the proposed role of
-   social bond and its relationship with the independent and dependent variables in
-   the beginning of the paper (e.g., Related Work section) as well as at the end of
-   the paper (e.g., Discussion section) might reduce this confusion.$
-
-   In addition to the role of social bond in the study, I was also a bit confused
-   about the motivation behind some of the dependent variables.$ Besides social bond
-   and feedback quality, none of the other dependent variables were mentioned in the
-   set-up of the paper (e.g., Introduction and Related Work sections), so it was
-   unclear to me why they were collected for this study in the Method section. $For
-   example, why are feedback length and response length important here?$ My implicit
-   assumption is that they might be indicators of student investment (which
-   constitutes social bond), but I also know that length is not an accurate indicator
-   as it is a well-known strategy amongst students to write tons of sentences that
-   are devoid of true substance just to fill space on a writing assignment. $Such
-   uncertainty about the meaning of dependent constructs made it difficult for me to
-   interpret the subsequent Results section. $Similarly, why is feedback sentiment
-   important here? Does positive vs. negative sentiment have significant implications
-   for student engagement or feedback quality?$ Providing explicit motivations for
-   each dependent variable as they relate to the overall research problem of
-   improving online peer feedback exchange when they are introduced in either the
-   Related Work section or Method section would strengthen the communication of the
-   paper and help readers form a better mental model of the intended narrative.$
-
-   Due to the lack of motivation for each dependent measure presented in the
-   beginning of the paper, the current Results section reads a bit like a laundry
-   list rather than a clear narrative. $I got a bit lost while reading it, as it was
-   unclear what the most important results are, how each of the results relate back
-   to the overall research problem of improving online peer feedback exchange, and
-   what the the overall takeaway is.$ The sentences of speculation after some of the
-   findings helped me interpret them a little bit (e.g., under Feedback Length, “A
-   possible explanation is that students allocate an attention budget for the
-   feedback composition task, and effort invested in evaluating the design context is
-   subtracted from writing the feedback.”), $although I found myself identifying
-   alternative explanations as well (e.g., Another reason why feedback length was
-   shorter for providers with Context than those with No Context might be because the
-   designer’s intent was clearer and required less critique or clarification with
-   Context- especially since the majority of feedback content was of this nature:
-   judgement, recommendation, and investigation, interpretation.)$
-
-   In addition to clarifying the narrative of results as they relate back to the
-   overall research problem of improving online peer feedback exchange, I also
-   recommend presenting graphical visualizations of the most important findings (e.g.
-   interaction effect of Context and Stage on perceived quality). $This would make the
-   results easier to interpret at a glance (the current tables and text are a bit
-   difficult to weed through),$ and could be one way to help the reader identify which
-   are the most important results (graphically visualized in bar graphs or line
-   graphs) vs. which are less important (only reported in text).$
-
-   Finally, three more minor concerns/clarifications:$
-   - Under the “Actions taken (RQ1)” section: Are the percentages reported here on
-   average per designer or for all designers overall?$
-   - Under the “Qualitative Results (RQ3)” section, it states “We report results of
-   the final survey (Table 6; n=55)”, but Table 6 only shows the text of questions in
-   the final survey and not the Likert scale results for each question. $For
-   comprehensiveness, I would like to see the numerical results from this survey.$
-   - It would further strengthen the narrative of the paper if results are reported
-   in the same order as the measures are introduced in the Method section. This
-   parallel structure helps make it easier for readers to follow.$
-
-   Given the strengths of the paper (e.g., timeliness, relevance, and practicality of
-   the motivating research problem, appropriate suite of methods implemented,
-   interesting set of findings reported), I believe the weaknesses are mostly a
-   matter of written communication and clarification rather than significant
-   overhauls of research execution. $As such, I believe it is “Probably acceptable
-   (with minor modifications).” I wish the authors the best of luck going forward and
-   encourage the continuation of their valuable work on online peer feedback exchange
-   systems.$
-
-
-</span>
-</div>
 </div>
 </div>
 
@@ -653,6 +400,19 @@ The motivating research problem is timely, relevant, and practical to the CSCW
 		
 </div>
 <script>
+
+//Get dataset
+
+function LoadData(){
+
+	var team= $('#team-name').val();
+	alert(team);
+}
+
+
+//GET DATA
+
+
 var all_idea_units = {}
 var number_of_providers=0;
 
@@ -675,7 +435,60 @@ class LabelClass {
 
 $(function(){
 
+$.get('data1.html', null, function(text){
+
+    $(text).find('.table-text').each(function (table_i) {
+		console.log($(this).text());
+		var current_html_table = $($('div#page-1 template[name="feedback_table"]').html());
+		var reviewer_i = table_i + 1;
+		number_of_providers=reviewer_i;
+		var text = ($(this).text()).split('$');
+		current_html_table.attr('id',reviewer_i);
+		$('a', current_html_table).attr('href', '#original'+reviewer_i );
+		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
+		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
+		var text_vis_table='';
+
+		for (var i = 0; i < text.length; i++) {
+			
+			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + text[i] + "</span>";
+
+			var current_feedback_row = $($('div#page-1 template[name="feedback-row-template"]').html());
+			current_feedback_row.attr('id', reviewer_i + "-" + i );
+			$('[name="ideaid"]', current_feedback_row).html(reviewer_i+ "-" + i);
+			$('[name="content"]', current_feedback_row).html(text[i]);
+			$('[name="add-btn"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
+			$('[name="topic"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
+			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+reviewer_i + "-" + i);
+			
+			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			
+			$('#ideaunits', current_html_table).append(current_feedback_row);
+
+			var ideaunit = {
+				id: reviewer_i + "-" + i,
+				content: text[i],
+				topic: null,
+				sentiment: 0,
+				criticality: 0,
+				effort: 0,
+				discussion: false,
+				agree: 0,
+				visited:false,
+				action:null
+			};
+			all_idea_units[reviewer_i + "-" + i] = ideaunit;
+		}
+
+		$('#all_feedback_table').append(current_html_table);
+
+		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
+
+		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
 		
+	})
+});
+
   //$('[data-toggle="tooltip"]').tooltip(); 
 	$(".table-text", "#page-1").each(function (table_i) {
 		
