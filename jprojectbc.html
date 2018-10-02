@@ -494,7 +494,7 @@ $(function(){
 		//var text = ($(this).text().trim()).split(/(?<=[\.!?])/);
 		current_html_table.attr('id',reviewer_i);
 		$('a', current_html_table).attr('href', '#original'+reviewer_i );
-		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
+		//$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
 		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
 		var text_vis_table='';
 
@@ -581,7 +581,7 @@ $(function(){
 		var pre_idea_id = previous_row.attr('id')		
 		//update all_idea_unit
 		var tmp_content=$(".feedback-row#"+current_id +" [name='content']").text();
-		alert(tmp_content);
+		//alert(tmp_content);
 		all_idea_units[pre_idea_id]['content'] += tmp_content ;
 		//alert(all_idea_units[pre_idea_id]['content']);
 		$('.feedback-row#'+pre_idea_id+' [name="content"]').text(all_idea_units[pre_idea_id]['content'] );
@@ -590,6 +590,12 @@ $(function(){
 		//delete all_idea_units[current_id];
 		//alert( $(".feedback-row#"+current_id +" [name='content']").text());
 		//alert(all_idea_units[pre_idea_id]['content']);
+
+		var current_span= $("span#"+current_id+".idea-unit");
+		//alert(current_span.attr('id'));
+		//var current_row= $("span.idea-unint#"+current_id);
+		current_span.prepend(current_span.prev().text());
+    	current_span.prev().remove();
 
 		
 	});
