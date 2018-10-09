@@ -205,16 +205,18 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 		<td><button type="button" name='merge' class="btn btn-info">Merge</button></td>
 		<td>
 			<div class='topic-section1'>
+				<span>Give a label</span>
+				<input type='text' style='display: inline-block;' name='new-topic'>
+				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
+				<p name='check-result'></p>
+				<br><br>
 
 				Select from existing labels
 			<select name='topic' style="margin-bottom: 5px">
 				<option>Select from... </option>
 			</select>				
-				<br><br>
-			<span>Create a new label</span>
-				<input type='text' style='display: inline-block;' name='new-topic'>
-				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
-				<p name='check-result'></p>
+				
+			
 			
 		</div>
 		</td>
@@ -256,6 +258,69 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 	</tr>
 	
 </template>
+
+
+<template name='feedback-row-template'>
+	<tr class='feedback-row'> 
+		<th name='ideaid' scope='row'></th>
+		<td name='content'></td>
+		<td><button type="button" name='merge' class="btn btn-info">Merge</button></td>
+		<td>
+			<div class='topic-section1'>
+				<span>Give a label</span>
+				<input type='text' style='display: inline-block;' name='new-topic'>
+				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
+				<p name='check-result'></p>
+				<br><br>
+
+				Select from existing labels
+			<select name='topic' style="margin-bottom: 5px">
+				<option>Select from... </option>
+			</select>				
+				
+			
+			
+		</div>
+		</td>
+	s
+		<td><select name='sentiment'>
+				<option></option>
+				<option>strength</option>
+				<option>weakness</option>
+				<option>neutral</option>
+			</select>
+		</td>
+		<td><select name='effort'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='criticality'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='discussion'>
+				<option></option>
+				<option>yes</option>
+				<option>no</option>
+		</td> 
+		<td><select name='agree'>
+			<option></option>
+			<option>completely</option>
+			<option>partially</option>
+			<option>no</option>
+		</td> 
+	</tr>
+	
+</template>
+
 
 </div>
 </div>
@@ -494,7 +559,7 @@ $(function(){
 		//var text = ($(this).text().trim()).split(/(?<=[\.!?])/);
 		current_html_table.attr('id',reviewer_i);
 		$('a', current_html_table).attr('href', '#original'+reviewer_i );
-		//$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
+		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
 		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
 		var text_vis_table='';
 
@@ -567,7 +632,7 @@ $(function(){
 	      	var current_idea= $(this).closest("tr").attr("id");
 	      	//var current_value = $(this).find(":selected").text();
 	      	all_idea_units[current_idea][current_tag] = $(this).find(":selected").text();
-	      	console.log(JSON.stringify(all_idea_units[current_idea]));	     	
+	      	//console.log(JSON.stringify(all_idea_units[current_idea]));	     	
 		 });
 		
 
@@ -594,8 +659,8 @@ $(function(){
 		var current_span= $("span#"+current_id+".idea-unit");
 		//alert(current_span.attr('id'));
 		//var current_row= $("span.idea-unint#"+current_id);
-		current_span.prepend(current_span.prev().text());
-    	current_span.prev().remove();
+    	current_span.prev().append(current_span.text());
+    	current_span.remove();
 
 		
 	});
@@ -671,12 +736,13 @@ $(function(){
 
 	$("div#page-1").on('focusout','[name="new-topic"]', addOption);	
 
+	/*?
 	$.map( $(".feedback-row select[name='topic']:first option"), function (option){
 		topics.push(option.value);
 		console.log(topics.length);
 		} 
 	);
-
+*/
 	
 /**********use delegate
 	$(".tableelement", "div#page-2").click(function(){
@@ -926,7 +992,7 @@ function print(par)
 }	
 
 
-function renderElement(){
+function renderElement2(){
 	
 	$("#paneltest").empty();
 	for (var topicKey in topicArray) {
@@ -953,6 +1019,38 @@ function renderElement(){
 			sentimentNum++;
 		}
 		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderElement(){
+	
+	$("#paneltest").empty();
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+
+		var inser_html="";
+		
+		inser_html=inser_html+"<div class='row'><div class='col-md-2' id='"+topicKey+"'>"+topicKey+"</div><div class='col-md-10'>";
+		var sentimentNum=0;
+		for (var sentimentKey in currentTopic) {
+
+			
+			inser_html+="<div id='sentiment"+sentimentKey+"'>";
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+				people_id++;
+			}
+			inser_html+="</div>";
+			sentimentNum++;
+		}
+		inser_html+="</div></div>";
 		
 		$("#paneltest").append(inser_html);
 	}

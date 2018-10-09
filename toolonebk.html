@@ -1,7 +1,3 @@
-<php>
-	
-</php>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +21,12 @@
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
 	<!-- Custom styles for this template -->
 	<link rel="import" href="data1.html">
+
+	<link href="css/bootstrap-slider.css" rel="stylesheet">
+	<script src="dist/js/bootstrap-slider.js"></script>
+
+
+
 <style>
         .droptarget {
             float: left; 
@@ -82,6 +84,16 @@ p.fail{
 	font-size: 20px;
 }
 
+
+
+.topic-row{
+	text-align: center;
+}
+
+.topic-field{
+	display: inline-block;
+	font-weight: bold;
+}
 </style>
 
 </head>
@@ -96,19 +108,66 @@ p.fail{
         </div>
 </nav>
 
-<div id='page-0'>
-	<div class="container">
-		<div class="main-section" style="margin-top: 50px">
-			<form class='form-group'>
-			<label class="col-sm-2 col-form-label" for='team-name'>Team Name</label>
-			<input type='text' id='team-name'> 
-			<button type="submit" class="btn btn-primary mb-2" onclick='LoadData();'>GO</button>
-	</form>
-		</div>
-	</div>
-</div>
+<div style='display: none'>
+	<span class='table-text'>
+		Good to have a visual analytical data.</span>
+	<span class='table-text'>
+		Not the biggest fan of the team name, but it is still early. I like the idea especially for freshman students trying to meet new friends while eating their meals. I know personally that eating at Ikenberry Commons can be extremely fun if with a big group, but also very lonely if you have no one to eat with. I really like the fact that you can select restaurants around campus, however I feel that this is out of the scope of their idea.</span>
+	<span class="table-text">I think it's a very interesting and practical idea. And the presentation is very informative and clear. Good job!
+	</span>
+	<span class='table-text'>Down to Lunch is pretty similar(http://imdtl.com), however I like you how you can create a check in time and see who else is planning on going. </span>
 
-<div id="includedContent"></div>
+	<span class='table-text'>How will you match people who want to eat at a particular place? Will it be random? How will you handle situations where there are no other people interested in eating at the same restaurant as you? I think it would be important to incorporate some design decisions to emphasize the platonic nature of these meal dates. Meal dates where the people have different expectations might end up awkward or creepy.
+</span>
+
+	<span class='table-text'>I like the aspect of MealDate where users’ locations are public when they’re arranging to meet to ensure safety/security.  It would be cool to have features for people to look for people with common majors, interests, etc. to meal with.  That could be an additional feature for users specifically seeking these meal buddies to search for them.  Users can always not use this feature and go with meeting all kinds of people based on food joint choice only.
+ </span>
+
+
+		<span class='table-text'>Q: would this be a group meet up or a one-on-one? If it's just one-on-one, wouldn't this naturally evolve into a dating app? 
+</span>
+<span class='table-text'>"I like the idea of sketches, and it shows a creative touch to design, so this was a great way to start. I personally don't feel like I want to eat meals with somebody though...but I can definitely see this during some times, especially if I have been locked in and doing work for a while. Therefore, I think there is definitely a need here. Also, thank you for focusing on the platonic interaction here! You thought of quite a bit of the social awkwardness or limitations that come out of an activity like this, too. 
+
+At first, my thoughts were that the scope is a bit too wide, but the use cases were very targeted and using the app would enforce the process you are going for here. I was also fearful that limiting to just college students might have been a bit of a small target audience, but you eased these fears quite a lot through explaining the feasibility and time you had here. I still am a bit confused by some of how the friending mechanism works if everything goes well, and whether or not you might get locked into certain habits that were not immediately intended (with friends here).
+
+Moving pas this, though...my goodness, these prototypes. These are incredible, especially given the stage that you are presenting at. Maps are maps, and I get that, so that's a bit easier to add to these prototypes...but the interaction flow is well polished and supports an already strong idea. Well done! 
+
+(One extra point, but I just wanted that I enjoyed your response to how people match based on description, taking away items that might enforce judging.)"
+
+</span>
+
+<span class='table-text'>The use of statistics to figure out the user problem was very well thought out and fleshed out.  There are a variety of app features which will make the app go a long way.  The white board drawings are very refreshing on the eyes to look at.
+</span>
+
+<span class='table-text'>Rating system could be hard to implement since the profiles are public and the two people might meet again, might be good to allow group of people to eat.</span>
+
+<span class='table-text'>Good stats and data in visual.  
+How are you planning to show when they want to go?  What about when a restaurant has multiple requests, how will you sort all the requests?  When does the user put in a meal date request/how far in advance to their meal?
+What will you do with the people who don't know what or where they want to eat?  
+Group vs individual meal dates</span>
+
+
+<span class='table-text'>Purpose: Grouping people together to make them eat together. The idea is great and trying to solve a real problem. However, one problem is that it is sometimes hard to plan ahead for a lunch/dinner, such as which restaurant to go, or at what time do I go eat. Also the waiting time for the grouping up progress will be somehow hard to estimate.</span>
+
+<span class='table-text'>Good idea, unsure what makes it unique. I like the UI layout so far. I can see some issues with safety when it comes to meeting strangers but I suppose that's inherent in a meet-up app.</span>
+
+
+
+<span class='table-text'>"I like the idea, because it's a good way of meeting people in a non-dating setting. Especially in a college setting, but I could also easily see it expanding outside colleges. 
+- On your front page you ask 'where to', like what restaurant I want to go to. What if I don't care so much about the restaurant, but I just want to have lunch with someone? 
+- Groups of people meeting each other. How do you make sure it doesn't evolve into another dating app. 
+- I would want to know who I'm meeting with before 'matching' i.e. I think a profile picture is definitely needed. "
+</span>
+
+<span class='table-text'>I like the idea of implementing security into the app. I would maybe add some more info about a person - types of food they like, interests, etc. How would you recognize your dinner date? If you include pics in the profile, it might become a dating app, but if you don't the meet up may be awkward.
+</span>
+<span class='table-text'>The app would have be frictionless as possible in order for users to use the app often. Also, there are a lot of people that order/buy take-outs instead of eating in at restaurants. What if you had a nice sandwich that you wanted to enjoy on the quad accompanied by a presence of another human being?
+</span>
+<span class='table-text'>
+I like the idea and the simplicity of the prototype. I know you guys said that this was a 1 on 1 app but there are people who may not fell comfortable meeting strangers in a 1 on 1 setting. I think adding a group up feature where you can request to meet with multiple people instead of just 1 on 1.
+</span>
+
+</div>
 
 <div id='page-1'>  
 	<div class="container">
@@ -120,8 +179,6 @@ p.fail{
 		</div>
   		<nav aria-label="Page navigation example">
 		  <ul class="pagination" id="page-list">
-		    <li class="page-item" id="previous"><a class="page-link" href="#">Previous</a></li>
-		    <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
 		  </ul>
 		</nav>
 
@@ -138,7 +195,8 @@ p.fail{
 		<thead>
 		    <tr>
 		      <th style="width:5%" scope="col">#</th>
-		      <th style="width:35%" scope="col">Content</th>
+		      <th style="width:30%" scope="col">Content</th>
+		      <th style="width:5%" scope="col"></th>
 		      <th style="width:10%" scope="col">Topic</th>
 		      <th style="width:10%" scope="col">Sentiment</th>
 		      <th style="width:10%" scope="col">Estimtated Effort</th>
@@ -160,26 +218,30 @@ p.fail{
 	<tr class='feedback-row'> 
 		<th name='ideaid' scope='row'></th>
 		<td name='content'></td>
+		<td><button type="button" name='merge' class="btn btn-info">Merge</button></td>
 		<td>
 			<div class='topic-section1'>
-			
-			
-				<span>Create a new label</span>
+				<span>Give a label</span>
 				<input type='text' style='display: inline-block;' name='new-topic'>
 				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
 				<p name='check-result'></p>
 				<br><br>
+
 				Select from existing labels
 			<select name='topic' style="margin-bottom: 5px">
 				<option>Select from... </option>
-			</select>
+			</select>				
+				
+			
+			
 		</div>
 		</td>
+	s
 		<td><select name='sentiment'>
 				<option></option>
 				<option>strength</option>
 				<option>weakness</option>
-				<option>suggestion</option>
+				<option>neutral</option>
 			</select>
 		</td>
 		<td><select name='effort'>
@@ -213,6 +275,69 @@ p.fail{
 	
 </template>
 
+
+<template name='feedback-row-template'>
+	<tr class='feedback-row'> 
+		<th name='ideaid' scope='row'></th>
+		<td name='content'></td>
+		<td><button type="button" name='merge' class="btn btn-info">Merge</button></td>
+		<td>
+			<div class='topic-section1'>
+				<span>Give a label</span>
+				<input type='text' style='display: inline-block;' name='new-topic'>
+				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
+				<p name='check-result'></p>
+				<br><br>
+
+				Select from existing labels
+			<select name='topic' style="margin-bottom: 5px">
+				<option>Select from... </option>
+			</select>				
+				
+			
+			
+		</div>
+		</td>
+	s
+		<td><select name='sentiment'>
+				<option></option>
+				<option>strength</option>
+				<option>weakness</option>
+				<option>neutral</option>
+			</select>
+		</td>
+		<td><select name='effort'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='criticality'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='discussion'>
+				<option></option>
+				<option>yes</option>
+				<option>no</option>
+		</td> 
+		<td><select name='agree'>
+			<option></option>
+			<option>completely</option>
+			<option>partially</option>
+			<option>no</option>
+		</td> 
+	</tr>
+	
+</template>
+
+
 </div>
 </div>
 
@@ -234,12 +359,7 @@ p.fail{
   
 	<div class="row">    
 
-		<div class="col-md-6"> 
-			<table class='table table-nonfluid'>
-			<tbody id='feedback-list'>
-			</tbody>
-			</table>
-		</div>
+		
 
 <!--user input-->
 <div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
@@ -282,7 +402,7 @@ p.fail{
   </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
 
 <div class="card">
 	     <div class="card-header">
@@ -291,6 +411,13 @@ p.fail{
   <div class="card-body">
 
   		<form>
+
+  		<form>
+<input type="range" name="foo" min="0" max="100" step="25">
+<output for="foo" onforminput="value = foo.valueAsNumber;"></output>
+</form>
+
+
 				<div class="form-group row">
 				    <legend class="col-sm-3 col-form-label"><b>Estimated Revision Effort</b></legend>
 				    <div class="col-sm-9">
@@ -373,9 +500,7 @@ p.fail{
 	<thead>
     <tr>
       <th scope="col">Topic</th>
-      <th scope="col">Positive</th>
-      <th scope="col">Negative</th>
-      <th scope="col">Suggestion</th>
+      <th scope="col">Relevant Feedback</th>
     </tr>
   </thead>
 
@@ -384,7 +509,36 @@ p.fail{
 </tbody>
 </table>
 
+
+
 </div>
+
+<div class="col-md-8"> 
+		
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Filtered Feedback</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">All Feedback</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Action Plan</a>
+  </li>
+</ul>
+
+<table class='table table-nonfluid'>
+	<tbody id='feedback-list'>
+	</tbody>
+</table>
+	
+
+
+
+
+</div>
+
 </div>
 </div><!--end of page 2-->
 
@@ -420,7 +574,7 @@ var all_idea_units = {}
 var number_of_providers=0;
 
 //var topicName=['image','layout'];
-var sentimentName=['strength','weakness','suggestion'];
+var sentimentName=['strength','weakness','neutral'];
 var topicArray={};
 var topics=[];
 
@@ -438,91 +592,44 @@ class LabelClass {
 
 $(function(){
 
-$.get('data1.html', null, function(text){
-
-    $(text).find('.table-text').each(function (table_i) {
-		console.log($(this).text());
-		var current_html_table = $($('div#page-1 template[name="feedback_table"]').html());
-		var reviewer_i = table_i + 1;
-		number_of_providers=reviewer_i;
-		var text = ($(this).text()).split('$');
-		current_html_table.attr('id',reviewer_i);
-		$('a', current_html_table).attr('href', '#original'+reviewer_i );
-		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
-		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
-		var text_vis_table='';
-
-		for (var i = 0; i < text.length; i++) {
-			
-			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + text[i] + "</span>";
-
-			var current_feedback_row = $($('div#page-1 template[name="feedback-row-template"]').html());
-			current_feedback_row.attr('id', reviewer_i + "-" + i );
-			$('[name="ideaid"]', current_feedback_row).html(reviewer_i+ "-" + i);
-			$('[name="content"]', current_feedback_row).html(text[i]);
-			$('[name="add-btn"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
-			$('[name="topic"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
-			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+reviewer_i + "-" + i);
-			
-			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
-			
-			$('#ideaunits', current_html_table).append(current_feedback_row);
-
-			var ideaunit = {
-				id: reviewer_i + "-" + i,
-				content: text[i],
-				topic: null,
-				sentiment: 0,
-				criticality: 0,
-				effort: 0,
-				discussion: false,
-				agree: 0,
-				visited:false,
-				action:null
-			};
-			all_idea_units[reviewer_i + "-" + i] = ideaunit;
-		}
-
-		$('#all_feedback_table').append(current_html_table);
-
-		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
-
-		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
-		
-	})
-});
+//$.get('data1.html', null, function(text){
 
   //$('[data-toggle="tooltip"]').tooltip(); 
-	$(".table-text", "#page-1").each(function (table_i) {
+	$(".table-text").each(function (table_i) {
 		
 		var current_html_table = $($('div#page-1 template[name="feedback_table"]').html());
 		var reviewer_i = table_i + 1;
 		number_of_providers=reviewer_i;
-		var text = ($(this).text()).split('$');
+		var text=($(this).text().trim()).match(/[^\.!\?]+[\.!\?]+/g);
+		//var text = ($(this).text().trim()).split(/(?<=[\.!?])/);
 		current_html_table.attr('id',reviewer_i);
 		$('a', current_html_table).attr('href', '#original'+reviewer_i );
 		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
 		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
 		var text_vis_table='';
 
+		
+
 		for (var i = 0; i < text.length; i++) {
 			
-			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + reviewer_i + "-" + i + "'>" + text[i] + "</span>";
+				var current_idea_id = reviewer_i+ '-'+i;
+		
+				text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + current_idea_id + "'>" + text[i] + "</span>";
 
 			var current_feedback_row = $($('div#page-1 template[name="feedback-row-template"]').html());
-			current_feedback_row.attr('id', reviewer_i + "-" + i );
-			$('[name="ideaid"]', current_feedback_row).html(reviewer_i+ "-" + i);
+			current_feedback_row.attr('id', current_idea_id );
+			$('[name="ideaid"]', current_feedback_row).html(current_idea_id);
 			$('[name="content"]', current_feedback_row).html(text[i]);
-			$('[name="add-btn"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
-			$('[name="topic"]', current_feedback_row).attr('id', reviewer_i + "-" + i);
-			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+reviewer_i + "-" + i);
+			$('[name="add-btn"]', current_feedback_row).attr('id', current_idea_id);
+			$('[name="topic"]', current_feedback_row).attr('id', current_idea_id);
+			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+current_idea_id);
 			
 			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
 			
 			$('#ideaunits', current_html_table).append(current_feedback_row);
 
 			var ideaunit = {
-				id: reviewer_i + "-" + i,
+				id: current_idea_id,
 				content: text[i],
 				topic: null,
 				sentiment: 0,
@@ -533,18 +640,26 @@ $.get('data1.html', null, function(text){
 				visited:false,
 				action:null
 			};
-			all_idea_units[reviewer_i + "-" + i] = ideaunit;
-		}
+
+			all_idea_units[current_idea_id] = ideaunit;
+			
+
+			
+	
+		}//end for loop
 
 		$('#all_feedback_table').append(current_html_table);
 
-		$("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>").insertBefore('#next');
+		$('#page-list').append($("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>"));
 
-		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
+		$('#feedback-list', "div#page-2").append("<tr class='feedback-cell' id='person"+reviewer_i+"'><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
+
+
+		$('.feedback-row#'+reviewer_i+'-0 [name="merge"]').hide();
 		
 	})
 
-		$(".page-item:eq(1)").addClass('active');
+		$(".page-item:eq(0)").addClass('active');
 		$(".annotate-panel#1").show();
 
 		$(".page-link").click(function(){
@@ -562,9 +677,40 @@ $.get('data1.html', null, function(text){
 	      	var current_idea= $(this).closest("tr").attr("id");
 	      	//var current_value = $(this).find(":selected").text();
 	      	all_idea_units[current_idea][current_tag] = $(this).find(":selected").text();
-	      	console.log(JSON.stringify(all_idea_units[current_idea]));	     	
+	      	//console.log(JSON.stringify(all_idea_units[current_idea]));	     	
 		 });
 		
+
+
+	$("div#page-1").on('click', "[name=merge]", function(){
+
+		var current_row= $(this).closest(".feedback-row");
+		var previous_row=current_row.prev(".feedback-row");
+		
+		var current_id=current_row.attr('id');			
+		var pre_idea_id = previous_row.attr('id')		
+		//update all_idea_unit
+		var tmp_content=$(".feedback-row#"+current_id +" [name='content']").text();
+		//alert(tmp_content);
+		all_idea_units[pre_idea_id]['content'] += tmp_content ;
+		//alert(all_idea_units[pre_idea_id]['content']);
+		$('.feedback-row#'+pre_idea_id+' [name="content"]').text(all_idea_units[pre_idea_id]['content'] );
+		$('.feedback-row#'+current_id).remove();
+		delete all_idea_units[current_id];
+		//delete all_idea_units[current_id];
+		//alert( $(".feedback-row#"+current_id +" [name='content']").text());
+		//alert(all_idea_units[pre_idea_id]['content']);
+
+		var current_span= $("span#"+current_id+".idea-unit");
+		//alert(current_span.attr('id'));
+		//var current_row= $("span.idea-unint#"+current_id);
+    	current_span.prev().append(current_span.text());
+    	current_span.remove();
+
+		
+	});
+
+
 // Page 2
 
 
@@ -635,96 +781,6 @@ $.get('data1.html', null, function(text){
 
 	$("div#page-1").on('focusout','[name="new-topic"]', addOption);	
 
-	$.map( $(".feedback-row select[name='topic']:first option"), function (option){
-		topics.push(option.value);
-		console.log(topics.length);
-		} 
-	);
-
-	
-/**********use delegate
-	$(".tableelement", "div#page-2").click(function(){
-		//step 1: get the idea unit id
-		//var span_id_origin=$(this).attr("id");
-		console.log("haha");
-		var span_id = $(this).attr("id").split('-');
-		var topic= span_id[0];
-		var sentiment=span_id[1];
-		var people_id=span_id[2];
-		//todo
-		for(var key in all_idea_units){
-			//console.log(tmp);
-			var tmp_id=key.split('-');
-			if(tmp_id[0] == people)
-			{
-				//console.log(currentIdeaLists[tmp].id);
-				var currentid=currentIdeaLists[tmp].id;
-			$(".idea-unit#"+key).addClass("visited");
-			all_idea_units[key].visited=true; 
-			$(".tableelement#"+key+" > span").css("color","blue");
-			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
-		}
-		var span_id = $(this).attr("id");
-		$('#selected-text').html($(this).text());
-		
-
-	})
-
-		$( ".tableelement","#page-2").hover(
-
-  				 function() {
-  				 	console.log("come in table element");
-  				 		//var span_id_origin=$(this).attr("id");
-						var span_id = $(this).attr("id").split('-');
-						console.log(span_id);
-						var topic= span_id[0];
-						var sentiment=span_id[1];
-						var people_id=span_id[2];
-		//todo
-				for(var key in all_idea_units){
-						//console.log(tmp);
-					var tmp_id=key.split('-');
-					if(tmp_id[0] == people)
-					{
-						$(".idea-unit#"+key).removeClass("visited");
-							$(".idea-unit#"+key).addClass("active");
-						}
-
-
- 				 }
- 				}, 
-
- 				 function() {
-
- 				 		var span_id = $(this).attr("id").split('-');
-						var topic_index= topicName.indexOf(span_id[0]);
-						var sentiment_index=span_id[1];
-						//todo
-						var currentIdeaLists= topicArray[topic_index][sentiment_index];
-	 					
-				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
-				{
-						//console.log(tmp);
-					tmp_id=(currentIdeaLists[tmp].id).split('-');
-					if(tmp_id[0] == span_id[2])
-					{
-						//console.log(currentIdeaLists[tmp].id);
-						var currentid=currentIdeaLists[tmp].id;
-							$(".idea-unit#"+currentid).removeClass("active");
-							if(all_idea_units[currentid].visited == true)
- 				 			{
- 				 				$(".idea-unit#"+span_id).addClass("visited");
- 				 			}
-							
-						}
-
-
- 				 }
-
-  				}
-	);
-
-************************/
 	$("span.idea-unit", "page-2").hover(
 
 		 	function() {
@@ -769,6 +825,19 @@ $.get('data1.html', null, function(text){
 });
 
 //var topics=[];
+
+
+function SelectFeedback(ids){
+
+	$(".feedback-cell").hide();
+
+	ids.forEach(function(id){
+		var person= id.split('-')[0];
+		$(".feedback-cell#person"+person).show();
+	});
+
+}
+
 
 function addOption(){
    
@@ -890,7 +959,7 @@ function print(par)
 }	
 
 
-function renderElement(){
+function renderElement2(){
 	
 	$("#paneltest").empty();
 	for (var topicKey in topicArray) {
@@ -917,6 +986,38 @@ function renderElement(){
 			sentimentNum++;
 		}
 		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderElement(){
+	
+	$("#paneltest").empty();
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+
+		var inser_html="";
+		
+		inser_html=inser_html+"<tr id='"+topicKey+"'><th scope='row' style='text-align:center;'>"+topicKey+"</th><td>";
+		var sentimentNum=0;
+		for (var sentimentKey in currentTopic) {
+
+			
+			inser_html+="<div class='row' id='sentiment"+sentimentKey+"'><div class='col-md-2'><b>"+sentimentKey+'</b></div><div class="col-md-10">';
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+				people_id++;
+			}
+			inser_html+="</div></div>";
+			sentimentNum++;
+		}
+		inser_html+="</td></tr>";
 		
 		$("#paneltest").append(inser_html);
 	}
@@ -994,6 +1095,7 @@ function renderFactualbk(){
 
 function renderInterpretation(){
 
+	var selectedID=[];
 	var numToString=['low','low','low','medium','high','high'];
 	
 	var checked_effort = [];
@@ -1029,6 +1131,7 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 			&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
 			&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
 		{
+			selectedID.push(key);
 			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").addClass('highlight');	
 		}
 		else
@@ -1037,49 +1140,11 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 		}		
 	}
 	
-  /*	for( i = 0; i < topicArray.length;i++)// looping the topic
-	{				
-		for( sentiment=0; sentiment < topicArray[i].length;sentiment++)//sentiment
-		{
-			 currentArray=topicArray[i][sentiment];
-
-			for(idx_unit=0; idx_unit<currentArray.length;idx_unit++)//idea units
-			{
-				var current_effort = numToString[currentArray[idx_unit].effort];
-				var current_criticality = numToString[currentArray[idx_unit].urgency];
-
-				var current_discussion = currentArray[idx_unit].discussion;
-				var current_agreement = currentArray[idx_unit].agree;
-
-				var content = currentArray[idx_unit].content;
-				var tmp=currentArray[idx_unit];
-				//console.log( current_effort, current_criticality, current_discussion,current_agreement);
-
-				//console.log(checked_effort.indexOf(current_effort),checked_criticality.indexOf(current_criticality),need_discussion.indexOf(current_discussion),agreement.indexOf(current_agreement));
-				//console.log(current_effort, checked_effort.indexOf(current_effort));
-				var people_id=(currentArray[idx_unit].id).split('-');
-
-				if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
-					&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
-					&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
-					&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
-				{
-					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass('highlight');	
-				}
-				else
-				{
-					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").removeClass('highlight');	
-				}	
-							
-			}
-			
-		}
-
-	}
-	*/
 }else{
 	$('.tableelement span').removeClass('highlight');
 }
+
+	SelectFeedback(selectedID);
 
 }
 
