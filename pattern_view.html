@@ -365,7 +365,44 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 </div>
 
 </div>
-<div id='all-feedback' style="display: none;"></div>
+<!------Show All Feedback--------------------------------------------------->
+<div id='all-feedback' style="display: none;">	
+<div class="container-fluid">
+	<div class="main-section" style="margin-top: 50px">
+
+<div class="alert alert-info" role="alert" >
+		<h4>Instruction</h4>
+	 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+
+	 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
+	</div>
+ 
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link " style="cursor: pointer;" onclick="filterFeedback();">Smart Review</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Action Plan</a>
+  </li>
+</ul>
+
+
+		<table class='table table-nonfluid'>
+	<table class='table table-nonfluid'>
+	<tbody id='feedback-list'>
+	</tbody>
+</table>
+	</table>
+	
+	</div>
+</div>
+
+</div>
+<!------End Show All Feedback--------------------------------------------------->
 
 <div id='page-2' style="display: none;">
 
@@ -383,11 +420,12 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
  
 
 <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" style="cursor: pointer;" onclick="SelectFeedback();">Filtered Feedback</a>
-  </li>
+
   <li class="nav-item">
     <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link active" style="cursor: pointer;" onclick="filterFeedback();">Smart Review</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Action Plan</a>
@@ -727,6 +765,7 @@ $("#range").slider({
 
 		$('#feedback-list', "div#page-2").append("<tr class='feedback-cell' id='person"+reviewer_i+"'><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
 
+		$('#feedback-list', "div#all-feedback").append("<tr class='feedback-cell' id='person"+reviewer_i+"'><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
 
 		$('.feedback-row#'+reviewer_i+'-0 [name="merge"]').hide();
 		
@@ -911,10 +950,12 @@ function SelectFeedback(){
 
 	
 	for (var key in visual_status) {
-		if(visual_status[key]==true){
 			var person= key.split('-')[2];
 			var sentiment= key.split('-')[1];
 			var topic= key.split('-')[0];
+
+		if(visual_status[key]==true){
+
 			$(".feedback-cell#person"+person).show();
 
 			for(var idea in all_idea_units){
@@ -927,12 +968,17 @@ function SelectFeedback(){
 			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
 			}
 
-
-
-			
-
-
-
+		}else
+		{
+			for(var idea in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=idea.split('-');
+			if( (tmp_id[0] == person)&&(sentiment==all_idea_units[idea]['sentiment'])&&(topic == all_idea_units[idea]['topic']))
+			{				
+				$("span.idea-unit#"+idea, "#page-2").css("background","");
+		
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+			}
 		}
 		
 	}
@@ -943,8 +989,17 @@ function SelectFeedback(){
 
 
 function showAll(){
+	$("div#page-2").hide();
 
-	$(".feedback-cell").show();
+	$("div#all-feedback").show();
+
+}
+
+
+function filterFeedback(){
+	SelectFeedback();
+	$("div#page-2").show();
+	$("div#all-feedback").hide();
 
 }
 
@@ -1014,7 +1069,7 @@ function finishAnnoate(){
 	renderElement();
 	renderFactual();
 
-	$('#page-2').show();
+	$('#all-feedback').show();
 	$('#page-1').hide();
 }
 
