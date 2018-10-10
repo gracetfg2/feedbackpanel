@@ -22,7 +22,7 @@
 	<!-- Custom styles for this template -->
 	<link href="css/bootstrap-slider.css" rel="stylesheet">
 	<script src="dist/js/bootstrap-slider.js"></script>
-
+		<script src="labeled.js"></script>
 
 <style>
         .droptarget {
@@ -91,6 +91,32 @@ p.fail{
 	display: inline-block;
 	font-weight: bold;
 }
+
+/* Interactive Bar */
+
+.interactive-bar {
+	padding: 2px 0px;
+	height: 30px;
+}
+
+.outer-bar {
+	background-color: #F0F0F0;
+	float: left;
+}
+
+.inner-bar {
+	background-color: cornflowerblue;
+}
+
+.inner-bar.bar-dragging {
+	background-color: lightblue;
+}
+
+.bar-num {
+    float: left;
+    width: 30px;
+}
+
 </style>
 
 </head>
@@ -399,7 +425,7 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
   </div>
 </div>
 
-<div class="col-md-4">
+<div id="controlPanel" class="col-md-4">
 
 <div class="card">
 	     <div class="card-header">
@@ -457,7 +483,7 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 
 
 <!--Panel-->
-<table class="table" style="font-size: 20px">
+<table id="topicPanel" class="table" style="font-size: 20px">
 	<thead>
     <tr>
       <th scope="col">Topic</th>
@@ -474,7 +500,7 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 
 </div>
 
-<div class="col-md-8"> 
+<div id="feedbackPanel" class="col-md-8"> 
 		
 
 <ul class="nav nav-tabs">
@@ -531,13 +557,14 @@ function LoadData(){
 //GET DATA
 
 
-//var all_idea_units = {}
+var all_idea_units = {}
 var number_of_providers=0;
 
 //var topicName=['image','layout'];
 var sentimentName=['strength','weakness','neutral'];
 var topicArray={};
 var topics=[];
+
 
 class LabelClass {
   constructor(topic, sentiment, criticality,effort, discussion, agree, visited) {
@@ -554,14 +581,11 @@ class LabelClass {
 
 
 
-
-
-
-
-
 $(function(){
-	$('#page-2').show();
-	$('#page-1').hide();
+
+
+
+	
 	//all_idea_units=labeled;
 //
 
@@ -893,8 +917,11 @@ $("#range").slider({
 
 
 
-
-
+	/*****
+		Prediction Panel
+	*****/
+	adjust_page_layout();
+	renderPredictionPanel($('#topicPanel tbody'), topicArray);
 
 	
 
@@ -995,6 +1022,8 @@ function backAnnotate(){
     
 function createTopicArray()
 {
+
+	all_idea_units=labeled;
 	topicArray={};
 	//var number_of_idea= Object.keys(all_idea_units).length;
 	for (var key in all_idea_units) {
@@ -1068,6 +1097,9 @@ function renderElement2(){
 }
 
 function renderElement(){
+
+
+
 	
 	$("#paneltest").empty();
 	for (var topicKey in topicArray) {
@@ -1223,6 +1255,160 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 	SelectFeedback(selectedID);
 
 }
+
+/*****
+	Prediction Panel
+*****/
+
+function adjust_page_layout() {
+	finishAnnoate();
+	$('#controlPanel').attr('class', 'col-md-12');
+	$('#controlPanel .card').hide();
+	$('#feedbackPanel').hide();
+	$('#topicPanel thead tr')
+	    .empty()
+	    .append($('<th scope="col">').html('Topic'))
+	    .append($('<th scope="col">').html('Sentiment'))
+	    .append($('<th scope="col">').html('My Prediction of Feedback Amount'))
+	    .append($('<th scope="col" style="opacity: 0">').html('Actual Feedback Amount'));
+	$('#topicPanel tbody').empty();
+}
+
+// assume global variable: N/A
+function renderPredictionPanel($tbody, topicDictionary, max_num) {
+	for (var topicKey in topicDictionary) {
+		var currentTopic = topicDictionary[topicKey];
+
+		$tr = $('<tr>').attr('id', topicKey);
+
+		// topic col
+		$tr.append($('<th scope="row" style="text-align: center;">').html(topicKey));
+
+		// sentiment col
+		$td_sentiment = $('<td>');
+		for (var sentimentKey in currentTopic) {
+			$td_sentiment.append($('<div>').html(sentimentKey));
+		}
+		$tr.append($td_sentiment);
+
+		// prediction col
+		$td_prediction = $('<td>');
+		for (var sentimentKey in currentTopic) {
+			$td_prediction.append($('<div>').append(createInterativeBar({'max_num':max_num, 'id': topicKey + '_' + sentimentKey})));
+		}
+
+		$tr.append($td_prediction);
+
+		$tbody.append($tr);
+		
+
+
+		// var inser_html="";
+		
+		// inser_html=inser_html+"<tr id='"+topicKey+"'><th scope='row' style='text-align:center;'>"+topicKey+"</th><td>";
+		// var sentimentNum=0;
+		// for (var sentimentKey in currentTopic) {
+
+			
+		// 	inser_html+="<div class='row' id='sentiment"+sentimentKey+"'><div class='col-md-2'><b>"+sentimentKey+'</b></div><div class="col-md-10">';
+		// 	var people_id=1;
+		// 	for(var index=0; index<number_of_providers;index++)// lopping the topic
+		// 	{
+		// 		inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+		// 		people_id++;
+		// 	}
+		// 	inser_html+="</div></div>";
+		// 	sentimentNum++;
+		// }
+		// inser_html+="</td></tr>";
+		
+		// $("#paneltest").append(inser_html);
+	}
+}
+
+// return a jQuery object containing an interactive bar
+// options = {  // default values
+//   height: 20,
+//   width: 100,
+//   max_num: 10,
+//   color: 'blue' 
+// }
+function createInterativeBar(options) {
+	if (options === undefined) options = {};
+	var outer_bar_width = options.width || 300;
+	var height = options.height || '100%';
+	var max_num = options.max_num || 10;
+	var bar_color = options.bar_color; // once it is defined, the CSS default color will not apply
+	var bar_bg_color = options.bar_bg_color;
+	var init_num = options.init_num || 1;
+
+	// append outer bar first to get the actual width
+
+	var $div = $('<div class="interactive-bar">');
+	if (options.id) $div.attr('id', options.id);
+	$div.append($('<div class="bar-num">').html(init_num));
+	var $outer_bar = $('<div class="outer-bar">')
+	    .css({'width': outer_bar_width, 'height': height, 'background-color': bar_bg_color})
+	    .attr('data-bar-num', init_num);
+	(function() {
+		var _bar_id = options.id;
+		var _element_offset = null; // set in mousedown
+		var _dragging = false;
+		var _num = init_num;
+		$outer_bar.on('mousedown', function(e){
+			_dragging = true;
+			_element_offset = $(this).offset(); 
+			var percent = (e.pageX - _element_offset.left) / outer_bar_width * 100;
+			$(this).parent().find('.bar-num').html(nearestNandP(percent, max_num).n);
+			$('.inner-bar', $(this)).css('width', nearestNandP(percent, max_num).p + '%');
+			_num = nearestNandP(percent, max_num).n; // store value on mousedown and mouseup
+			$(this).attr('data-bar-num', _num); // store value on the outer-bar data-bar-num attribute
+		});
+		$outer_bar.on('mousemove', function(e){
+			if (_element_offset === null) { _element_offset = $(this).offset(); }
+			if (_dragging) {
+				var percent = (e.pageX - _element_offset.left) / outer_bar_width * 100;
+				$(this).parent().find('.bar-num').html(nearestNandP(percent, max_num).n);
+				$('.inner-bar', $(this)).css('width', nearestNandP(percent, max_num).p + '%');
+			};
+		});
+		$outer_bar.on('mouseup', function(e){
+			// console.log(e.type);
+			_dragging = false;
+			var percent = (e.pageX - _element_offset.left) / outer_bar_width * 100;
+			_num = nearestNandP(percent, max_num).n; // store value on mousedown and mouseup
+			$(this).attr('data-bar-num', _num); // store value on the outer-bar data-bar-num attribute
+		})
+		$outer_bar.on('mouseenter', function(e){
+			$('.inner-bar', $(this)).addClass('bar-dragging');
+		});
+		$outer_bar.on('mouseleave', function(e){
+			_dragging = false;
+			$(this).parent().find('.bar-num').html(_num);
+			$('.inner-bar', $(this)).css('width', _num / max_num * 100 + '%');
+			$('.inner-bar', $(this)).removeClass('bar-dragging');
+		});
+
+	})();
+	
+	var $inner_bar = $('<div class="inner-bar">').css({'width': init_num / max_num * 100 + '%', 'height': height, 'background-color': bar_color});
+
+	return $div.append($outer_bar.append($inner_bar));
+}
+
+// n = Math.round(max_num * percent / 100), p = n/max_num*100
+function nearestNandP(percent, max_num) {
+	var n = Math.round(max_num * percent / 100);
+	return {
+		'n': n,
+		'p': n/max_num * 100
+	};
+}
+
+
+
 
 
 </script>
