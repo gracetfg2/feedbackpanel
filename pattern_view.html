@@ -123,6 +123,7 @@ table.topic-people td{
 }
 
 .tooltip-inner {
+	text-align: left;
 	background-color: white;
 	color: black;
 	max-width: 550px;
@@ -963,7 +964,7 @@ function getIdeaUnits(topic_key, sentiment_key, people_id) {
 			idea_units.push(idea_unit['content']);
 		}
 	}
-	return idea_units.join('<br>');
+	return '<ul>' + idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>';
 }
 
 //var topics=[];
