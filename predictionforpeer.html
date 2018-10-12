@@ -22,7 +22,7 @@
 	<!-- Custom styles for this template -->
 	<link href="css/bootstrap-slider.css" rel="stylesheet">
 	<script src="dist/js/bootstrap-slider.js"></script>
-		<script src="marathono.js"></script>
+		<script src="labeled.js"></script>
 
 <style>
         .droptarget {
@@ -130,32 +130,6 @@ p.fail{
 	background-color: lightblue;
 }
 
-
-.strength-bar .inner-bar {
-	background-color: #004d00;
-}
-
-.strength-bar .inner-bar.bar-dragging {
-	background-color: lightblue;
-}
-
-
-.weakness-bar .inner-bar {
-	background-color: #990000;
-}
-
-.weakness-bar .inner-bar.bar-dragging {
-	background-color: lightblue;
-}
-
-.neutral-bar .inner-bar {
-	background-color: #004080;
-}
-
-.neutral-bar .inner-bar.bar-dragging {
-	background-color: lightblue;
-}
-
 .topic-highlight {
 	background-color: lightgoldenrodyellow;
 }
@@ -178,10 +152,6 @@ p.fail{
 	display: none;
 	width: 400px;
 	/*padding-left: 0px;*/ /* so the 'background color' across to .predict-col would connect */
-}
-
-#topicPanel .reflect-col {
-	display: none;
 }
 
 td.reflect-col {
@@ -642,7 +612,7 @@ function LoadData(){
 
 function gotoPanel(){
 
-	window.location.href = "marathon_pattern.html";
+	window.location.href = "pattern_view.html";
 }
 //GET DATA
 
@@ -1360,8 +1330,7 @@ function adjust_page_layout() {
 	    .append($('<th scope="col" style="width: 200px">').html('Sentiment'))
 	    .append($('<th scope="col" class="predict-col">').html('My Prediction of Feedback Amount'))
 	    .append($('<th scope="col" class="actual-col">').html('Actual Feedback Amount'))
-	    .append($('<th scope="col" style="opacity: 0">'));
-	    // .append($('<th scope="col" class="reflect-col">').html('What things surprise you?'));
+	    .append($('<th scope="col" class="reflect-col">').html('What things surprise you?'));
 	$('#topicPanel tbody').empty();
 	$('#topicPanel').parent().append(
 		$('<button id="proceedButton" class="btn btn-secondary centered-button" onclick="gotoPanel();">').html('Next').css('display', 'none')
@@ -1381,8 +1350,8 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 	}
 	// assume the div already exists in html
 	$('div#ideaUnitSummary').html(
-		'<span style="font-size:32px">Number of statements:<br> ' +
-		Object.keys(sentiment_num).map(key => '<b>'+key+':</b> '+sentiment_num[key]).join('<br>') +'</span><br>'
+		'Number of idea units: ' +
+		Object.keys(sentiment_num).map(key => '<b>'+key+':</b> '+sentiment_num[key]).join(' ')
 	);
 
 	// display each topic in a row in the table
@@ -1407,8 +1376,7 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 		for (var sentimentKey in currentTopic) {
 			$td_prediction.append($('<div>').append(createInterativeBar({
 				'max_num':max_num, 
-				'id': topicKey + '_' + sentimentKey,
-				'bar_class_name': sentimentKey + '-bar'
+				'id': topicKey + '_' + sentimentKey
 			})));
 		}
 		$tr.append($td_prediction);
@@ -1420,8 +1388,7 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 			$td_actual.append($('<div>').append(createInterativeBar({
 				'max_num':max_num, 
 				'init_num': topic_dictionary[topicKey][sentimentKey].length || 0,
-				// 'bar_class_name': 'actual-bar',
-				'bar_class_name': sentimentKey + '-bar',
+				'bar_class_name': 'actual-bar',
 				'editable': false,
 				'id': topicKey + '_' + sentimentKey + '_actual'
 			})));
@@ -1430,7 +1397,7 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 
 		// reflect col
 		if (first_row) {
-			$td_reflect = $('<td class="reflect-col" rowspan=100>').append('<h4>What things surprise you?</h3><textarea class="form-control">'); // assume # of rows <= 100
+			$td_reflect = $('<td class="reflect-col" rowspan=100>').append('<textarea class="form-control">'); // assume # of rows <= 100
 			$tr.append($td_reflect);
 			first_row = false;
 		};
@@ -1542,8 +1509,8 @@ function highlight_prediction_discrepancy(topicDictionary, discrepancy_threshold
 				$('#'+actual_id).addClass('bar-highlight');
 			}
 			else {
-				// $('#'+predicted_id).css('opacity', 0.6);
-				// $('#'+actual_id).css('opacity', 0.6);
+				$('#'+predicted_id).css('opacity', 0.6);
+				$('#'+actual_id).css('opacity', 0.6);
 			}
 		}
 	}
