@@ -1434,7 +1434,7 @@ function createInterativeBar(options) {
 	var bar_color = options.bar_color; // once it is defined, the CSS default color will not apply
 	var bar_bg_color = options.bar_bg_color;
 	var bar_class_name = options.bar_class_name;
-	var init_num = (options.init_num === undefined)? 1 : options.init_num;
+	var init_num = (options.init_num === undefined)? 0 : options.init_num;
 	var editable = (options.editable === undefined)? true : options.editable;
 
 	// append outer bar first to get the actual width
