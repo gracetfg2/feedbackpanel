@@ -22,7 +22,7 @@
 	<!-- Custom styles for this template -->
 	<link href="css/bootstrap-slider.css" rel="stylesheet">
 	<script src="dist/js/bootstrap-slider.js"></script>
-		<script src="marathono.js"></script>
+		<script src="labeled.js"></script>
 
 <style>
         .droptarget {
@@ -612,7 +612,7 @@ function LoadData(){
 
 function gotoPanel(){
 
-	window.location.href = "marathon_pattern.html";
+	window.location.href = "pattern_view.html";
 }
 //GET DATA
 
@@ -1350,8 +1350,8 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 	}
 	// assume the div already exists in html
 	$('div#ideaUnitSummary').html(
-		'<span style="font-size:32px">Number of statements:<br> ' +
-		Object.keys(sentiment_num).map(key => '<b>'+key+':</b> '+sentiment_num[key]).join('<br>') +'</span><br>'
+		'Number of idea units: ' +
+		Object.keys(sentiment_num).map(key => '<b>'+key+':</b> '+sentiment_num[key]).join(' ')
 	);
 
 	// display each topic in a row in the table
