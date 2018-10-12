@@ -154,17 +154,22 @@ p.fail{
 	/*padding-left: 0px;*/ /* so the 'background color' across to .predict-col would connect */
 }
 
-.reflect-col {
+td.reflect-col {
 	display: none;
+	background-color: white;
 }
 
 .reflect-col textarea {
-	height: 90px;
+	height: 300px;
 	resize: none;
 }
 
 .table.table-nonfluid {
    width: auto;
+}
+
+#ideaUnitSummary {
+	font-size: 20px;
 }
 
 </style>
@@ -533,6 +538,8 @@ I like the idea and the simplicity of the prototype. I know you guys said that t
 
 
 <!--Panel-->
+<!-- Show idea unit summary -->
+<div id="ideaUnitSummary"></div>
 <table id="topicPanel" class="table" style="font-size: 20px">
 	<thead>
     <tr>
@@ -1333,6 +1340,22 @@ function adjust_page_layout() {
 
 // assume global variable: N/A
 function renderPredictionPanel($tbody, topic_dictionary, max_num) {
+	// display idea unit summary (# of strength, weakness, neutral), based on the second level key from topic_dictionary
+	var sentiment_num = {}
+	for (var topicKey in topic_dictionary) {
+		for (var sentimentKey in topic_dictionary[topicKey]) {
+			if (!(sentimentKey in sentiment_num)) { sentiment_num[sentimentKey] = 0; };
+			sentiment_num[sentimentKey] += topic_dictionary[topicKey][sentimentKey].length;
+		}
+	}
+	// assume the div already exists in html
+	$('div#ideaUnitSummary').html(
+		'Number of idea units: ' +
+		Object.keys(sentiment_num).map(key => '<b>'+key+':</b> '+sentiment_num[key]).join(' ')
+	);
+
+	// display each topic in a row in the table
+	var first_row = true;
 	for (var topicKey in topic_dictionary) {
 		var currentTopic = topic_dictionary[topicKey];
 
@@ -1373,8 +1396,11 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 		$tr.append($td_actual);
 
 		// reflect col
-		$td_reflect = $('<td class="reflect-col">').append('<textarea class="form-control">');
-		$tr.append($td_reflect);
+		if (first_row) {
+			$td_reflect = $('<td class="reflect-col" rowspan=100>').append('<textarea class="form-control">'); // assume # of rows <= 100
+			$tr.append($td_reflect);
+			first_row = false;
+		};
 
 		$tbody.append($tr);
 	}
@@ -1388,7 +1414,8 @@ function renderPredictionPanel($tbody, topic_dictionary, max_num) {
 	});
 	$last_row = $('<tr><th><td>');
 	$last_row.append($('<td>').append($finish_button));
-	$last_row.append($('<td>'));
+	$last_row.append($('<td>').addClass('actual-col'));
+	$last_row.append($('<td>').addClass('reflect-col'));
 	$tbody.append($last_row);
 }
 
