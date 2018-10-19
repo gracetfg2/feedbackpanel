@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+  
+    <title>Prototype</title>
+  
+    <!-- For tooltip -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- d3, for color gradient -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+
+	<script type="text/javascript" src="bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!-- the link below is too slow -->
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+	<!-- Custom styles for this template -->
+	<link href="css/bootstrap-slider.css" rel="stylesheet">
+
+	<script src="dist/js/bootstrap-slider.js"></script>
+	<script src="marathono.js"></script>
+
+<style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+		.visited { 
+		    background-color: lightgrey;
+		}
+
+	
+		.highlight{
+			color: blue !important;;
+		}
+
+		.active-icon{
+			color: red !important;
+		}
+
+.active-text{
+	/*background-color: yellow !important;*/
+	border: 4px solid grey;
+}
+.vis-content{
+	text-align: justify; 
+	padding-bottom:10px; 
+	padding-right:25px;
+}
+
+p.success{
+	color:green;
+}
+p.fail{
+	color:red;
+}
+
+.original-feedback{
+	margin: 10px;
+	font-size: 20px;
+}
+
+
+
+.topic-row{
+	text-align: center;
+}
+
+.topic-field{
+	display: inline-block;
+	font-weight: bold;
+}
+
+.tableelement {
+	/*width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+    cursor: pointer;
+    margin: 3px;
+    overflow:auto;
+    font-size: 12px;
+*/
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+   	cursor: pointer;
+    margin: 3px;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 4px 3px 0 3px;
+    text-align: center;
+    min-width: 14px;
+}
+
+table.topic-people{
+	border: 0px;
+}
+table.topic-people td{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	border: 0;
+
+}
+
+.tableelement.selectElement{
+	 box-shadow: 0 0 2pt 2pt grey; 
+}
+
+.human-figure{
+	color:grey; font-size:32px; margin:6px
+}
+
+.tooltip-inner {
+	text-align: left;
+	background-color: white;
+	color: black;
+	max-width: 550px;
+	font-size: 2rem;
+	border: 1px black solid;
+}
+
+.card .topic-name{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.float-right{
+	float: right;
+}
+</style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+<!------Show All Feedback--------------------------------------------------->
+<div id='all-feedback'>	
+<div class="container-fluid">
+<div class="main-section" style="margin-top: 50px">
+
+		<!--<div class="alert alert-info" role="alert" >
+		<h4>Instruction</h4>
+		 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+		 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
+		</div>-->
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link " style="cursor: pointer;" onclick="smartView();">Smart Review</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Action Plan</a>
+  </li>
+</ul>
+
+
+<table class='table table-nonfluid'>
+	<tbody id='feedback-list'>
+	</tbody>
+</table>
+	
+	</div>
+</div>
+
+</div>
+<!------End Show All Feedback--------------------------------------------------->
+
+<div id='page-2' style="display: none;" class="container-fluid">
+	<div class="main-section" style="margin-top: 50px">
+		<!--<div class="alert alert-info" role="alert" >
+		<h4>Instruction</h4>
+		 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+		 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
+		</div>-->
+ 
+		<ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
+		  </li>
+		    <li class="nav-item">
+		    <a class="nav-link active" style="cursor: pointer;" onclick="smartView();">Smart Review</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link disabled" href="#">Action Plan</a>
+		  </li>
+		</ul>
+
+	<div class="row">    
+	<!--Side bar sticky panel-->
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          	<div class='filter-header'>Agreement</div>
+              	<div class="form-check side-filter">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				  <label class="form-check-label" for="defaultCheck1">
+				    Strongly Agree
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+				  <label class="form-check-label" for="defaultCheck2">
+				    Agree
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+				  <label class="form-check-label" for="defaultCheck2">
+				    Not Sure
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+				  <label class="form-check-label" for="defaultCheck2">
+				    Disgree
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+				  <label class="form-check-label" for="defaultCheck2">
+				    Strongly Disgree
+				  </label>
+				</div>
+		</div>
+	</nav>
+	<!--End of Side bar sticky panel-->
+
+	<!--Circle Panel-->
+ 	<div class="col-md-5 ml-sm-auto col-lg-6 px-4">
+		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
+		<div id="paneltest">
+		</div>
+	
+	</div>
+	
+	<div id="action-panel" class="col-md-4 ml-sm-auto col-lg-4 ">
+		<div style="border-style: solid;  border-color:lightgrey; margin-top: 10px; border-radius: 5%;padding: 20px; height: 600px">		
+			<h3>Action Items</h3>	  
+			<hr>  
+			<div class="form-row align-items-center">
+				
+				<div class="col-sm-10 my-1">
+    				 <textarea class="form-control" id="" rows="2" placeholder="E.g. Change the title font to a bolder one."></textarea>
+   				</div>
+
+				<div class="col-auto my-1">
+			      <button type="submit" id="new-action" class="btn btn-secondary">Add</button>
+			    </div>
+			</div>
+			<hr> 
+			<div id="action-items">
+				<div class="card">
+				  <div class="card-header">
+				   	<span style="font-weight: bold;">Item #1</span>
+				    <div style="float: right;">
+				    	<button type="submit" id="new-action" class="btn btn-secondary">Edit</button>
+				    	<button type="submit" id="new-action" class="btn btn-secondary">Remove</button>
+					</div>
+				  </div>
+				  <div class="card-body">
+				    <h5 class="card-title">Related Feedback</h5>
+				    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				 <div data-toggle="tooltip" title="" class="tableelement" id="Image-weakness-1" data-original-title="<ul><li> The runner looks as if they are floating. I get the idea, but it looks a bit fake.</li></ul>" style="background-color: rgb(235, 163, 163);"></div>
+				  </div>
+				</div>
+			</div>
+	    </div>
+ 	 </div>
+			
+		</div>
+	
+	</div>
+	<!--End Circle Panel-->
+	</div><!--End main row in page 2-->
+</div><!--end of main-section in page 2-->
+
+
+<template id="collapseTable">
+
+  <div class="card" style="width:100%">
+    <div class="card-header" id="">
+	    <div class="row">
+	    	<div class='topic-name col'></div>
+	    	<div class='col'><span class="badge badge-success">Positive</span></div>
+	    	<div class='col'><span class="badge badge-info">Neutral</span></div>
+	    	<div class='col'><span class="badge badge-warning">Negative</span></div>
+	    	<div><button class="btn" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls=""></button></div>
+        </div>
+    </div>
+
+    <div name="topic-element" class="collapse" aria-labelledby="" data-parent="#paneltest">
+      <div class="card-body">    
+      </div>
+    </div>
+  </div>
+
+
+</template>
+
+
+
+</div><!--end of page 2-->
+<!--remove
+
+-->
+
+		
+</div>
+
+
+<script>
+
+//Get dataset
+
+
+//GET DATA
+var sentimentColor= {'strength':'#99ff99','weakness':'#ffcccc','neutral':'#99ccff'};
+
+var sentimentColorScale = {
+	'strength': d3.scaleLinear().range(['#ccffcc', '#004d00']).domain([0, 5]),
+	'weakness': d3.scaleLinear().range(['#ffcccc', '#990000']).domain([0, 5]),
+	'neutral': d3.scaleLinear().range(['#e6f2ff', '#004080']).domain([0, 5])
+}
+
+var all_idea_units = {};
+var number_of_providers=0;
+
+var visual_status = {};
+//var topicName=['image','layout'];
+var sentimentName=['strength','neutral', 'weakness'];
+var topicArray={};
+var topics=[];
+var selectedFigure=[];
+
+$(function(){
+
+	all_idea_units=labeled;	
+
+	number_of_providers=getTotalProviders();
+	showAll();
+		//finishAnnoate();
+
+// Page 2
+
+
+	$("div#page-2").on('click', ".filter-input", function(){
+
+		renderInterpretation();
+
+	});
+
+
+
+	$(document).on('input', '.filter-attibute', function() {
+		//alert("haha");
+	    filterResult();
+	});
+
+	$("div#page-2").on('click','.tableelement', function() {
+		
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				console.log(key);
+		//todo
+				//$("span.idea-unit#"+key, "#page-2").addClass("visited");
+				all_idea_units[key].visited=true; 
+				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+
+		if(visual_status[$(this).attr("id")] == false){
+			$(this).addClass("selectElement");
+			visual_status[$(this).attr("id")]=true;
+			//alert(visual_status[$(this).attr("id")]);
+		}else{
+			$(this).removeClass("selectElement");
+				visual_status[$(this).attr("id")]=false;
+		}
+
+		SelectFeedback(visual_status);
+
+	})
+
+	$("div#page-2").on('mouseenter','.tableelement', function() {
+		
+
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		console.log(span_id);
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				$("span.idea-unit#"+key, "#page-2").addClass("active-text");
+				//all_idea_units[key].visited=true; 
+				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+	});
+
+	$("div#page-2").on('mouseleave','.tableelement', function() {
+		
+	    $("span.idea-unit", "#page-2").removeClass("active-text");
+	    
+	  
+	});
+
+
+	//$("div#page-1").on('click','.add-btn', addOption);
+
+	
+	$("span.idea-unit", "page-2").hover(
+
+		 	function() {
+		 		
+  				var span_id = $(this).attr("id");
+  				var people_id=span_id.split('-');
+  				console.log(span_id);
+				for(var i=0; i<topicArray.length;i++)// lopping the topic
+				{				
+					for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+					{
+						var currentArray=topicArray[i][sentiment];
+						for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+						{
+							
+							if(span_id == currentArray[idx_unit].id){
+								console.log("get it");
+								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
+				
+							}
+							
+						}		
+					}
+
+				}
+						
+			},
+			function() {
+				$(".tableelement > span").removeClass("active-icon");
+			}
+	);
+
+
+});
+
+function getTotalProviders()
+{
+	var total_provider=0;
+	
+
+	for(var key in all_idea_units){
+		var tmp_id=key.split('-');
+		if(tmp_id[0]>total_provider) 
+			total_provider=tmp_id[0];
+	}
+	return total_provider;
+}
+
+function renderFeedbackTable(){
+	for(var key in all_idea_units){
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				$("span.idea-unit#"+key, "#page-2").addClass("active-text");
+				//all_idea_units[key].visited=true; 
+				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+}
+
+
+function getIdeaUnits(topic_key, sentiment_key, people_id) {
+	console.log(topic_key, sentiment_key, people_id);
+	var idea_units = [];
+	for (idea_unit_key in all_idea_units) {
+		var idea_unit = all_idea_units[idea_unit_key];
+		var idea_people_id = parseInt(idea_unit_key.split('-')[0]);
+		if (idea_people_id === people_id && idea_unit['topic'] === topic_key && idea_unit['sentiment'] === sentiment_key) {
+			idea_units.push(idea_unit['content']);
+		}
+	}
+	return idea_units;
+}
+
+//var topics=[];
+
+
+function SelectFeedback(){
+
+	$(".feedback-cell").hide();	
+	for (var key in visual_status) {
+			var person= key.split('-')[2];
+			var sentiment= key.split('-')[1];
+			var topic= key.split('-')[0];
+
+		if(visual_status[key]==true){
+
+			$(".feedback-cell#person"+person).show();
+
+			for(var idea in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=idea.split('-');
+			if( (tmp_id[0] == person)&&(sentiment==all_idea_units[idea]['sentiment'])&&(topic == all_idea_units[idea]['topic']))
+			{				
+				$("span.idea-unit#"+idea, "#page-2").css("background",sentimentColor[sentiment]);		
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+			}
+		}else
+		{
+			for(var idea in all_idea_units){
+				//console.log(tmp);
+				var tmp_id=idea.split('-');
+				if( (tmp_id[0] == person)&&(sentiment==all_idea_units[idea]['sentiment'])&&(topic == all_idea_units[idea]['topic']))
+				{				
+					$("span.idea-unit#"+idea, "#page-2").css("background","");		
+				} 
+			}
+		}
+		
+	}
+
+}
+
+
+
+
+function getWholeFeedback(reviewer_id){
+	var text_vis_table=''; 
+	$.each(all_idea_units, function(key, value) { 
+  		var provider=key.split('-')[0];
+  		if(provider==reviewer_id)
+  		{
+  			text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + key + "'>" + value['content'] + "</span>";
+		
+  		}
+	
+	});
+			
+	return text_vis_table;
+}
+
+function showAll()
+{
+	
+
+	for(var index=1;index <= number_of_providers; index++)
+	{
+			$('#feedback-list', "div#all-feedback").append("<tr class='feedback-cell' id='person"+index+"'><td><strong>#"+index+"</strong></td><td class='vis-content'>"+ getWholeFeedback(index)+"</td></tr>");
+	}
+
+	$("div#page-2").hide();
+	$(".feedback-cell","div#all-feedback").show();	
+	$("div#all-feedback").show();
+
+}
+
+
+function smartView(){
+	finishAnnoate();
+	SelectFeedback();
+	$("div#page-2").show();
+	$("div#all-feedback").hide();
+
+}
+
+
+
+
+function finishAnnoate(){
+
+	createTopicArray();
+	renderElement();
+	renderFactual();
+
+}
+
+//For page 2
+    
+function createTopicArray()
+{
+	//all_idea_units=labeled;
+
+	topicArray={};
+	//var number_of_idea= Object.keys(all_idea_units).length;
+	for (var key in all_idea_units) {
+    // check if the property/key is defined in the object itself, not in parent
+    //console.log(all_idea_units[key]['topic']);
+    var current_topic=all_idea_units[key]['topic'];
+    var current_sentiment=all_idea_units[key]['sentiment'];
+    //console.log(current_topic,current_sentiment );	
+    	if(current_topic!=null && current_sentiment!=0){
+	    	if(!(current_topic in topicArray))
+	    	{
+	    		var currentArray={};
+	    		sentimentName.forEach(function(element) {
+  					currentArray[element] =new Array();
+				});
+
+	    		topicArray[current_topic] = currentArray;
+	    	}
+	    	topicArray[current_topic][current_sentiment].push(all_idea_units[key]);
+	    	//console.log(JSON.stringify(topicArray));
+		}
+
+
+		
+
+    }
+}
+
+function renderElement(){
+	
+	$("#paneltest").empty();
+
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+		
+		var inser_html="";	
+		//Render human icons
+		inser_html+="<table border='0' class='topic-people'><tr><td></td>";
+		var people_id=1;
+		for(var index=0; index<number_of_providers;index++)// lopping the topic
+		{
+			inser_html=inser_html+"<td><span class='fa fa-user human-figure'></span></td>";
+				people_id++;
+		}
+		inser_html+="</tr>";
+	
+		for (var sentimentKey in currentTopic) {
+			
+			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='15%'><b>"+sentimentKey+'</b></td>';
+			people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				var currentID=topicKey+'-'+sentimentKey+'-'+people_id;
+				var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
+				var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
+				if (people_id===3) console.log(associated_idea_units);
+
+				$td = $('<td>').append(
+				          $('<div>')
+				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
+				          .attr('title', associated_idea_units_string)
+				          .html(people_id)
+				          .attr('class', 'badge tableelement')
+				          .attr('id', currentID));
+				inser_html += $td.prop("outerHTML");
+
+
+				// inser_html=inser_html+"<td><div data-toggle='tooltip' title=\""+associated_idea_units_string+"\" class='tableelement' id='"+currentID+"'></div></td>";
+				people_id++;
+
+				visual_status[currentID]=false;
+			}
+			inser_html+="</tr>";
+			
+		}
+		inser_html+="</table>";
+		
+
+		var current_collapsed_table = $($('template#collapseTable').html());
+	var $template = $('#template');
+        var node = $template.prop('content');
+        var $content = $(node).find('div');
+
+
+
+
+		$('.topic-name', current_collapsed_table).html(topicKey);
+		$('.card-header', current_collapsed_table).attr('id','card-'+topicKey);
+		//$('a', current_collapsed_table).attr('href','#content-'+topicKey);
+		$('button', current_collapsed_table).attr('data-target','#content-'+topicKey);
+		$('button', current_collapsed_table).attr('aria-controls','content-'+topicKey);
+		$('button', current_collapsed_table).html("<span class='fa fa-plus'></span>");
+		$('[name=topic-element]', current_collapsed_table).attr('id','content-'+topicKey );
+		$('[name=topic-element] .card-body', current_collapsed_table).html(inser_html);
+		$('[name="collapsedContent"]', current_collapsed_table).attr('aria-labelledby','card-'+topicKey);
+
+		$("#paneltest").append(current_collapsed_table);
+	}
+
+	// enable tooltips
+	$('#paneltest div[data-toggle]').tooltip({'html': true});
+}
+
+function renderElement2(){
+	
+	$("#paneltest").empty();
+
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+		var inser_html="";
+	
+		inser_html=inser_html+"<tr id='"+topicKey+"'><th scope='row' style='text-align:center;'>"+topicKey+"</th><td>";
+		//Render human icons
+		inser_html+="<table border='0' class='topic-people'><tr><td></td>";
+		var people_id=1;
+		for(var index=0; index<number_of_providers;index++)// lopping the topic
+		{
+			inser_html=inser_html+"<td><span class='fa fa-user human-figure'></span></td>";
+				people_id++;
+		}
+		inser_html+="</tr>";
+	
+		for (var sentimentKey in currentTopic) {
+			
+			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='15%'><b>"+sentimentKey+'</b></td>';
+			people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				var currentID=topicKey+'-'+sentimentKey+'-'+people_id;
+				var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
+				var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
+				if (people_id===3) console.log(associated_idea_units);
+
+				$td = $('<td>').append(
+				          $('<div>')
+				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
+				          .attr('title', associated_idea_units_string)
+				          .attr('class', 'tableelement')
+				          .attr('id', currentID));
+				inser_html += $td.prop("outerHTML");
+
+
+				// inser_html=inser_html+"<td><div data-toggle='tooltip' title=\""+associated_idea_units_string+"\" class='tableelement' id='"+currentID+"'></div></td>";
+				people_id++;
+
+				visual_status[currentID]=false;
+			}
+			inser_html+="</tr>";
+			
+		}
+		inser_html+="</table></td></tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+
+	// enable tooltips
+	$('#paneltest div[data-toggle]').tooltip({'html': true});
+}
+function renderFactual(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		//console.log("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]);
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		    .css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
+
+}
+	
+
+function filterResult(){
+
+}
+
+
+function renderInterpretation(){
+
+	var selectedID=[];
+	var numToString=['low','low','low','medium','high','high'];
+	
+	var checked_effort = [];
+	var checked_criticality = [];
+	var need_discussion = [];
+	var agreement = [];
+
+
+	$('input[name=effort]:checked').each(function() {checked_effort.push($(this).attr('value'));});
+	$('input[name=criticality]:checked').each(function() {checked_criticality.push($(this).attr('value'));});
+	$('input[name=discussion]:checked').each(function() {need_discussion.push($(this).attr('value'));});
+	$('input[name=agree]:checked').each(function() {agreement.push($(this).attr('value'));});
+//if nothing is selected 
+if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion.length>0 || agreement.length>0 )
+{
+
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-')[0];
+
+		var current_topic = all_idea_units[key]['topic'];
+		var current_sentiment = all_idea_units[key]['sentiment'];
+
+		var current_effort = all_idea_units[key]['effort'];
+		var current_criticality = all_idea_units[key]['criticality'];
+
+		var current_discussion = all_idea_units[key]['discussion'];
+		var current_agreement = all_idea_units[key]['agree'];
+
+
+		if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
+			&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
+			&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
+			&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
+		{
+			selectedID.push(key);
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").addClass('highlight');	
+		}
+		else
+		{
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").removeClass('highlight');	
+		}		
+	}
+	
+}else{
+	$('.tableelement span').removeClass('highlight');
+}
+
+	SelectFeedback(selectedID);
+
+}
+
+
+</script>
