@@ -368,35 +368,25 @@ table.topic-people td{
 
 	<div class="row">    
 	<!--Circle Panel-->
- 	<div class="col-md-8 ml-sm-auto col-lg-8 px-4">
+ 	<div class="col-md-6 ml-sm-auto col-lg-6 px-4">
 		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
 		<div id="paneltest">
 		</div>
 	</div>
 
 
-<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
-    <li><a tabindex="-1" href="#">Action</a></li>
-    <li><a tabindex="-1" href="#">Another action</a></li>
-    <li><a tabindex="-1" href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a tabindex="-1" href="#">Separated link</a></li>
-</ul>
-
-
 
 	<!--End Circle Panel-->
 	<template id="action-record">
 		<tr>
-			<th scope="row">Topic Name</th>
-			<td><span class='fa fa-user human-figure'></span></td>
-			<td class='content'>This is the content of the idea unit</td>
-			<td><button class='float-right'>Mark as Solved</button></td>
+			<th name='topic-name' scope="row">Topic Name</th>
+			<td name='content'>This is the content of the idea unit</td>
+			<td><button name='mark' class='float-right'>Mark as Solved</button></td>
 		</tr>
 	</template>
 
 	<!--Side bar sticky panel-->
-	<div class="col-md-4 sidebar" id="accordion">
+	<div class="col-md-6 sidebar" id="accordion">
 
 	<div class="card">
     <div class="card-header" id="headingOne">
@@ -407,31 +397,10 @@ table.topic-people td{
       </h5>
     </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
 			<table class="table table-hover">
-				<thead>
-					<tr>
-	      				<th scope="row">Topic Name</th>
-	      			
-	      			</tr>
-				</thead>
-	      		<tr id='1-1'>
-	      			<th scope="row">Topic Name</th>
-	      			<td>Reviewer 1</td>
-	      			<td class='content'>This is the content of the idea unit</td>
-	      			<td><button class='float-right'>Mark as Solved</button></td>
-	      		</tr>
-	      		<tr id='1-2'>
-	      			<th scope="row">Topic Name</th>
-	      			<td>Reviewer 1</td>
-	      			<td class='content'>This is the content of the idea unit</td>
-	      			<td><button class='float-right'>Mark as Solved</button></td>
-	      		</tr>
       		</table>
-      	</table>
-      	
-      	
       </div>
     </div>
   </div>
@@ -445,7 +414,8 @@ table.topic-people td{
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-        
+        <table class="table table-hover">
+      		</table>
       </div>
     </div>
   </div>
@@ -459,6 +429,8 @@ table.topic-people td{
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
+      	<table class="table table-hover">
+      		</table>
       </div>
     </div>
   </div>
@@ -478,9 +450,9 @@ table.topic-people td{
     <div class="card-header" id="">
 	    <div class="row">
 	    	<div class='topic-name col'></div>
-	    	<div class='col'><span class="badge badge-success">Positive</span></div>
+	    	<!--<div class='col'><span class="badge badge-success">Positive</span></div>
 	    	<div class='col'><span class="badge badge-info">Neutral</span></div>
-	    	<div class='col'><span class="badge badge-warning">Negative</span></div>
+	    	<div class='col'><span class="badge badge-warning">Negative</span></div>-->
 	    	<div><button class="btn" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls=""></button></div>
         </div>
     </div>
@@ -789,10 +761,38 @@ function assign_label_onclick(element) {
 	// table_element.attr('data-original-title', ($('.tooltip#'+table_element.attr('aria-describedby')).find('div.tooltip-inner').html()));
 
 	// solution: re-create the html from data
-	 currentID = topicKey+'-'+sentimentKey+'-'+people_id;
-	 associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
-	 associated_idea_units_html_string = IdeaUnits2TooltipHTML(associated_idea_units);
+	var currentID = topicKey+'-'+sentimentKey+'-'+people_id;
+	var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
+	var associated_idea_units_html_string = IdeaUnits2TooltipHTML(associated_idea_units);
 	table_element.attr('data-original-title', associated_idea_units_html_string);
+
+	assignIdeaUnit2Group(idea_unit_id, group_name);
+}
+
+function assignIdeaUnit2Group(idea_idx, gp) {
+
+
+
+	var current_action_record = $($('template#action-record').html());
+	current_action_record.attr('id', 'action-'+idea_idx);
+	$('[name="topic-name"]', current_action_record).html(all_idea_units[idea_idx]['topic']);
+	$('[name="content"]', current_action_record).html(all_idea_units[idea_idx]['content']);
+
+	
+	switch(gp){
+		case 'action':
+			
+			$('#collapseOne table').append(current_action_record);
+			break;
+		case 'keep':
+			$('#collapseTwo table').show();
+			$('#collapseTwo table').append(current_action_record);
+			break;
+		case 'discussion': 
+			$('#collapseThree table').show();
+			$('#collapseThree table').append(current_action_record);
+			break;
+	}
 
 }
 
