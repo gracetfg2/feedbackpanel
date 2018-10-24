@@ -21,9 +21,13 @@
 	<script type="text/javascript" src="bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!-- for icon supported by font awesome -->
+
 	<!-- the link below is too slow -->
-	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<!-- JQuery and Google font -->
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
@@ -157,6 +161,36 @@ table.topic-people td{
 .float-right{
 	float: right;
 }
+
+.left-panel{
+	height: 100vh;
+	border-right: 1mm ridge rgb(90, 100, 120, .2);
+}
+.add-left-panel{
+	position: fixed;
+	border-top: solid lightgrey;
+	width: 100%;
+    bottom: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tab-element{
+ 	font-size: 16px;
+    cursor: pointer;
+}
+
+.left-panel-item{
+	border-top: 0.5mm solid lightgrey;
+	width: 100%;
+	font-size: 16px;
+    cursor: pointer;
+}
+
+.action-list{
+	border-bottom: 0.5mm solid lightgrey;
+	width: 100%;
+}
 </style>
 
 </head>
@@ -208,13 +242,7 @@ table.topic-people td{
 
 <div id='page-2' style="display: none;" class="container-fluid">
 	<div class="main-section" style="margin-top: 50px">
-		<!--<div class="alert alert-info" role="alert" >
-		<h4>Instruction</h4>
-		 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
-		 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
-		</div>-->
- 
-		<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs">
 		  <li class="nav-item">
 		    <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
 		  </li>
@@ -228,93 +256,65 @@ table.topic-people td{
 
 	<div class="row">    
 	<!--Side bar sticky panel-->
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-          	<div class='filter-header'>Agreement</div>
-              	<div class="form-check side-filter">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">
-				    Strongly Agree
-				  </label>
+    <nav class="col-md-4 bg-light sidebar">
+		
+		<div class="row">
+			<div class="col-md-6 left-panel" >
+
+    		<ul class="nav flex-column" id="list-tab" role="tablist">
+      			<li class="nav-item action-list">
+	                <a class="nav-link active" href="#">
+	                Action Items <button id="add-action-item" style='float: right;'><span class="fa fa-plus"></span></button><span class="sr-only">(current)
+	                	</span>
+
+	                </a>
+	            </li>
+              	<li class="nav-item action-list">
+                	<a class="nav-link" href="#">
+                 	<span data-feather="file"></span>
+                  	Good things to keep
+                	</a>
+              	</li>
+              	<li class="nav-item action-list">
+                	<a class="nav-link" href="#">
+                 	<span data-feather="file"></span>
+                  	Things need discussion
+                	</a>
+              	</li>
+   			 </ul>
+			<div class="add-left-panel" id="add-section">+ Section</div>
+			
+			</div>
+
+			<div id="new-action" class="left-panel col-md-6" style="display: none;">
+				<div class="form-row align-items-center">				
+					<div class="col-sm-10 my-1">
+	    				 <textarea class="form-control" id="" rows="2" placeholder="E.g. Change the title font to a bolder one."></textarea>
+	   				</div>
+
+					<div class="col-auto my-1">
+				      <button type="submit" id="new-action" class="btn btn-secondary">Add</button>
+				    </div>
 				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Agree
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Not Sure
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Disgree
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Strongly Disgree
-				  </label>
-				</div>
+
+				<div class="add-left-panel" id="add-item">+ Item</div>
+			</div>
 		</div>
-	</nav>
+	</nav><!--End Action Panel-->
 	<!--End of Side bar sticky panel-->
 
 	<!--Circle Panel-->
- 	<div class="col-md-5 ml-sm-auto col-lg-6 px-4">
+ 	<div class="col-md-8 ml-sm-auto col-lg-8 px-4">
 		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
 		<div id="paneltest">
 		</div>
-	
-	</div>
-	
-	<div id="action-panel" class="col-md-4 ml-sm-auto col-lg-4 ">
-		<div style="border-style: solid;  border-color:lightgrey; margin-top: 10px; border-radius: 5%;padding: 20px; height: 1000px">		
-			<h3>Action Items</h3>	  
-			<hr>  
-			<div class="form-row align-items-center">
-				
-				<div class="col-sm-10 my-1">
-    				 <textarea class="form-control" id="" rows="2" placeholder="E.g. Change the title font to a bolder one."></textarea>
-   				</div>
-
-				<div class="col-auto my-1">
-			      <button type="submit" id="new-action" class="btn btn-secondary">Add</button>
-			    </div>
-			</div>
-			<hr> 
-			
-			<div id="action-items">
-				<div id="action1" class="card" style="display: none;">
-				  <div class="card-header">
-				   	<span style="font-weight: bold;">Item #1</span>
-				    <div style="float: right;">
-				    	<button type="submit" id="associate-action1" class="btn btn-secondary">Associate</button>
-				    	<button type="submit" id="edit-action" class="btn btn-secondary">Edit</button>
-				    	<button type="submit" id="remove-action" class="btn btn-secondary">X</button>
-					</div>
-				  </div>
-				  <div class="card-body" id="associate-feedback">
-				    <table class='table table-nonfluid'>
-						<div class='card-title'><h5>Choose a background image with sun but no distracting sunglare</h5></div>
-						<tbody id='feedback-list1'>
-						</tbody>
-					</table>
-				  </div>
-				</div>
-			</div>
-	    </div>
- 	 </div>
-			
-		</div>
-	
 	</div>
 	<!--End Circle Panel-->
+
+
+
+
+
 	</div><!--End main row in page 2-->
 </div><!--end of main-section in page 2-->
 
@@ -378,6 +378,13 @@ var selectedFigure=[];
 
 var actionPanel;
 var actionflag=false;
+
+//handle actions
+var actionArray={};
+var action_number=0;
+actionArray['revision']= new Array();
+
+
 $(function(){
 
 	all_idea_units=labeled;	
@@ -387,6 +394,19 @@ $(function(){
 		//finishAnnoate();
 
 // Page 2
+	//add items that need to be fixed
+	$("#add-action-item").on('click', function(){
+			//this will be the auto generated id of the action
+			$("#new-action").show();
+		 	action_number++;
+			var actionitem = {
+				id: action_number,
+				content:"haha"+action_number,
+			};
+
+			actionArray['revision'].push(actionitem);
+	});
+
 
 	$("#associate-action1").on('click', function(){
 		actionflag= !(actionflag);
@@ -402,7 +422,9 @@ $(function(){
 		}
 	});
 
+	$("#add-item").on('click',function(){
 
+	})
 
 	$("#new-action").on('click', function(){
 		$("#action1").show();

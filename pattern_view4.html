@@ -21,9 +21,13 @@
 	<script type="text/javascript" src="bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js"></script>
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!-- for icon supported by font awesome -->
+
 	<!-- the link below is too slow -->
-	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<!-- JQuery and Google font -->
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
@@ -157,7 +161,71 @@ table.topic-people td{
 .float-right{
 	float: right;
 }
+
+.left-panel{
+	height: 100vh;
+	border-right: 1mm ridge rgb(90, 100, 120, .2);
+}
+.add-left-panel{
+	position: fixed;
+	border-top: solid lightgrey;
+	width: 100%;
+    bottom: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tab-element{
+ 	font-size: 16px;
+    cursor: pointer;
+}
+
+.left-panel-item{
+	border-top: 0.5mm solid lightgrey;
+	width: 100%;
+	font-size: 16px;
+    cursor: pointer;
+}
+
+.action-list{
+	border-bottom: 0.5mm solid lightgrey;
+	width: 100%;
+}
+
+
+/* The whole thing */
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.custom-menu li:hover {
+    background-color: #DEF;
+}
 </style>
+
+
+<menu type="context" id="menu">
+	<menuitem label="haha"></menuitem>
+</menu>
 
 </head>
 
@@ -208,13 +276,7 @@ table.topic-people td{
 
 <div id='page-2' style="display: none;" class="container-fluid">
 	<div class="main-section" style="margin-top: 50px">
-		<!--<div class="alert alert-info" role="alert" >
-		<h4>Instruction</h4>
-		 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
-		 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
-		</div>-->
- 
-		<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs">
 		  <li class="nav-item">
 		    <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
 		  </li>
@@ -227,94 +289,76 @@ table.topic-people td{
 		</ul>
 
 	<div class="row">    
-	<!--Side bar sticky panel-->
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-          	<div class='filter-header'>Agreement</div>
-              	<div class="form-check side-filter">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-				  <label class="form-check-label" for="defaultCheck1">
-				    Strongly Agree
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Agree
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Not Sure
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Disgree
-				  </label>
-				</div>
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-				  <label class="form-check-label" for="defaultCheck2">
-				    Strongly Disgree
-				  </label>
-				</div>
-		</div>
-	</nav>
-	<!--End of Side bar sticky panel-->
-
 	<!--Circle Panel-->
- 	<div class="col-md-5 ml-sm-auto col-lg-6 px-4">
+ 	<div class="col-md-8 ml-sm-auto col-lg-8 px-4">
 		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
 		<div id="paneltest">
 		</div>
-	
 	</div>
-	
-	<div id="action-panel" class="col-md-4 ml-sm-auto col-lg-4 ">
-		<div style="border-style: solid;  border-color:lightgrey; margin-top: 10px; border-radius: 5%;padding: 20px; height: 1000px">		
-			<h3>Action Items</h3>	  
-			<hr>  
-			<div class="form-row align-items-center">
-				
-				<div class="col-sm-10 my-1">
-    				 <textarea class="form-control" id="" rows="2" placeholder="E.g. Change the title font to a bolder one."></textarea>
-   				</div>
 
-				<div class="col-auto my-1">
-			      <button type="submit" id="new-action" class="btn btn-secondary">Add</button>
-			    </div>
-			</div>
-			<hr> 
-			
-			<div id="action-items">
-				<div id="action1" class="card" style="display: none;">
-				  <div class="card-header">
-				   	<span style="font-weight: bold;">Item #1</span>
-				    <div style="float: right;">
-				    	<button type="submit" id="associate-action1" class="btn btn-secondary">Associate</button>
-				    	<button type="submit" id="edit-action" class="btn btn-secondary">Edit</button>
-				    	<button type="submit" id="remove-action" class="btn btn-secondary">X</button>
-					</div>
-				  </div>
-				  <div class="card-body" id="associate-feedback">
-				    <table class='table table-nonfluid'>
-						<div class='card-title'><h5>Choose a background image with sun but no distracting sunglare</h5></div>
-						<tbody id='feedback-list1'>
-						</tbody>
-					</table>
-				  </div>
-				</div>
-			</div>
-	    </div>
- 	 </div>
-			
-		</div>
-	
-	</div>
+
+<ul id="contextMenu" class="dropdown-menu" role="menu" style="display:none" >
+    <li><a tabindex="-1" href="#">Action</a></li>
+    <li><a tabindex="-1" href="#">Another action</a></li>
+    <li><a tabindex="-1" href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a tabindex="-1" href="#">Separated link</a></li>
+</ul>
+
+
+
 	<!--End Circle Panel-->
+
+	<!--Side bar sticky panel-->
+	<div class="col-md-4 bg-light sidebar" id="accordion">
+
+	<div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Action Items
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Strengths to be kept
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Things that need discussion
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+    		
+	</div><!--End Action Panel-->
+	<!--End of Side bar sticky panel-->
+
+
+
 	</div><!--End main row in page 2-->
 </div><!--end of main-section in page 2-->
 
@@ -378,15 +422,39 @@ var selectedFigure=[];
 
 var actionPanel;
 var actionflag=false;
+
+//handle actions
+var actionArray={};
+var action_number=0;
+actionArray['revision']= new Array();
+
+
 $(function(){
 
 	all_idea_units=labeled;	
 
 	number_of_providers=getTotalProviders();
 	showAll();
+
+
 		//finishAnnoate();
 
+
+
 // Page 2
+	//add items that need to be fixed
+	$("#add-action-item").on('click', function(){
+			//this will be the auto generated id of the action
+			$("#new-action").show();
+		 	action_number++;
+			var actionitem = {
+				id: action_number,
+				content:"haha"+action_number,
+			};
+
+			actionArray['revision'].push(actionitem);
+	});
+
 
 	$("#associate-action1").on('click', function(){
 		actionflag= !(actionflag);
@@ -404,22 +472,12 @@ $(function(){
 
 
 
-	$("#new-action").on('click', function(){
-		$("#action1").show();
-	});
-
-	$("div#page-2").on('click', ".filter-input", function(){
-
-		renderInterpretation();
-
-	});
-
-
 
 	$(document).on('input', '.filter-attibute', function() {
 		//alert("haha");
 	    filterResult();
 	});
+
 
 
 	$("div#page-2").on('click','.tableelement', function() {
@@ -461,12 +519,6 @@ $(function(){
 		$("<td class='vis-content'>"+feedbackText+"</td>").appendTo(feedbackCell);
 
 		feedbackCell.appendTo(actionPanel);
-
-	
-			
-
-
-
 		//$(this).clone().appendTo(actionPanel);
 		
 
@@ -573,10 +625,19 @@ function getIdeaUnits(topic_key, sentiment_key, people_id) {
 		var idea_unit = all_idea_units[idea_unit_key];
 		var idea_people_id = parseInt(idea_unit_key.split('-')[0]);
 		if (idea_people_id === people_id && idea_unit['topic'] === topic_key && idea_unit['sentiment'] === sentiment_key) {
-			idea_units.push(idea_unit['content']);
+			idea_units.push(idea_unit);
 		}
 	}
 	return idea_units;
+}
+
+function IdeaUnits2TooltipHTML(idea_units) {
+	var $tooltip_div = $('<div>');
+	idea_units.forEach(function(idea_unit) {
+		var $unit_div = $('<div>').html(idea_unit['content']);
+		$tooltip_div.append($unit_div);
+	});
+	return 
 }
 
 //var topics=[];
@@ -732,9 +793,9 @@ function renderElement(){
 			{
 				var currentID=topicKey+'-'+sentimentKey+'-'+people_id;
 				var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
-				var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
-				if (people_id===3) console.log(associated_idea_units);
-
+				var associated_idea_units_html_string = IdeaUnits2TooltipHTML(associated_idea_units);
+				//var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
+				
 				$td = $('<td>').append(
 				          $('<div>')
 				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
