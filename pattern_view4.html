@@ -369,7 +369,7 @@ table.topic-people td{
 	<div class="row">    
 	<!--Circle Panel-->
  	<div class="col-md-6 ml-sm-auto col-lg-6 px-4">
-		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
+		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics mentioned in the feedback set. Click + to see the detail. </h4></div>
 		<div id="paneltest">
 		</div>
 	</div>
@@ -779,8 +779,7 @@ function assignIdeaUnit2Group(idea_idx, gp) {
 	$('[name="content"]', current_action_record).html(all_idea_units[idea_idx]['content']);
 	
 	$('#action-'+idea_idx).remove();
-	
-	
+
 	switch(gp){
 		case 'action':
 			$('#collapseOne').show();
