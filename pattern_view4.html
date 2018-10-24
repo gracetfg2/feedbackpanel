@@ -777,19 +777,21 @@ function assignIdeaUnit2Group(idea_idx, gp) {
 	current_action_record.attr('id', 'action-'+idea_idx);
 	$('[name="topic-name"]', current_action_record).html(all_idea_units[idea_idx]['topic']);
 	$('[name="content"]', current_action_record).html(all_idea_units[idea_idx]['content']);
-
+	
+	$('#action-'+idea_idx).remove();
+	
 	
 	switch(gp){
 		case 'action':
-			
+			$('#collapseOne').show();
 			$('#collapseOne table').append(current_action_record);
 			break;
 		case 'keep':
-			$('#collapseTwo table').show();
+			$('#collapseTwo').show();
 			$('#collapseTwo table').append(current_action_record);
 			break;
 		case 'discussion': 
-			$('#collapseThree table').show();
+			$('#collapseThree').show();
 			$('#collapseThree table').append(current_action_record);
 			break;
 	}
