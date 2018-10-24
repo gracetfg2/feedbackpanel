@@ -173,7 +173,7 @@ table.topic-people td{
 	background-color: white;
 	color: black;
 	max-width: 550px;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	border: 1px black solid;
 }
 
@@ -282,6 +282,14 @@ table.topic-people td{
   text-align: center;
 }
 
+.action-bn{
+	border: 1px;
+	border-color: black;
+}
+
+.action-record-row{
+	cursor: pointer;
+}
 /*.overlay-container {
   position: relative;
   width: 100%;
@@ -369,16 +377,14 @@ table.topic-people td{
 	<div class="row">    
 	<!--Circle Panel-->
  	<div class="col-md-6 ml-sm-auto col-lg-6 px-4">
-		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics mentioned in the feedback set. Click + to see the detail. </h4></div>
+		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
 		<div id="paneltest">
 		</div>
 	</div>
-
-
-
 	<!--End Circle Panel-->
+
 	<template id="action-record">
-		<tr>
+		<tr class='action-record-row'>
 			<th name='topic-name' scope="row">Topic Name</th>
 			<td name='content'>This is the content of the idea unit</td>
 			<td><button name='mark' class='float-right'>Mark as Solved</button></td>
@@ -386,7 +392,7 @@ table.topic-people td{
 	</template>
 
 	<!--Side bar sticky panel-->
-	<div class="col-md-6 sidebar" id="accordion">
+	<div class="col-md-6 sidebar" id="accordion" style="margin-top: 20px;">
 
 	<div class="card">
     <div class="card-header" id="headingOne">
@@ -400,6 +406,7 @@ table.topic-people td{
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
 			<table class="table table-hover">
+				
       		</table>
       </div>
     </div>
@@ -457,7 +464,7 @@ table.topic-people td{
         </div>
     </div>
 
-    <div name="topic-element" class="collapse" aria-labelledby="" data-parent="#paneltest">
+    <div name="topic-element" class="collapse" aria-labelledby="" >
       <div class="card-body">
 
       </div>
@@ -718,10 +725,10 @@ function getIdeaUnits(topic_key, sentiment_key, people_id) {
 function IdeaUnits2TooltipHTML(idea_units) {
 	var $tooltip_div = $('<ul>');
 	idea_units.forEach(function(idea_unit) {
-		var $unit_div = $('<li>').html(idea_unit['content'] + '<br>mark as:');
+		var $unit_div = $('<li>').html(idea_unit['content'] + '<br>');
 		$tooltip_div.append($unit_div);
-		$assign_button_group = $('<div>').attr('class', 'btn-group btn-group-toggle').attr('data-toggle', 'buttons');
-		var assign_groups = ['action', 'keep', 'discussion'];
+		$assign_button_group = $('<div>').attr('class', 'btn-group btn-group-toggle action-bn').attr('data-toggle', 'buttons');
+		var assign_groups = ['Fix', 'Remain', 'Need-Discussion'];
 		assign_groups.forEach(function(group_name){
 			$label = $('<label>')
 				.attr('class', 'btn btn-light')
@@ -781,15 +788,15 @@ function assignIdeaUnit2Group(idea_idx, gp) {
 	$('#action-'+idea_idx).remove();
 
 	switch(gp){
-		case 'action':
+		case 'Fix':
 			$('#collapseOne').show();
 			$('#collapseOne table').append(current_action_record);
 			break;
-		case 'keep':
+		case 'Remain':
 			$('#collapseTwo').show();
 			$('#collapseTwo table').append(current_action_record);
 			break;
-		case 'discussion': 
+		case 'Need-Discussion': 
 			$('#collapseThree').show();
 			$('#collapseThree table').append(current_action_record);
 			break;
