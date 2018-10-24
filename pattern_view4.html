@@ -124,6 +124,30 @@ p.fail{
     color:white;
 }
 
+.tableelement-action {
+	/*width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+    cursor: pointer;
+    margin: 3px;
+    overflow:auto;
+    font-size: 12px;
+*/
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+   	cursor: pointer;
+    margin: 5px;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 10px 3px 0 3px;
+    text-align: center;
+    min-width: 14px;
+    color:white;
+}
+
+
 table.topic-people{
 	border: 0px;
 }
@@ -220,6 +244,60 @@ table.topic-people td{
 .custom-menu li:hover {
     background-color: #DEF;
 }
+
+.overlay-container {
+  position: relative;
+  width: 100%;
+  min-width: 20px;
+}
+.number-div {
+	position: absolute;
+  display: block;
+  width: 20px;
+  height: : 20px;
+  text-align:center;
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+ 
+}
+
+.icon {
+  color: black;
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*.overlay-container {
+  position: relative;
+  width: 100%;
+  min-width: 20px;
+}
+.overlay, .number-div {
+  text-align:center;
+  color:black;
+  top: 0;
+  margin-left, margin-right: auto; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.number-div{
+	z-index: 10;
+}*/
 </style>
 
 
@@ -308,9 +386,17 @@ table.topic-people td{
 
 
 	<!--End Circle Panel-->
+	<template id="action-record">
+		<tr>
+			<th scope="row">Topic Name</th>
+			<td><span class='fa fa-user human-figure'></span></td>
+			<td class='content'>This is the content of the idea unit</td>
+			<td><button class='float-right'>Mark as Solved</button></td>
+		</tr>
+	</template>
 
 	<!--Side bar sticky panel-->
-	<div class="col-md-4 bg-light sidebar" id="accordion">
+	<div class="col-md-4 sidebar" id="accordion">
 
 	<div class="card">
     <div class="card-header" id="headingOne">
@@ -323,6 +409,29 @@ table.topic-people td{
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+	      				<th scope="row">Topic Name</th>
+	      			
+	      			</tr>
+				</thead>
+	      		<tr id='1-1'>
+	      			<th scope="row">Topic Name</th>
+	      			<td>Reviewer 1</td>
+	      			<td class='content'>This is the content of the idea unit</td>
+	      			<td><button class='float-right'>Mark as Solved</button></td>
+	      		</tr>
+	      		<tr id='1-2'>
+	      			<th scope="row">Topic Name</th>
+	      			<td>Reviewer 1</td>
+	      			<td class='content'>This is the content of the idea unit</td>
+	      			<td><button class='float-right'>Mark as Solved</button></td>
+	      		</tr>
+      		</table>
+      	</table>
+      	
+      	
       </div>
     </div>
   </div>
@@ -377,7 +486,8 @@ table.topic-people td{
     </div>
 
     <div name="topic-element" class="collapse" aria-labelledby="" data-parent="#paneltest">
-      <div class="card-body">    
+      <div class="card-body">
+
       </div>
     </div>
   </div>
@@ -851,7 +961,6 @@ function renderElement(){
 				          .attr('id', currentID)
 				      );
 				inser_html += $td.prop("outerHTML");
-
 
 				// inser_html=inser_html+"<td><div data-toggle='tooltip' title=\""+associated_idea_units_string+"\" class='tableelement' id='"+currentID+"'></div></td>";
 				people_id++;
