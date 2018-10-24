@@ -637,7 +637,7 @@ function IdeaUnits2TooltipHTML(idea_units) {
 		var $unit_div = $('<div>').html(idea_unit['content']);
 		$tooltip_div.append($unit_div);
 	});
-	return 
+	return $tooltip_div.prop('outerHTML');
 }
 
 //var topics=[];
@@ -799,7 +799,7 @@ function renderElement(){
 				$td = $('<td>').append(
 				          $('<div>')
 				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
-				          .attr('title', associated_idea_units_string)
+				          .attr('title', associated_idea_units_html_string)
 				          .html(people_id)
 				          .attr('class', 'badge tableelement')
 				          .attr('id', currentID));
