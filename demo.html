@@ -223,7 +223,7 @@ function renderElement(){
 		//Render content
 		for (var sentimentKey in currentTopic) {
 			
-			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='20%'><b>"+sentimentKey+'</b></td>';
+			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='20%' style='color:grey; text-align:right;'><b>"+sentimentKey+'</b></td>';
 			people_id=1;
 			for(var index=0; index<number_of_providers;index++)// lopping the topic
 			{
