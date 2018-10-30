@@ -255,7 +255,7 @@ table.topic-people td{
   margin-top: 50px;
 }
 
-.count, .action-number{
+.action-number{
   float: right;
   font-weight: bolder;
 }
