@@ -71,14 +71,14 @@ p.fail{
     overflow:auto;
     font-size: 12px;
 */
-	width: 30px;
-    height: 30px;
+	 width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: #dfe2de;
    	cursor: pointer;
     margin: 3px;
-    font: bold 15px/13px Helvetica, Verdana, Tahoma;
-    padding: 10px 3px 0 3px;
+    /* font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 10px 3px 0 3px;*/
     text-align: center;
     min-width: 14px;
     color:white;
@@ -94,14 +94,14 @@ p.fail{
     overflow:auto;
     font-size: 12px;
 */
-	width: 30px;
-    height: 30px;
+	width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #dfe2de;
    	cursor: pointer;
     margin: 5px;
-    font: bold 15px/13px Helvetica, Verdana, Tahoma;
-    padding: 10px 3px 0 3px;
+   /* font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 10px 3px 0 3px;*/
     text-align: center;
     min-width: 14px;
     color:white;
@@ -125,7 +125,9 @@ table.topic-people td{
 }
 
 .human-figure{
-	color:grey; font-size:32px; margin:6px
+	color:lightgrey; 
+  font-size:24px; 
+  margin:2px
 }
 
 .tooltip-inner {
