@@ -127,7 +127,7 @@
 		<tr class='action-record-row'>
 			<th name='topic-name' scope="row">Topic Name</th>
 			<td name='content'>This is the content of the idea unit</td>
-			<td><button name='mark' class='float-right'>Mark as Solved</button></td>
+			<td><button class='float-right' onclick='markSolved(this)'>Mark as Solved</button></td>
 		</tr>
 	</template>
 	<template id="collapseTable">
@@ -227,7 +227,10 @@ $(function(){
   		$(this).tab('show')
 	})
 
+	
+
 	calculateAction();
+//page 3
 
 
 // Page 2
@@ -385,6 +388,13 @@ function getTotalProviders()
 			total_provider=tmp_id[0];
 	}
 	return total_provider;
+}
+
+
+function markSolved(ele){
+	//console.log("in mark sovle->"+$(ele).parent('.action-record-row').attr('id'));
+	$(ele).closest('.action-record-row').css("background-color","#00ffcc");
+	$(ele).val("Unmarked");
 }
 
 function createActionPanel(){
