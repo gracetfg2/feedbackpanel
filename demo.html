@@ -28,7 +28,7 @@
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<!-- JQuery and Google font -->
     <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
 	<!-- Custom styles for this template -->
@@ -38,53 +38,60 @@
 	<script src="dist/js/bootstrap-slider.js"></script>
 	<script src="marathono.js"></script>
 
+<style>
+.nav-link{
+	color: white;
 
+}
+.nav-link:hover{
+	color: white;
+}
+
+</style>
 
 </head>
 
 <body>
 <!--Consider set as element for django-->
-<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+<!--<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
         <div class="container">
             <div class="navbar-header">
                FeedbackPanel
             </div>  
         </div>
+</nav>-->
+
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+  	<a class="navbar-brand" href="#">
+    	FeedbackPanel
+  	</a>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="all-feedback-tab" data-toggle="tab" href="#all-feedback" role="tab" aria-controls="all-feedback" aria-selected="true">Plain Feedback</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="smart-view-tab" data-toggle="tab" href="#page-2" role="tab" aria-controls="page-2" aria-selected="false">Smart View</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="act-tab" data-toggle="tab" href="#page-3" role="tab" aria-controls="page-3" aria-selected="false">Action Plan</a>
+  </li>
+</ul>
+
+  </div>
 </nav>
 
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="all-feedback-tab" data-toggle="tab" href="#all-feedback" role="tab" aria-controls="all-feedback" aria-selected="true">All Feedback</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="smart-view-tab" data-toggle="tab" href="#page-2" role="tab" aria-controls="page-2" aria-selected="false">Smart Review</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="act-tab" data-toggle="tab" href="#page-3" role="tab" aria-controls="page-3" aria-selected="false">Acting</a>
-  </li>
-</ul>
+<div class='container'>
 
 
+
+
+<div class="tab-content">
 <!------Show All Feedback--------------------------------------------------->
 <div class="tab-pane fade show active" id="all-feedback" role="tabpanel" aria-labelledby="all-feedback-tab">
-<div class="container">
+
 <div class="main-section" style="margin-top: 50px">
-
-<!--
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
-  </li>
-    <li class="nav-item">
-    <a class="nav-link " style="cursor: pointer;" onclick="smartView();">Smart Review</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="cursor: pointer;" onclick="ActionView();">Acting</a>
-  </li>
-</ul>
--->
-
 
 <table class='table table-nonfluid'>
 	<tbody id='feedback-list'>
@@ -94,29 +101,24 @@
 	</div>
 </div>
 
-</div>
 <!------End Show All Feedback--------------------------------------------------->
-<div class="tab-pane fade" id="page-2" role="tabpanel" aria-labelledby="smart-view-tab">
-
-<div class="container">
-	<div class="main-section" style="margin-top: 50px">
-	<ul class="nav nav-tabs">
-		  <li class="nav-item">
-		    <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
-		  </li>
-		    <li class="nav-item">
-		    <a class="nav-link active" style="cursor: pointer;" onclick="smartView();">Smart Review</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" style="cursor: pointer;" onclick="ActionView();">Acting</a>
-		  </li>
-		</ul>
-
-	<div class="row">    
+<div class="tab-pane fade" id="page-2" role="tabpanel" aria-labelledby="smart-view-tab">  
 	<!--Circle Panel-->
- 	<div class="col-md-6 ml-sm-auto col-lg-6 px-4">
-		<div class="alert alert-info" role="alert" style="margin-top: 10px"><h4>Following are all the topics derived from the feedback set. Click + to see the detail. </h4></div>
-		<div id="paneltest">
+ 	<div class="circle-panel">
+		<div class="alert alert-warning" role="alert" style="margin-top: 10px;"><h4>Following are all the topics people mentioned in the feedback set. Click + to see the detail. </h4>
+		</div>
+		<div class='row'>
+			<div class='col-md-9' id="paneltest">
+			</div>
+			<div class='col-md-3' id="summary">
+				<div class="card" style="width: 18rem;">
+				  <div class="card-header">
+				    Assigned Actions
+				  </div>
+				  <ul class="list-group list-group-flush">
+				  </ul>
+				</div>
+			</div>	
 		</div>
 	</div>
 	<!--End Circle Panel-->
@@ -128,128 +130,62 @@
 			<td><button name='mark' class='float-right'>Mark as Solved</button></td>
 		</tr>
 	</template>
+	<template id="collapseTable">
+	  <div class="card" style="width:100%">
+	    <div class="card-header" id="">
+		    <div class="row">
+		    	<div class='topic-name col'></div>
+		    	<!--<div class='col'><span class="badge badge-success">Positive</span></div>
+		    	<div class='col'><span class="badge badge-info">Neutral</span></div>
+		    	<div class='col'><span class="badge badge-warning">Negative</span></div>-->
+		    	<div><button class="btn" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls=""></button></div>
+	        </div>
+	    </div>
 
-	<!--Side bar sticky panel-->
-	<div class="col-md-6 sidebar" id="accordion" style="margin-top: 20px;">
+	    <div name="topic-element" class="collapse" aria-labelledby="" >
+	      <div class="card-body">
 
-	<div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Action Items
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-			<table class="table table-hover">
-				
-      		</table>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Strengths to be kept
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        <table class="table table-hover">
-      		</table>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Things that need discussion
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-      	<table class="table table-hover">
-      		</table>
-      </div>
-    </div>
-  </div>
-    		
-	</div><!--End Action Panel-->
+	      </div>
+	    </div>
+	  </div>
+	</template>
 	<!--End of Side bar sticky panel-->
-
-
-
-	</div><!--End main row in page 2-->
-</div><!--end of main-section in page 2-->
-
-
-<template id="collapseTable">
-
-  <div class="card" style="width:100%">
-    <div class="card-header" id="">
-	    <div class="row">
-	    	<div class='topic-name col'></div>
-	    	<!--<div class='col'><span class="badge badge-success">Positive</span></div>
-	    	<div class='col'><span class="badge badge-info">Neutral</span></div>
-	    	<div class='col'><span class="badge badge-warning">Negative</span></div>-->
-	    	<div><button class="btn" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls=""></button></div>
-        </div>
-    </div>
-
-    <div name="topic-element" class="collapse" aria-labelledby="" >
-      <div class="card-body">
-
-      </div>
-    </div>
-  </div>
-
-
-</template>
-
-
 
 </div><!--end of page 2-->
 
 <div class="tab-pane fade" id="page-3" role="tabpanel" aria-labelledby="act-tab">
-	haha
-	<!--<div class="main-section" style="margin-top: 50px">
-	<ul class="nav nav-tabs">
-		  <li class="nav-item">
-		    <a class="nav-link" style="cursor: pointer;" onclick="showAll();">All Feedback</a>
-		  </li>
-		    <li class="nav-item">
-		    <a class="nav-link" style="cursor: pointer;" onclick="smartView();">Smart Review</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link active" style="cursor: pointer;" onclick="ActionView();">Acting</a>
-		  </li>
-		</ul>
+	<!--Side bar sticky panel-->	
+	<div id="action-panel" style="margin-top: 20px;">  		
+	</div><!--End Action Panel-->
 
-	</div>-->
+<template id='action-template'>
+<div class="card">
+    <div class="card-header" id="actionHeading">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#actionPanel" aria-expanded="false" aria-controls="actionPanel">
+        </button>
+      </h5>
+    </div>
+     <div id="actionPanel" class="collapse" aria-labelledby="actionHeading" data-parent="#action-panel">
+      <div class="card-body">
+			<table class="table table-hover">				
+      		</table>
+      </div>
+    </div>
+  </div>
+</template>
+</div><!--End Page 3-->
 
-</div>
-
-
-
-
-		
-</div>
-
-
+</div><!--End Tab Content-->
+</div><!--End containter-->
 <script>
 
 //Get dataset
 
 
 //GET DATA
-var sentimentColor= {'strength':'#004d00','weakness':'#990000','neutral':'#004080'};
-
+//var sentimentColor= {'strength':'#004d00','weakness':'#990000','neutral':'#004080'};
+var sentimentColor= {'strength':'#66ff99','weakness':'#ff6699','neutral':'#66ccff'};
 var sentimentColorScale = {
 	'strength': d3.scaleLinear().range(['#ccffcc', '#004d00']).domain([0, 5]),
 	'weakness': d3.scaleLinear().range(['#ffcccc', '#990000']).domain([0, 5]),
@@ -268,39 +204,32 @@ var selectedFigure=[];
 
 var actionPanel;
 var actionflag=false;
-
 //handle actions
-var actionArray={};
-var action_number=0;
-actionArray['revision']= new Array();
+//available actions
+var assign_groups = ['must-do', 'consider','need-discussion', 'disagree','ignore'];
 
 
 $(function(){
-
 	all_idea_units=labeled;	
-
 	number_of_providers=getTotalProviders();
+	
+	//finishAnnoate();
+	//SelectFeedback();
+	//generate all feedback view
 	showAll();
+	finishAnnoate();
+	createActionPanel();
+	
+//Enable toggled tab view	
+	$('#myTab a').on('click', function (e) {
+  		e.preventDefault()
+  		$(this).tab('show')
+	})
 
-
-		//finishAnnoate();
-
-
+	calculateAction();
 
 
 // Page 2
-	//add items that need to be fixed
-	$("#add-action-item").on('click', function(){
-			//this will be the auto generated id of the action
-			$("#new-action").show();
-		 	action_number++;
-			var actionitem = {
-				id: action_number,
-				content:"haha"+action_number,
-			};
-
-			actionArray['revision'].push(actionitem);
-	});
 
 
 	$("#associate-action1").on('click', function(){
@@ -457,6 +386,50 @@ function getTotalProviders()
 	return total_provider;
 }
 
+function createActionPanel(){
+
+	assign_groups.forEach(function(element){
+		//add to the sunmary board
+		$("<li class='list-group-item' id='count-"+element+"'>"+element.replace('-',' ') +"<span class='action-number'>0</span></li>").appendTo('#summary .list-group-flush');
+		//add a section in page 3
+		var current_action_panel= $($('#action-template').html());
+
+		$('.card-header',current_action_panel).attr('id', 'actionHeading-'+element); 
+		$('button',current_action_panel).attr('data-target','#actionContent-'+element );
+		$('button',current_action_panel).html(element);
+		$('button',current_action_panel).attr('aria-controls','actionContent-'+element );
+		$('.collapse',current_action_panel).attr('id', 'actionContent-'+element);
+		$('.collapse',current_action_panel).attr('aria-labelledby', 'actionHeading-'+element); 
+		$('#action-panel').append(current_action_panel);
+	});
+
+}
+
+function calculateAction(){
+
+	var count_action={};
+	console.log(count_action);
+
+	for(var key in all_idea_units){
+
+		var current_group=all_idea_units[key]['group_name'];
+		if(!(current_group in count_action))
+			count_action[current_group]=1;
+		else{
+			count_action[current_group]++;
+		}
+		
+	}
+
+	console.log(count_action);
+
+	assign_groups.forEach(function(element)
+	{
+		$('#count-'+element+' .action-number').html(count_action[element] || '0');
+	})
+	// console.log(all)
+}
+
 function renderFeedbackTable(){
 	for(var key in all_idea_units){
 			var tmp_id=key.split('-');
@@ -491,7 +464,6 @@ function IdeaUnits2TooltipHTML(idea_units) {
 		var $unit_div = $('<li>').html(idea_unit['content'] + '<br>');
 		$tooltip_div.append($unit_div);
 		$assign_button_group = $('<div>').attr('class', 'btn-group btn-group-toggle action-bn').attr('data-toggle', 'buttons');
-		var assign_groups = ['Fix', 'Remain', 'Need-Discussion'];
 		assign_groups.forEach(function(group_name){
 			$label = $('<label>')
 				.attr('class', 'btn btn-light')
@@ -513,13 +485,16 @@ function IdeaUnits2TooltipHTML(idea_units) {
 	return $tooltip_div.prop('outerHTML');
 }
 
+
+
 // assume global variable all_idea_units
 function assign_label_onclick(element) {
-	 $this = $(element);
+	$this = $(element);
 	var idea_unit_id = $this.attr('idea_unit_id');
 	var group_name = $this.attr('group_name');
 	all_idea_units[idea_unit_id]['group_name'] = group_name;
-
+	console.log(idea_unit_id,all_idea_units[idea_unit_id]);
+	calculateAction();
 	// update the tooltip content to the title attribute for UI update
 	var people_id = idea_unit_id.split('-')[0];
 	var topicKey = all_idea_units[idea_unit_id]['topic'];
@@ -537,7 +512,9 @@ function assign_label_onclick(element) {
 	table_element.attr('data-original-title', associated_idea_units_html_string);
 
 	assignIdeaUnit2Group(idea_unit_id, group_name);
+	
 }
+
 
 function assignIdeaUnit2Group(idea_idx, gp) {
 
@@ -545,24 +522,9 @@ function assignIdeaUnit2Group(idea_idx, gp) {
 	current_action_record.attr('id', 'action-'+idea_idx);
 	$('[name="topic-name"]', current_action_record).html(all_idea_units[idea_idx]['topic']);
 	$('[name="content"]', current_action_record).html(all_idea_units[idea_idx]['content']);
-	
 	$('#action-'+idea_idx).remove();
-
-	switch(gp){
-		case 'Fix':
-			$('#collapseOne').show();
-			$('#collapseOne table').append(current_action_record);
-			break;
-		case 'Remain':
-			$('#collapseTwo').show();
-			$('#collapseTwo table').append(current_action_record);
-			break;
-		case 'Need-Discussion': 
-			$('#collapseThree').show();
-			$('#collapseThree table').append(current_action_record);
-			break;
-	}
-
+	$('#actionContent-'+gp+' table').append(current_action_record);
+			
 }
 
 //var topics=[];
@@ -625,28 +587,22 @@ function getWholeFeedback(reviewer_id){
 function showAll()
 {
 	
-
 	for(var index=1;index <= number_of_providers; index++)
 	{
 			$('#feedback-list', "div#all-feedback").append("<tr class='feedback-cell' id='person"+index+"'><td><strong>#"+index+"</strong></td><td class='vis-content'>"+ getWholeFeedback(index)+"</td></tr>");
 	}
-
-	$("div#page-2").hide();
-	$(".feedback-cell","div#all-feedback").show();	
-	$("div#all-feedback").show();
-
+	//$("div#page-2").hide();
+	//$(".feedback-cell","div#all-feedback").show();	
+	//$("div#all-feedback").show();
 }
 
 
 function smartView(){
 	finishAnnoate();
-	SelectFeedback();
-	$("div#page-2").show();
-	$("div#all-feedback").hide();
-
+	//SelectFeedback();
+	//$("div#page-2").show();
+	//$("div#all-feedback").hide();
 }
-
-
 
 
 function finishAnnoate(){
@@ -725,8 +681,7 @@ function renderElement(){
 				          $('<div>')
 				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
 				          .attr('title', associated_idea_units_html_string)
-				          .html(people_id)
-				          .attr('class', 'badge tableelement')
+				          .attr('class', 'tableelement')
 				          .attr('id', currentID)
 				      );
 				inser_html += $td.prop("outerHTML");
@@ -743,7 +698,7 @@ function renderElement(){
 		
 
 		var current_collapsed_table = $($('template#collapseTable').html());
-	var $template = $('#template');
+		var $template = $('#template');
         var node = $template.prop('content');
         var $content = $(node).find('div');
 
@@ -765,9 +720,10 @@ function renderElement(){
 
 	// enable tooltips
 	$('#paneltest div[data-toggle]').each(function() {
-		var manual = false
+		var manual = false;
 		$(this)
-			.on('mouseenter', function() { 
+			.on('mouseenter', function() {
+				// $(this).tooltip('show'); 
 				if (!manual) { $(this).tooltip('show'); };
 			})
 			.on('mouseleave', function() { 
@@ -779,67 +735,10 @@ function renderElement(){
 		
 }
 
-function renderElement2(){
-	
-	$("#paneltest").empty();
-
-	for (var topicKey in topicArray) {
-		
-		var currentTopic=topicArray[topicKey];
-		var inser_html="";
-	
-		inser_html=inser_html+"<tr id='"+topicKey+"'><th scope='row' style='text-align:center;'>"+topicKey+"</th><td>";
-		//Render human icons
-		inser_html+="<table border='0' class='topic-people'><tr><td></td>";
-		var people_id=1;
-		for(var index=0; index<number_of_providers;index++)// lopping the topic
-		{
-			inser_html=inser_html+"<td><span class='fa fa-user human-figure'></span></td>";
-				people_id++;
-		}
-		inser_html+="</tr>";
-	
-		for (var sentimentKey in currentTopic) {
-			
-			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='15%'><b>"+sentimentKey+'</b></td>';
-			people_id=1;
-			for(var index=0; index<number_of_providers;index++)// lopping the topic
-			{
-				var currentID=topicKey+'-'+sentimentKey+'-'+people_id;
-				var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
-				var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
-				
-				$td = $('<td>').append(
-				          $('<div>')
-				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
-				          .attr('title', associated_idea_units_string)
-				          .attr('class', 'tableelement')
-				          .attr('id', currentID)
-				);
-				inser_html += $td.prop("outerHTML");
-
-
-				// inser_html=inser_html+"<td><div data-toggle='tooltip' title=\""+associated_idea_units_string+"\" class='tableelement' id='"+currentID+"'></div></td>";
-				people_id++;
-
-				visual_status[currentID]=false;
-			}
-			inser_html+="</tr>";
-			
-		}
-		inser_html+="</table></td></tr>";
-		
-		$("#paneltest").append(inser_html);
-	}
-
-	// enable tooltips
-	$('#paneltest div[data-toggle]').tooltip({'html': true});
-}
 function renderFactual(){
 
 	for (var key in all_idea_units) {
 		var people_id=key.split('-');
-		//console.log("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]);
 		var tmp_sentiment=all_idea_units[key]['sentiment'];
 		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
 
@@ -911,6 +810,9 @@ if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion
 	SelectFeedback(selectedID);
 
 }
+
+
+
 
 
 </script>

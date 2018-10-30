@@ -1,0 +1,277 @@
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+		.visited { 
+		    background-color: lightgrey;
+		}
+
+	
+		.highlight{
+			color: blue !important;;
+		}
+
+		.active-icon{
+			color: red !important;
+		}
+
+.active-text{
+	/*background-color: yellow !important;*/
+	border: 4px solid grey;
+}
+.vis-content{
+	text-align: justify; 
+	padding-bottom:10px; 
+	padding-right:25px;
+}
+
+p.success{
+	color:green;
+}
+p.fail{
+	color:red;
+}
+
+.original-feedback{
+	margin: 10px;
+	font-size: 20px;
+}
+
+
+
+.topic-row{
+	text-align: center;
+}
+
+.topic-field{
+	display: inline-block;
+	font-weight: bold;
+}
+
+.tableelement {
+	/*width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+    cursor: pointer;
+    margin: 3px;
+    overflow:auto;
+    font-size: 12px;
+*/
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+   	cursor: pointer;
+    margin: 3px;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 10px 3px 0 3px;
+    text-align: center;
+    min-width: 14px;
+    color:white;
+}
+
+.tableelement-action {
+	/*width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+    cursor: pointer;
+    margin: 3px;
+    overflow:auto;
+    font-size: 12px;
+*/
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #dfe2de;
+   	cursor: pointer;
+    margin: 5px;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    padding: 10px 3px 0 3px;
+    text-align: center;
+    min-width: 14px;
+    color:white;
+}
+
+
+table.topic-people{
+	border: 0px;
+}
+table.topic-people td{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 0px;
+	border: 0;
+
+}
+
+.tableelement.selectElement{
+	 box-shadow: 0 0 2pt 2pt grey; 
+}
+
+.human-figure{
+	color:grey; font-size:32px; margin:6px
+}
+
+.tooltip-inner {
+	text-align: left;
+	background-color: white;
+	color: black;
+	max-width: 550px;
+	font-size: 1.5rem;
+	border: 1px black solid;
+}
+
+.card .topic-name{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.float-right{
+	float: right;
+}
+
+.left-panel{
+	height: 100vh;
+	border-right: 1mm ridge rgb(90, 100, 120, .2);
+}
+.add-left-panel{
+	position: fixed;
+	border-top: solid lightgrey;
+	width: 100%;
+    bottom: 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tab-element{
+ 	font-size: 16px;
+    cursor: pointer;
+}
+
+.left-panel-item{
+	border-top: 0.5mm solid lightgrey;
+	width: 100%;
+	font-size: 16px;
+    cursor: pointer;
+}
+
+.action-list{
+	border-bottom: 0.5mm solid lightgrey;
+	width: 100%;
+}
+
+
+/* The whole thing */
+.custom-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius: 5px;
+    padding: 0;
+}
+
+/* Each of the items in the list */
+.custom-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-type: none;
+    transition: all .3s ease;
+    user-select: none;
+}
+
+.custom-menu li:hover {
+    background-color: #DEF;
+}
+
+.overlay-container {
+  position: relative;
+  width: 100%;
+  min-width: 20px;
+}
+.number-div {
+	position: absolute;
+  display: block;
+  width: 20px;
+  height: : 20px;
+  text-align:center;
+  color:white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+ 
+}
+
+.icon {
+  color: black;
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.action-bn{
+	border: 1px;
+	border-color: black;
+}
+
+.action-record-row{
+	cursor: pointer;
+}
+
+.tab-pane{
+  margin-top: 50px;
+}
+
+.action-number{
+  float: right;
+  font-weight: bolder;
+}
+/*.overlay-container {
+  position: relative;
+  width: 100%;
+  min-width: 20px;
+}
+.overlay, .number-div {
+  text-align:center;
+  color:black;
+  top: 0;
+  margin-left, margin-right: auto; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.number-div{
+	z-index: 10;
+}*/
