@@ -255,10 +255,11 @@ table.topic-people td{
   margin-top: 50px;
 }
 
-.action-number{
+.count, .action-number{
   float: right;
   font-weight: bolder;
 }
+
 /*.overlay-container {
   position: relative;
   width: 100%;

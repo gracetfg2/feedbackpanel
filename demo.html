@@ -165,6 +165,7 @@
         <button class="btn btn-link" data-toggle="collapse" data-target="#actionPanel" aria-expanded="false" aria-controls="actionPanel">
         </button>
       </h5>
+
     </div>
      <div id="actionPanel" class="collapse" aria-labelledby="actionHeading" data-parent="#action-panel">
       <div class="card-body">
@@ -396,7 +397,7 @@ function createActionPanel(){
 
 		$('.card-header',current_action_panel).attr('id', 'actionHeading-'+element); 
 		$('button',current_action_panel).attr('data-target','#actionContent-'+element );
-		$('button',current_action_panel).html(element);
+		$('button',current_action_panel).html(element.replace('-',' ')+" ("+"<span class='count'></span> elements)");
 		$('button',current_action_panel).attr('aria-controls','actionContent-'+element );
 		$('.collapse',current_action_panel).attr('id', 'actionContent-'+element);
 		$('.collapse',current_action_panel).attr('aria-labelledby', 'actionHeading-'+element); 
@@ -426,6 +427,9 @@ function calculateAction(){
 	assign_groups.forEach(function(element)
 	{
 		$('#count-'+element+' .action-number').html(count_action[element] || '0');
+		$('#actionHeading-'+element+' .count').html(count_action[element] || '0');
+		//$('#count-'+element+' .action-number').html(count_action[element] || '0');	
+		
 	})
 	// console.log(all)
 }
