@@ -259,6 +259,141 @@ function calculateAction(){
 	// console.log(all)
 }
 
+
+
+function renderElement(){
+
+	$("#paneltest").empty();
+
+	for (var topicKey in topicArray) {
+	
+		var currentTopic=topicArray[topicKey];
+		//create header middle td
+		var inser_header="";//header human figures	
+		var inser_html="";//body content	
+		
+		//Render human icons
+		for(var index=1; index<=number_of_providers;index++)// lopping the topic
+		{
+			inser_header=inser_header+"<th><span class='fa fa-user human-figure' id='human-"+topicKey+"-"+index+"'></span></th>";
+		}
+		
+		//Render content
+		for (var sentimentKey in currentTopic) {
+			
+			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='20%' style='color:grey; text-align:right;'><b>"+sentimentKey+'</b></td>';
+			people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				var currentID=topicKey+'-'+sentimentKey+'-'+people_id;
+				var associated_idea_units = getIdeaUnits(topicKey, sentimentKey, people_id);
+				var associated_idea_units_html_string = IdeaUnits2TooltipHTML(associated_idea_units);
+				//var associated_idea_units_string = ('<ul>' + associated_idea_units.map(text => '<li>' + text + '</li>').join('') + '</ul>').replace('"', '\''); // convert " to '
+				
+				$td = $('<td>').append(
+				          $('<div>')
+				          .attr('data-toggle', associated_idea_units.length? 'tooltip' : '')
+				          .attr('title', associated_idea_units_html_string)
+				          .attr('class', 'tableelement')
+				          .attr('id', currentID)
+				      );
+				inser_html += $td.prop("outerHTML");
+
+				// inser_html=inser_html+"<td><div data-toggle='tooltip' title=\""+associated_idea_units_string+"\" class='tableelement' id='"+currentID+"'></div></td>";
+				people_id++;
+
+				visual_status[currentID]=false;
+			}
+			inser_html+="</tr>";
+			
+		}
+		inser_html+="</table>";
+		
+
+		var current_collapsed_table = $($('template#collapseTable').html());
+
+		//render table headaer
+		$('.topic-name', current_collapsed_table).html(topicKey);
+		$('.human-headers', current_collapsed_table).replaceWith(inser_header);//new
+		
+		//assign collapse
+		$('button', current_collapsed_table).attr('data-target','#content-'+topicKey);
+		$('button', current_collapsed_table).attr('aria-controls','content-'+topicKey);
+
+		$('[name=topic-element]', current_collapsed_table).attr('id','content-'+topicKey );		
+		$('[name=topic-element]', current_collapsed_table).html(inser_html);
+		
+		$("#paneltest").append(current_collapsed_table);
+	}
+
+	// enable tooltips
+	$('#paneltest div[data-toggle]').each(function() {
+		var manual = false;
+		$(this)
+			.on('mouseenter', function() {
+				// $(this).tooltip('show'); 
+				if (!manual) { $(this).tooltip('show'); };
+			})
+			.on('mouseleave', function() { 
+				if (!manual) { $(this).tooltip('hide'); };
+			})
+			.on('click', function() { manual = !manual;})
+			.tooltip({'html': true, 'trigger': 'manual'});
+	});
+		
+}
+
+function renderFactual(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		 	.css('background',sentimentColor[tmp_sentiment]);	
+		    //.css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
+
+
+	
+		for (var topic in topicArray) {
+			
+			for(var people=1; people<=number_of_providers;people++)
+			{	
+				var count_ideas=0;	
+				sentimentName.forEach(function(element) {
+				
+					var num=getIdeaUnits(topic, element ,people).length;
+					count_ideas+= num;
+				});	
+
+				if(count_ideas>0)
+					$("#human-"+topic+"-"+people).css("color","grey");
+			}
+		}
+	}
+
+
+
+function renderFactualbk(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		 	.css('background',sentimentColor[tmp_sentiment]);	
+		    //.css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
+
+}
+
+	
+
 function renderFeedbackTable(){
 	for(var key in all_idea_units){
 			var tmp_id=key.split('-');
@@ -477,28 +612,29 @@ function createTopicArray()
 }
 
 
-function renderElement_bk(){
-	
+
+
+function renderElement(){
+
 	$("#paneltest").empty();
 
 	for (var topicKey in topicArray) {
-		
-		var currentTopic=topicArray[topicKey];
-		
-		var inser_html="";	
-		//Render human icons
-		inser_html+="<table border='0' class='topic-people'><tr><td></td>";
-		var people_id=1;
-		for(var index=0; index<number_of_providers;index++)// lopping the topic
-		{
-			inser_html=inser_html+"<td><span class='fa fa-user human-figure'></span></td>";
-				people_id++;
-		}
-		inser_html+="</tr>";
 	
+		var currentTopic=topicArray[topicKey];
+		//create header middle td
+		var inser_header="";//header human figures	
+		var inser_html="";//body content	
+		
+		//Render human icons
+		for(var index=1; index<=number_of_providers;index++)// lopping the topic
+		{
+			inser_header=inser_header+"<th><span class='fa fa-user human-figure' id='human-"+topicKey+"-"+index+"'></span></th>";
+		}
+		
+		//Render content
 		for (var sentimentKey in currentTopic) {
 			
-			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='15%'><b>"+sentimentKey+'</b></td>';
+			inser_html+="<tr id='sentiment"+sentimentKey+"'><td width='20%' style='color:grey; text-align:right;'><b>"+sentimentKey+'</b></td>';
 			people_id=1;
 			for(var index=0; index<number_of_providers;index++)// lopping the topic
 			{
@@ -528,24 +664,18 @@ function renderElement_bk(){
 		
 
 		var current_collapsed_table = $($('template#collapseTable').html());
-		var $template = $('#template');
-        var node = $template.prop('content');
-        var $content = $(node).find('div');
 
-
-
-
+		//render table headaer
 		$('.topic-name', current_collapsed_table).html(topicKey);
-		$('.card-header', current_collapsed_table).attr('id','card-'+topicKey);
-		//$('a', current_collapsed_table).attr('href','#content-'+topicKey);
+		$('.human-headers', current_collapsed_table).replaceWith(inser_header);//new
+		
+		//assign collapse
 		$('button', current_collapsed_table).attr('data-target','#content-'+topicKey);
 		$('button', current_collapsed_table).attr('aria-controls','content-'+topicKey);
-		$('button', current_collapsed_table).html("<span class='fa fa-plus'></span>");
-		$('[name=topic-element]', current_collapsed_table).attr('id','content-'+topicKey );
-		
-		$('[name=topic-element] .card-body', current_collapsed_table).html(inser_html);
-		$('[name="collapsedContent"]', current_collapsed_table).attr('aria-labelledby','card-'+topicKey);
 
+		$('[name=topic-element]', current_collapsed_table).attr('id','content-'+topicKey );		
+		$('[name=topic-element]', current_collapsed_table).html(inser_html);
+		
 		$("#paneltest").append(current_collapsed_table);
 	}
 
@@ -566,13 +696,72 @@ function renderElement_bk(){
 		
 }
 
-	
+function renderFactual(){
 
-function filterResult(){
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		 	.css('background',sentimentColor[tmp_sentiment]);	
+		    //.css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
+
+
+	
+		for (var topic in topicArray) {
+			
+			for(var people=1; people<=number_of_providers;people++)
+			{	
+				var count_ideas=0;	
+				sentimentName.forEach(function(element) {
+				
+					var num=getIdeaUnits(topic, element ,people).length;
+					count_ideas+= num;
+				});	
+
+				if(count_ideas>0)
+					$("#human-"+topic+"-"+people).css("color","grey");
+			}
+		}
+	}
+
+
+
+function renderFactualbk(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		 	.css('background',sentimentColor[tmp_sentiment]);	
+		    //.css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
 
 }
 
 
+function renderFactualbk(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		var tmp_sentiment=all_idea_units[key]['sentiment'];
+		var associated_idea_units = getIdeaUnits(all_idea_units[key]['topic'], all_idea_units[key]['sentiment'], parseInt(people_id[0]));
+
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0])
+		 	.css('background',sentimentColor[tmp_sentiment]);	
+		    //.css('background-color', sentimentColorScale[tmp_sentiment](associated_idea_units.length));
+		    // .css('background',sentimentColor[tmp_sentiment]);	
+	}
+
+}
+
+//*NOT IN USE*//
 function renderInterpretation(){
 
 	var selectedID=[];

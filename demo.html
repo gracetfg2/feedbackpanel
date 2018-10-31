@@ -154,7 +154,7 @@
 
 	
 <template id='collapseTable'>
-	<table class="table table-sm" style="margin: 0;">
+	<table class="table table-sm" >
     	<thead><tr>
     		<th width='20%' class='topic-name'>#</th>
       		<th class='human-headers'></th>
@@ -184,7 +184,7 @@
       </h5>
 
     </div>
-     <div id="actionPanel" class="collapse" aria-labelledby="actionHeading" data-parent="#action-panel">
+     <div id="actionPanel" class="collapse" aria-labelledby="actionHeading">
       <div class="card-body">
 			<table class="table table-hover">				
       		</table>
@@ -308,7 +308,6 @@ function renderFactual(){
 				sentimentName.forEach(function(element) {
 				
 					var num=getIdeaUnits(topic, element ,people).length;
-					console.log("count_ideas for topic:"+topic+"  sentiment:"+element+"  people:"+people+"="+num);
 					count_ideas+= num;
 				});	
 
