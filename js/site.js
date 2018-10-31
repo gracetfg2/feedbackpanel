@@ -51,22 +51,6 @@ $(function(){
 // Page 2
 
 
-	$("#associate-action1").on('click', function(){
-		actionflag= !(actionflag);
-		if(actionflag==true){
-			$(this).css("background","red");
-			$(this).html("End Associate");
-			actionPanel= $("#feedback-list1");
-		}
-		else{
-			$(this).css("background","");
-			$(this).html("Associate");		
-			actionPanel='';
-		}
-	});
-
-
-
 
 	$(document).on('input', '.filter-attibute', function() {
 		//alert("haha");
