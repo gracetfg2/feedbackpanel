@@ -42,7 +42,20 @@ $(function(){
   		$(this).tab('show')
 	})
 
-	
+
+
+	$('[name="topic-element"]').on('shown.bs.collapse', function () {
+   		var getTopic=$(this).attr("id").split("-")[1];
+   		$('#ctrl-'+getTopic).html("<span class='fas fa-minus-square' name='collapse-ctrl'></span>")
+   		
+	});
+
+	$('[name="topic-element"]').on('hidden.bs.collapse', function () {
+   		var getTopic=$(this).attr("id").split("-")[1];
+
+   		$('#ctrl-'+getTopic).html("<span class='fas fa-plus-square' name='collapse-ctrl'></span>")
+   		
+	});
 
 	calculateAction();
 //page 3
@@ -407,6 +420,34 @@ function getIdeaUnits(topic_key, sentiment_key, people_id) {
 }
 
 function IdeaUnits2TooltipHTML(idea_units) {
+	var $tooltip_div = $('<ul class="list-group list-group-flush">');
+	idea_units.forEach(function(idea_unit) {
+		var $unit_div = $('<li class="list-group-item idea-list">').html('<p style="margin:2px;"><span class="badge badge-secondary"># '+idea_unit['id']+'</span> '+idea_unit['content'] + '</p>');
+		$tooltip_div.append($unit_div);
+		$assign_button_group = $('<div>').attr('class', 'btn-group btn-group-toggle action-bn').attr('data-toggle', 'buttons');
+		
+		assign_groups.forEach(function(group_name){
+			$label = $('<label>')
+				.attr('class', 'btn btn-outline-info action-bn')
+				.attr('onclick', 'assign_label_onclick(this)')
+				.attr('group_name', group_name)
+				.attr('idea_unit_id', idea_unit['id'])
+				.addClass(idea_unit.group_name === group_name? 'active' : '')
+				.html(group_name)
+				.append(
+					$('<input>').attr(
+						{'type': 'radio', 'name': 'options', 'autocomplete': 'off'}
+					)
+				);
+			$assign_button_group.append($label);
+		});
+		
+		$unit_div.append($assign_button_group);
+	});
+	return $tooltip_div.prop('outerHTML');
+}
+
+function IdeaUnits2TooltipHTMLbk(idea_units) {
 	var $tooltip_div = $('<ul>');
 	idea_units.forEach(function(idea_unit) {
 		var $unit_div = $('<li>').html(idea_unit['content'] + '<br>');
@@ -432,8 +473,6 @@ function IdeaUnits2TooltipHTML(idea_units) {
 	});
 	return $tooltip_div.prop('outerHTML');
 }
-
-
 
 // assume global variable all_idea_units
 function assign_label_onclick(element) {
