@@ -105,12 +105,12 @@ $(function(){
 		}
 
 
-		SelectFeedback(visual_status);
-		var feedbackCell= $("<tr class='feedback-cell'></tr>");
-		$(this).clone().appendTo(feedbackCell);
-		$("<td class='vis-content'>"+feedbackText+"</td>").appendTo(feedbackCell);
+		//SelectFeedback(visual_status);
+		//var feedbackCell= $("<tr class='feedback-cell'></tr>");
+		//$(this).clone().appendTo(feedbackCell);
+		//$("<td class='vis-content'>"+feedbackText+"</td>").appendTo(feedbackCell);
 
-		feedbackCell.appendTo(actionPanel);
+		//feedbackCell.appendTo(actionPanel);
 		//$(this).clone().appendTo(actionPanel);
 		
 
