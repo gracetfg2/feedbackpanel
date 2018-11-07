@@ -187,10 +187,16 @@
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Must fix <span class="badge badge-pill badge-secondary">9</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Consider <span class="badge badge-pill badge-secondary">7</span></a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Consider <span class="badge badge-pill badge-secondary">15</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Disagree <span class="badge badge-pill badge-secondary">8</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ignore<span class="badge badge-pill badge-secondary">8</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Strength <span class="badge badge-pill badge-secondary">3</span></a>
   </li>
 </ul>
 
@@ -277,7 +283,7 @@
 $(function(){
 
 	$('[name="conflict-panel"]').on('shown.bs.collapse', function () {
-   		console.log($(this).siblings(".card-header").attr('id'));
+   		console.log($(this).siblings(".card-header inner-content").);
    		
 	});
 
