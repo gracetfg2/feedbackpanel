@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+  
+    <title>Prototype</title>
+  
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+	<!-- Custom styles for this template -->
+	<link rel="import" href="data1.html">
+<style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+		.tableelement{
+			cursor: pointer;
+
+		}
+
+		.visited { 
+		    background-color: lightgrey;
+		}
+
+	
+		.highlight{
+			color: blue !important;;
+		}
+
+		.active-icon{
+			color: red !important;
+		}
+
+.active-text{
+	background-color: yellow;
+}
+.vis-content{
+	text-align: justify; 
+	padding-bottom:10px; 
+	padding-right:25px;
+}
+
+p.success{
+	color:green;
+}
+p.fail{
+	color:red;
+}
+
+.original-feedback{
+	margin: 10px;
+	font-size: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+
+<div class="container" style="margin-top: 50px">
+<div class='table-text'>
+<strong>#1: </strong>What strikes me the most is the lack of emphasis on the cash price, which in my opinion is a great incentive to participate in the marathon.
+In the current draft, the dark text is lost at the bottom of the poster, blending in with dark clothes of runners around it.
+<br><br>
+The usage of a rounded font paired with the posterize filter on the background photo make the poster appear amateurish – both the rounded, "fun" fonts and the filter are overused by beginners.
+<br><br>
+The typography is boring, with minimal information hierarchy – there is not enough variation between each of the lines so everything blends into one block of text.
+<br><br>
+@NYC color is not contrasting enough for it to make sense, looks more like an error than conscious decision.
+<br><br>
+The boxed background for the text is unnecessary as it blends with the trees.</div>
+<hr>
+<div class='table-text'>
+		<strong>#2: </strong>Overall, I really like the text placement on this. It's very easy to tell exactly what this event is. I also think that the colors are nice. I like the idea of a simplistic and posterized version of the background photo. 
+<br><br>
+There are some things I would change. I don't think this typeface is working well. I would pick something cleaner and more simple. Maybe a sans serif font. 
+<br><br>
+Center the text at the bottom, and maybe change the color to match the top text. I think it would balance the flyer more.
+<br><br>
+I would also try removing the green box behind the text at the top. I don't think it (the box) would be necessary due to the color of the text being so bright.</div>
+<hr>
+	<div class="table-text"><strong>#3: </strong>The selected font doesn't seem appropriate for the subject matter or the audience. I would recommend considering a sleek or strong san serif font.
+<br><br>
+A vital piece of information is missing; it should be emphasized that proceeds for the event go toward funding cancer research. This will encourage participation.
+<br><br>
+The typography is clear and readable, but could use a more defined hierarchy.
+<br><br>
+The background image does efficiently communicate what the poster is about. However it (the background image) is not visually appealing or eye-catching; it appears to be a photo that has been 'live-traced' in illustrator, producing an amateurish look. I would either use a photo or an actual illustration.
+</div><hr>
+	<div class='table-text'><strong>#4: </strong>This design is not visually appealing, the choice of applying a filter over the image resulted in muddied colors. In general, that kind of filter is very old-fashioned, and is usually better to just use the original picture of make an illustrated re-interpretation. With a color palette so bland on the photo, by contrast, the text should be something more vibrant to attract people's attention. 
+<br><br>
+The font chosen is also not great, and every line is a different size, making it fairly distracting at points. I think the biggest strength of the design is it's simplicity, so if changes are to be made, it would be best to make sure it does not become convoluted, stick to 2 different fonts or one with different variations (my personal recommendation would be Bebas Neue, it's free for commercial use) and choose two different colors to match, perhaps a red for the important bits of the text. If the goal is to encourage participation I think a good choice would be to emphasize the $300 cash prize, either by changing the color of the font or making it bigger. 
+</div><hr>
+
+	<div class='table-text'><strong>#5: </strong>Strengths: The poster is bold and would catch the eye. Most of the relevant information is there. The colours and font are easily readable. 
+<br>
+Weaknesses: The vector tracing of the image leaves a lot to be desired. All the detail of the image is lost and the colours look drab and bleed into each other. Maybe use the original photo instead. I think the font could be changed to a sans serif font to make the overall design look cleaner and less childlike. I also don't see any mention of the charities that will benefit from the race.
+<br><br>
+Overall: The poster is easily readable and actionable. However the design lacks a finishing touch and a rethink of the large vector image would make it much nicer on the eye. The text could also look more professional to show they mean business!
+</div><hr>
+
+<div class='table-text'><strong>#6: </strong>
+The first issue I noticed upon comparing the goals to the product was that the flyer never mentions the charity. That is an important detail that has been entirely omitted from the flyer. The font is appropriate for the theme and easy to read, but the '@NYC' seems out of place, having been made a different color from the rest of the text at the top of the flyer. On a more positive note, the information on the flyer is very easy to read and conveys all of the important details other than the charity aspect. The filter used on the background photo is a little offputting, though. Most of it isn't bad except for the parts where the color distorts the runners' faces, such as the purple gentlemen on the left side of the poster.
+</div><hr>
+
+
+<div class="table-text"><strong>#7: </strong>
+Strengths: Good hierarchy of information, information is easily read, single typeface make, engaging illustration.
+<br><br>
+Weaknesses: Posterize effect is a bit tacky. Although there is a prize for the fastest finishers, the flyer itself does not invoke speed, composition is quite calm for a competition. Poor font choice for this particular event. Colors are quite bland. Placement of prize could be a bit better.
+<br><br>
+Improvements: Expand on the posterize effect; make it more unique and less obvious, strong diagonals invoke a feeling of urgency and speed; this composition could be improved with more diagonals; things will look more exciting. A grid system can be used to dictate placement of typographic elements. Header type can be kerned better. Use color adjustment layers to create more interesting cohesive color schemes.
+<hr>
+<div class="table-text"><strong>#8: </strong>
+You forgot the main point of this race, it's a fundraiser for local cancer research institutions. That should be around the second thing to be seen after the name. I think the register link could go at the end: whoever is interested will take a look at the whole flyer. The prizes are also a "selling" point but they are pretty unnoticeable down there, due to the size. Having the link below it would be the final way to seal the deal with the viewer.
+<br><br>
+It looks like it needs a second typography/font to display the information besides the name, you should treat RUN@NYC as a logo even if it's not really one, so the rest of the info can be seen as complimentary of the name, a different font can definitely do the job there. You could use that same main font to highlight important info like the registration link and the date.
+<br><br>
+Nice job treating the background image so detail and doesn't distract from the main text and conveys the message perfectly from the start. It could benefit from a overlay color to tint all the colors towards a single one in different shades (notice how all the attention goes to the red shirt). The bottom text could benefit from a similar box like the one used on top, so that it visually balances out from top to bottom.
+<br><br>
+Finally, a change of color palette will do wonders, look at running brands, see the colors they use: bold, bright, that should be what your flyer shows as well, a dark main color with a couple bright colors for text would do wonders.
+<br><br>
+Right now as it is, it works, even if it doesn't look clean. With the right tweaks as mentioned it could be much more effective at achieving it's goal.
+</div><hr>
+<div class="table-text"><strong>#9: </strong>
+	The poster conveys very well the important info about the event. I can see clearly the name of the event, the time and place and even a prize. So far the poster has served its information purpose. But when i go to the visual aspect, i get a bit lost. Why the idea is good, i think it lacks the energy and the vibration. To change this we can approach the visual part in a different way. We can maybe have a selection of brighter colors, combined with some dark ones to create contrast and with contrast we create interest. Maybe blur the image a bit, to symbolize speed. And i would even go a bit further with the effects. Because now it feels unfinished. 
+To summarize, i like the structure, but on that the poster must be rebuilt. Better fonts, and a color palette that gives the idea of energy, to motivate the viewer to participate.
+</div><hr>
+<div class="table-text"><strong>#10: </strong>
+	The Font is awful. The palette do not work. All the information is cramped on the top of the poster. In uncomfortable to read thanks to the colors and background. The text above is hard to read because there’s no contrast. There’s no consistency with the text alignment. I would have use 2 different font types. I don’t think it works and the goal is not defined graphically.
+</div><hr>
+<div class="table-text"><strong>#11: </strong>
+		To start it off, it's not that bad. Although, I would suggest going through bits and taking out parts of the vectorized photograph so it looks more like a silhouette style. Right now (maybe because I'm a designer) I can clearly tell this was just put into illustrator and image traced. I would go through and take out some details, or maybe add some details since the girls legs in the front left are disappearing. The hierarchy is good and clear, but I would suggest taking out the solid box at the top and picking a color so the text won't blend into the background. All the colors go well together, text is easy to read, and interesting.
+</div><hr>
+<div class="table-text"><strong>#12: </strong>
+Strengths: The image used is appropriate to convey the event and also to peak interest. All the information given is necessary and there isn't a cocktail of fonts being used. All the text is kept to size and color variations.
+<br><br>
+
+Weakness: Perhaps the art style of the background image isnt the best. It is not bad but it would not be my first choice. I would also choose a different, more modern font. This current font makes it look too childish.
+</div><hr>
+
+
+
+
+
+
+		
+</div>
