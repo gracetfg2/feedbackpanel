@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Grace Yen, Adobe System Corp.">
+  
+    <title>Prototype</title>
+  
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<!-- JQuery and Google font -->
+    <link href='https://fonts.googleapis.com/css?family=Exo:100,400' rel='stylesheet' type='text/css'>
+	<!-- Custom styles for this template -->
+	<link rel="import" href="data1.html">
+<style>
+        .droptarget {
+            float: left; 
+	        width: 300px; 
+	        height: 3500px;
+	        margin: 15px;
+	        padding: 10px;
+	        border: 1px solid #aaaaaa;
+   		}
+    	mark{
+    		background: orange;
+    		color: black;
+		}
+		.idea-unit:hover {
+			cursor: pointer;
+			background-color: lightgray;
+		}
+
+		.tableelement{
+			cursor: pointer;
+
+		}
+
+		.visited { 
+		    background-color: lightgrey;
+		}
+
+	
+		.highlight{
+			color: blue !important;;
+		}
+
+		.active-icon{
+			color: red !important;
+		}
+
+.active-text{
+	background-color: yellow;
+}
+.vis-content{
+	text-align: justify; 
+	padding-bottom:10px; 
+	padding-right:25px;
+}
+
+p.success{
+	color:green;
+}
+p.fail{
+	color:red;
+}
+
+.original-feedback{
+	margin: 10px;
+	font-size: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+<!--Consider set as element for django-->
+<nav class="navbar navbar-fixed-top navbar-inverse" style="background:#002058">
+        <div class="container">
+            <div class="navbar-header">
+               FeedbackPanel
+            </div>  
+        </div>
+</nav>
+
+<div style='display: none'>
+
+<span class='table-text'>
+Some of the information is way too small for a poster – would be illegible from the typical viewing distance.Taylor's Swift name is too small and misaligned with the rest of the text.
+Typography is boring and unappealing, especially the bottom pink box which looks generic. Lack of vertical padding makes it feel crowded and amateurish – top and bottom padding is smaller than the line height of the text inside.</span>
+
+<span class='table-text'>
+		As far as strengths go, I would say that the color choices work well. They are attractive and easy on the keys. I also really like the text placement, and how it wraps around the image. I also find that there is a nice sense of hierarchy, and that helps guide where you should look.
+
+		A couple of things that I would change; try changing the typeface of the central text (from Charity to Urbana-Champaign). The text is difficult to read from a bit away. I would also try centering the ticket availability box, just to see how that looks.
+
+		Overall I feel that this flyer does give follow the direction they were intending.</span>
+	<span class="table-text">The composition of the main image is eye-catching and utilizes the recognizability of Taylor Swift to help accomplish the design goals; most viewers will immediately recognize Swift and make correct inferences about the purpose of the poster.
+
+The checkered border and two logos in the top-left are distracting and take away from the design in my opinion. The border can be eliminated, but the logos are likely required by the design brief so relocating them to a less prominent location would help.
+
+I think the area with the most room for improvement is the typography. The different fonts don't work well together, causing a visual tension. The headline and subhead fonts both suffer from poor readability. I would recommend choosing one appropriate font family and sticking with it throughout the poster, using different sizes and weights to create the hierarchy. I would also pare down the effects like inner glow and the stroke.
+	</span>
+	<span class='table-text'>Overall, the design seems convoluted and disorganized. The initial concept is good, and having Taylor's picture as a focal point is a great start, but the rest of the elements act more as a distraction than to support it. If the concept was something a bit more sober as opposite to the youthful vibe that Taylor Swift has, the black and white photo along with the red tones of the text was a good choice in principle. 
+
+I think the biggest issue is the font choices; there are four different fonts and none of them work together very well, there's no emphasis in any of the information given, therefore someone who sees this poster might miss most of it since our eye tends to skim over text that seems disorganized or badly formatted. If the text was evenly spaced, and the font choices were reduced to 2 contrasting ones, maybe a third one for Taylor's name, I think it would result in a better design overall.</span>
+
+
+<span class='table-text'>
+Strengths: I like the large image. The black and white makes it look classy and vintage. The placement also works well for me. The image is large enough to convey the artist and represent her, while also leaving space for the content of the poster. The font used for Taylor Swift's name and tour name is a similar one used by her tour campaign making it easy to identify. All the details are in the right hierarchy giving the important information the most attention.
+
+Weaknesses: I think the overall design needs to be simpler especially with the text. The square border is adding nothing to the overall design in my eyes. I'm also not a fan of the outline of the text. The boxes around the quote don't really fit in with anything else either. The 'Taylor Swift' text and quote could be slightly higher up the page and the text left aligned the same as the other text below. The font choice for the information would not be my first choice. I believe the font is impact of something like that, there are other good fonts that give a similar feel without looking dated. The room the tickets can be bought in and the price are given the same prominence and are confusing to read at a quick glance.
+
+Overall: At a glance the poster would attract your attention with the large image catching the eye. The details are all there and almost in the right place, while the colours, border, and font choices make the poster feel a lot more dated that the poster should be.
+</span>
+
+
+<span class="table-text">
+I think the placement of the picture of Taylor is good because it is easily recognizable and catches the eye of the viewer. The font choices are not distracting or annoying, nor are the colors. The border is not quite as appealing to me. I personally don't think it fits the rest of the theme. I am also unsure of the purpose of the quote under the main header. I can assume contextually that it is meant to support the idea of the charity the proceeds are going to, however, that was not immediately clear to me. I do believe there is a clear hierarchy of information. It is clear and easy to read.
+</span>
+<span class="table-text">
+Strengths: All of the required information is displayed, the heirarchy of information is decent, a relevant photograph is used.
+
+Weaknesses: The color is very drab, too many different typefaces are used throughout the design, the alignment of text is arbitrary, the composition of the entire image isn’t very engaging, typographic details (leading, kerning, tracking, etc) are quite poor, the illustrative elements (border and photography) are quite drab.
+
+Improvements: Utilize a grid system to dictate placement of typographic elements. Use fewer typefaces in the composition; utilize different weights of the same typeface to create contrast and dictate hierarchy. Avoid tacky effects such as drop shadows and stroked type. Find a more engaging photograph or illustrative element.
+</span>
+
+<span class="table-text">
+	While the poster does a pretty good job at giving the information about the concert, stating the place , the date and the conjuncture, i think it lacks something in the visual part. The design does not have any major mistakes, but it can surely improve to appeal to its audience. The beige colours combined with multiple fonts, make for a heavy and slow design. I think the viewer can have a hard time navigating the poster, switching from a font to another. Also the exterior pattern on the sids can take the eyes of the viewer off the info, which is not a good thing. 
+So overall it is not a bad design, but i can see it remade, to appeal to its audience and to better encourage participation. For a simple exercise, let's consider that the artist in the poster is not Taylor Swift, but somebody rather unknown. The participation and engage rate of the viewer would be drastically reduced.
+</span>
+<span class="table-text">
+	In my opinion, this has successfully accomplished 1 out of the 3 requirements. It has conveyed all the event details, they are easy to see and well organized. I know at first glance who the artist is, what the point of the concert is, and the location and ticket information. The information is also logically organized by importance by order of descent. 
+
+I think the overall visual appeal and call to action could be improved upon. I think the color palette is excellent. I really love the dramatic black and white photo with the soft pink, grey, and red. But the typography and graphics could be better used. The typography is rather stale compared to the photo and the branding of "Reputation." There's also far too many fonts being used. There should be a header font, a subheader font, and a body font. 
+
+The diamond graphic is a nice element, but it would be nice to have that element incorporated elsewhere in the design to make it seem more cohesive. And on a more detailed note, the logos in the top left hand corner attract too much attention. They're in a very prominent place, but they aren't the most important elements in the design. Also, the white background on the Krannert Center logo should be removed to look cleaner.</span>
+<span class="table-text">
+	I think the concept is ok, but the graphic use is not. First, the border on 3 sides of the poster serves no purpose but to over charge the composition. There’s more than 3 different font types (big mistake) there’s no balance, almost all elements are un aligned. The only think I like about it is the color palette. The salmon with the gray and burgundy really works. But the word “charity” is hard to read. I don’t think it communicates the goal, needs to be simpler.
+</span>
+
+<span class="table-text">
+	The design itself is pretty cluttered. There is too much stuff going on and not enough hierarchy to be able to tell where to look first. The border itself is distracting along with the big image of Taylor, I would suggest taking out the border and only keeping Taylor as an image element. The logos on top left seem out of place and the white background on "krannert center" is a big tacky, I would suggest a transparent background. Outlines on text such as the "Taylor Swift" and "Charity Concert" tend to be a bit tacky as well. However, I do like the color choices, maybe a bit bolder of a red to really make it stand out, rather than a faded out red. But I would not use a solid black, as it is too harsh. I would not use too many font choices as there is in this poster, I would also not use a solid colored box for the "tickets available" portion, since it also just looks a bit out of place. The goal of a design is to make everything look cohesive and that all the elements belong together rather than to make it look like there was just elements slapped on top. Overall, it does it's job, but it's not too aesthetically pleasing to look at.
+</span>
+
+<span class="table-text">
+	Strengths: The chosen image with accompanying background feels like a good choice in order to compliment the information that would come with this flyer. It is clean yet descriptive of the subject of the event. It also seems that all the needed information is conveyed.
+
+Weakness: I see a lot of weaknesses with this flyer. The glaring one is the font choice for all the info as well as the placement of the text. This could be conveyed with a maximum of 3 fonts and adjusted with proper weight and size to show hierarchy of information. There is also some unneeded information, like her quote. The border can be removed as all its doing is crowding the space of the flyer.
+</span>
+
+</div>
+
+
+
+<div id='page-1'>  
+	<div class="container">
+			<div class="main-section" style="margin-top: 50px">
+		<div class="alert alert-info" role="alert" >
+			<h4>Instruction</h4>
+			 Please select values that make most sense to you blablabla. 
+			<a type="button" class="btn btn-info" onclick='finishAnnoate();'>View My MindSpace</a>
+		</div>
+  		<nav aria-label="Page navigation example">
+		  <ul class="pagination" id="page-list">
+		  </ul>
+		</nav>
+
+		<div class="row" id='all_feedback_table'></div>
+
+<template name='feedback_table'>
+	<div class="annotate-panel" style='display:none;'>
+	  <a class="btn btn-primary" data-toggle="collapse" href="" role="button" aria-expanded="false" >Read Origianl Feedback</a>
+
+	<div class='collapse multi-collapse' name='original-feedback'></div>
+
+
+	<table class='table table-hover table-nonfluid'>
+		<thead>
+		    <tr>
+		      <th style="width:5%" scope="col">#</th>
+		      <th style="width:30%" scope="col">Content</th>
+		      <th style="width:5%" scope="col"></th>
+		      <th style="width:10%" scope="col">Topic</th>
+		      <th style="width:10%" scope="col">Sentiment</th>
+		      <th style="width:10%" scope="col">Estimtated Effort</th>
+		      <th style="width:10%" scope="col">Criticality</th>
+		      <th style="width:10%" scope="col">Need Discussion</th>
+		      <th style="width:10%" scope="col">Agree</th>
+		    </tr>
+		  </thead>
+	
+	<tbody id='ideaunits'>
+		
+	</tbody>
+	</table>
+	</div>
+
+</template>
+
+<template name='feedback-row-template'>
+	<tr class='feedback-row'> 
+		<th name='ideaid' scope='row'></th>
+		<td name='content'></td>
+		<td><button type="button" name='merge' class="btn btn-info">Merge</button></td>
+		<td>
+			<div class='topic-section1'>
+				<span>Give a label</span>
+				<input type='text' style='display: inline-block;' name='new-topic'>
+				<!--<button class='add-btn' name='add-btn'><span class='fa fa-plus' style=" font-size:24px;margin-right:3px"></span></button>-->
+				<p name='check-result'></p>
+				<br><br>
+
+				Select from existing labels
+			<select name='topic' style="margin-bottom: 5px">
+				<option>Select from... </option>
+			</select>				
+				
+			
+			
+		</div>
+		</td>
+	s
+		<td><select name='sentiment'>
+				<option></option>
+				<option>positive</option>
+				<option>negative</option>
+				<option>suggestion</option>
+			</select>
+		</td>
+		<td><select name='effort'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='criticality'>
+				<option></option>
+				<option>high</option>
+				<option>medium</option>
+				<option>low</option>
+				<option>N/A</option>
+			</select>
+		</td>
+		<td><select name='discussion'>
+				<option></option>
+				<option>yes</option>
+				<option>no</option>
+		</td> 
+		<td><select name='agree'>
+			<option></option>
+			<option>completely</option>
+			<option>partially</option>
+			<option>no</option>
+		</td> 
+	</tr>
+	
+</template>
+
+
+</div>
+</div>
+
+</div>
+
+<div id='page-2' style="display: none;">
+
+
+<div class="container-fluid">
+	<div class="main-section" style="margin-top: 50px">
+
+
+	<div class="alert alert-info" role="alert" >
+		<h4>Instruction</h4>
+	 We collect six pieces of feedback from independent reviewers. The feedback set is categorized and transformed into a summary panel (on the right hand side). You can interact with the panel to explore the feedback set. 
+
+	 <a type="button" class="btn btn-info" onclick='backAnnotate();'>Revise My Annotate</a>
+	</div>
+  
+	<div class="row">    
+
+		<div class="col-md-6"> 
+			<table class='table table-nonfluid'>
+			<tbody id='feedback-list'>
+			</tbody>
+			</table>
+		</div>
+
+<!--user input-->
+<div class="modal fade" id="annotate" aria-hidden="true" role="dialog">
+  	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    	<div class="modal-header">
+    		<p id='selected-text'></p>
+    	</div>
+      	
+      	<div class="modal-body">
+      	<form>      	
+	      	<div class="form-group">
+	    		<label for="topic"><b>Create an Action Item</b></label>
+	   	 		<input type="email" class="form-control" id="topic" aria-describedby="emailHelp" placeholder="e.g. Select an image with a sun">
+	    		<small class="form-text text-muted">Use a few words to decribe what you will do with this feedback.</small>
+	    		
+	  		</div>
+
+
+	  		<hr>
+	  		<div class="form-group">
+	    		<label for="topic"><b>Associate This Action Item with ...</label></b>
+	   	 		<select>
+	   	 			<option>Select an image without sun glare.</option>
+	   	 			<option>Select an image with multiple people.</option>
+	   	 		</select>
+	  		</div>
+      		<hr>
+      		<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox"  value="no-value">
+						  <label class="form-check-label" for="criticality"><b>Mark as no action needed for solving this item</b></label>
+						</div>
+      	</form>
+      	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-6">
+
+<div class="card">
+	     <div class="card-header">
+    Show Areas of Feedback
+  </div>
+  <div class="card-body">
+
+  		<form>
+				<div class="form-group row">
+				    <legend class="col-sm-3 col-form-label"><b>Estimated Revision Effort</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="high">
+						  <label class="form-check-label" for="effort">High</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="medium">
+						  <label class="form-check-label" for="effort">Medium</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="effort" value="low">
+						  <label class="form-check-label" for="effort">Low</label>
+						</div>
+				    </div>
+				 </div>
+
+				<div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Criticality</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="high">
+						  <label class="form-check-label" for="criticality">High</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="medium">
+						  <label class="form-check-label" for="criticality">Medium</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="criticality" value="low" >
+						  <label class="form-check-label" for="criticality">Low</label>
+						</div>
+				    </div>
+				 </div>
+
+				 <div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Need Discussion</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="discussion" value="yes">
+						  <label class="form-check-label" for="discussion">Yes</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="discussion" value="no">
+						  <label class="form-check-label" for="discussion">No</label>
+						</div>
+				    </div>
+				 </div>
+
+
+				 <div class="form-group row">
+				     <legend class="col-sm-3 col-form-label"><b>Agree</b></legend>
+				    <div class="col-sm-9">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="completely">
+						  <label class="form-check-label" for="agree">Completely</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="partially">
+						  <label class="form-check-label" for="agree">Partially</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input filter-input" type="checkbox" name="agree" value="no">
+						  <label class="form-check-label" for="agree">No</label>
+						</div>
+				    </div>
+				 </div>
+
+		</form>
+
+  
+  </div>
+</div>
+		
+
+
+<!--Panel-->
+<table class="table" style="font-size: 20px">
+	<thead>
+    <tr>
+      <th scope="col">Topic</th>
+      <th scope="col">Positive</th>
+      <th scope="col">Negative</th>
+      <th scope="col">Suggestion</th>
+    </tr>
+  </thead>
+
+<tbody id='paneltest'>
+	
+</tbody>
+</table>
+
+</div>
+</div>
+</div><!--end of page 2-->
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+		
+</div>
+<script>
+
+//Get dataset
+
+function LoadData(){
+
+	var team= $('#team-name').val();
+	
+}
+
+
+//GET DATA
+
+
+var all_idea_units = {}
+var number_of_providers=0;
+
+//var topicName=['image','layout'];
+var sentimentName=['strength','weakness','neutral'];
+var topicArray={};
+var topics=[];
+
+class LabelClass {
+  constructor(topic, sentiment, criticality,effort, discussion, agree, visited) {
+    this.topic = topic;
+    this.sentiment = sentiment;
+    this.criticality = criticality;
+    this.effort = effort;
+    this.discussion = discussion	;
+    this.agree = agree	;
+    this.visited = visited;
+  }
+}
+
+$(function(){
+
+//$.get('data1.html', null, function(text){
+
+  //$('[data-toggle="tooltip"]').tooltip(); 
+	$(".table-text").each(function (table_i) {
+		
+		var current_html_table = $($('div#page-1 template[name="feedback_table"]').html());
+		var reviewer_i = table_i + 1;
+		number_of_providers=reviewer_i;
+		var text=($(this).text().trim()).match(/[^\.!\?]+[\.!\?]+/g);
+		//var text = ($(this).text().trim()).split(/(?<=[\.!?])/);
+		current_html_table.attr('id',reviewer_i);
+		$('a', current_html_table).attr('href', '#original'+reviewer_i );
+		$('[name="original-feedback"]', current_html_table).html("<b>Original Feedback : </b><br>"+ $(this).text()+"<br>");
+		$('[name="original-feedback"]', current_html_table).attr('id','original'+reviewer_i );
+		var text_vis_table='';
+
+		
+
+		for (var i = 0; i < text.length; i++) {
+			
+				var current_idea_id = reviewer_i+ '-'+i;
+		
+				text_vis_table=text_vis_table+	"<span class='idea-unit' data-toggle='modal' data-target='#annotate' id='" + current_idea_id + "'>" + text[i] + "</span>";
+
+			var current_feedback_row = $($('div#page-1 template[name="feedback-row-template"]').html());
+			current_feedback_row.attr('id', current_idea_id );
+			$('[name="ideaid"]', current_feedback_row).html(current_idea_id);
+			$('[name="content"]', current_feedback_row).html(text[i]);
+			$('[name="add-btn"]', current_feedback_row).attr('id', current_idea_id);
+			$('[name="topic"]', current_feedback_row).attr('id', current_idea_id);
+			$('[name="new-topic"]', current_feedback_row).attr('id', "newfor"+current_idea_id);
+			
+			//var text_spanned="<tr id='" + reviewer_i + "-" + i + "'> <th scope='row'>"+reviewer_i+ "-" + i+"</th><td>"+text[i]+"</td><td><select name='topic'><option></option><option>image</option><option>layout</option><option>font</option><option>color</option><option>copy issue</option></td><td><select name='sentiment'><option></option><option>positive</option><option>negative</option><option>suggestion</option></select></td><td><select name='effort'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='criticality'><option></option><option>high</option><option>medium</option><option>low</option></select></td><td><select name='discussion'><option></option><option>yes</option><option>no</option></td> <td><select name='agree'><option></option><option>completely</option><option>partially</option><option>no</option></td> </tr>";
+			
+			$('#ideaunits', current_html_table).append(current_feedback_row);
+
+			var ideaunit = {
+				id: current_idea_id,
+				content: text[i],
+				topic: null,
+				sentiment: 0,
+				criticality: 0,
+				effort: 0,
+				discussion: false,
+				agree: 0,
+				visited:false,
+				action:null
+			};
+
+			all_idea_units[current_idea_id] = ideaunit;
+			
+
+			
+	
+		}//end for loop
+
+		$('#all_feedback_table').append(current_html_table);
+
+		$('#page-list').append($("<li class='page-item'><a class='page-link' id='feedback-"+reviewer_i+"'>"+reviewer_i+"</a></li>"));
+
+		$('#feedback-list', "div#page-2").append("<tr><td><strong>#"+reviewer_i+"</strong></td><td class='vis-content'>"+text_vis_table+"</td></tr>");
+
+
+		$('.feedback-row#'+reviewer_i+'-0 [name="merge"]').hide();
+		
+	})
+
+		$(".page-item:eq(0)").addClass('active');
+		$(".annotate-panel#1").show();
+
+		$(".page-link").click(function(){
+			$(".page-item").removeClass('active');
+			$(this).closest(".page-item").addClass('active');
+			var current_page= $(this).attr("id").split('-');
+			$(".annotate-panel", "#page-1").hide();
+			$(".annotate-panel#"+current_page[1], "#page-1").show();
+		});
+
+		$("select", "#page-1")
+	  		.change(function () {
+
+	    	var current_tag= $(this).attr("name");
+	      	var current_idea= $(this).closest("tr").attr("id");
+	      	//var current_value = $(this).find(":selected").text();
+	      	all_idea_units[current_idea][current_tag] = $(this).find(":selected").text();
+	      	//console.log(JSON.stringify(all_idea_units[current_idea]));	     	
+		 });
+		
+
+
+	$("div#page-1").on('click', "[name=merge]", function(){
+
+		var current_row= $(this).closest(".feedback-row");
+		var previous_row=current_row.prev(".feedback-row");
+		
+		var current_id=current_row.attr('id');			
+		var pre_idea_id = previous_row.attr('id')		
+		//update all_idea_unit
+		var tmp_content=$(".feedback-row#"+current_id +" [name='content']").text();
+		//alert(tmp_content);
+		all_idea_units[pre_idea_id]['content'] += tmp_content ;
+		//alert(all_idea_units[pre_idea_id]['content']);
+		$('.feedback-row#'+pre_idea_id+' [name="content"]').text(all_idea_units[pre_idea_id]['content'] );
+		$('.feedback-row#'+current_id).remove();
+		delete all_idea_units[current_id];
+		//delete all_idea_units[current_id];
+		//alert( $(".feedback-row#"+current_id +" [name='content']").text());
+		//alert(all_idea_units[pre_idea_id]['content']);
+
+		var current_span= $("span#"+current_id+".idea-unit");
+		//alert(current_span.attr('id'));
+		//var current_row= $("span.idea-unint#"+current_id);
+    	current_span.prev().append(current_span.text());
+    	current_span.remove();
+
+		
+	});
+
+
+// Page 2
+
+
+	$("div#page-2").on('click', ".filter-input", function(){
+
+		renderInterpretation();
+
+	});
+
+	$("div#page-2").on('click','.tableelement', function() {
+		
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		console.log(span_id);
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				console.log(key);
+		//todo
+				$("span.idea-unit#"+key, "#page-2").addClass("visited");
+				all_idea_units[key].visited=true; 
+				$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+
+
+
+
+	})
+
+	$("div#page-2").on('mouseenter','.tableelement', function() {
+		
+
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		console.log(span_id);
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if( (tmp_id[0] == people_id)&&(sentiment==all_idea_units[key]['sentiment'])&&(topic == all_idea_units[key]['topic']))
+			{				
+				$("span.idea-unit#"+key, "#page-2").addClass("active-text");
+				//all_idea_units[key].visited=true; 
+				//$(".tableelement#"+key+" > span", "#page-2").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+
+	});
+
+	$("div#page-2").on('mouseleave','.tableelement', function() {
+		
+	    $("span.idea-unit", "#page-2").removeClass("active-text");
+	    
+	  
+	});
+
+
+	//$("div#page-1").on('click','.add-btn', addOption);
+
+	$("div#page-1").on('focusout','[name="new-topic"]', addOption);	
+
+	/*?
+	$.map( $(".feedback-row select[name='topic']:first option"), function (option){
+		topics.push(option.value);
+		console.log(topics.length);
+		} 
+	);
+*/
+	
+/**********use delegate
+	$(".tableelement", "div#page-2").click(function(){
+		//step 1: get the idea unit id
+		//var span_id_origin=$(this).attr("id");
+		console.log("haha");
+		var span_id = $(this).attr("id").split('-');
+		var topic= span_id[0];
+		var sentiment=span_id[1];
+		var people_id=span_id[2];
+		//todo
+		for(var key in all_idea_units){
+			//console.log(tmp);
+			var tmp_id=key.split('-');
+			if(tmp_id[0] == people)
+			{
+				//console.log(currentIdeaLists[tmp].id);
+				var currentid=currentIdeaLists[tmp].id;
+			$(".idea-unit#"+key).addClass("visited");
+			all_idea_units[key].visited=true; 
+			$(".tableelement#"+key+" > span").css("color","blue");
+			}//all_idea_units[currentIdeaLists[i].id].visited=true; 
+		}
+		var span_id = $(this).attr("id");
+		$('#selected-text').html($(this).text());
+		
+
+	})
+
+		$( ".tableelement","#page-2").hover(
+
+  				 function() {
+  				 	console.log("come in table element");
+  				 		//var span_id_origin=$(this).attr("id");
+						var span_id = $(this).attr("id").split('-');
+						console.log(span_id);
+						var topic= span_id[0];
+						var sentiment=span_id[1];
+						var people_id=span_id[2];
+		//todo
+				for(var key in all_idea_units){
+						//console.log(tmp);
+					var tmp_id=key.split('-');
+					if(tmp_id[0] == people)
+					{
+						$(".idea-unit#"+key).removeClass("visited");
+							$(".idea-unit#"+key).addClass("active");
+						}
+
+
+ 				 }
+ 				}, 
+
+ 				 function() {
+
+ 				 		var span_id = $(this).attr("id").split('-');
+						var topic_index= topicName.indexOf(span_id[0]);
+						var sentiment_index=span_id[1];
+						//todo
+						var currentIdeaLists= topicArray[topic_index][sentiment_index];
+	 					
+				for(var tmp=0; tmp<currentIdeaLists.length ; tmp++)
+				{
+						//console.log(tmp);
+					tmp_id=(currentIdeaLists[tmp].id).split('-');
+					if(tmp_id[0] == span_id[2])
+					{
+						//console.log(currentIdeaLists[tmp].id);
+						var currentid=currentIdeaLists[tmp].id;
+							$(".idea-unit#"+currentid).removeClass("active");
+							if(all_idea_units[currentid].visited == true)
+ 				 			{
+ 				 				$(".idea-unit#"+span_id).addClass("visited");
+ 				 			}
+							
+						}
+
+
+ 				 }
+
+  				}
+	);
+
+************************/
+	$("span.idea-unit", "page-2").hover(
+
+		 	function() {
+		 		
+  				var span_id = $(this).attr("id");
+  				var people_id=span_id.split('-');
+  				console.log(span_id);
+				for(var i=0; i<topicArray.length;i++)// lopping the topic
+				{				
+					for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+					{
+						var currentArray=topicArray[i][sentiment];
+						for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+						{
+							
+							if(span_id == currentArray[idx_unit].id){
+								console.log("get it");
+								$(".tableelement#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass("active-icon");	
+				
+							}
+							
+						}		
+					}
+
+				}
+						
+			},
+			function() {
+				$(".tableelement > span").removeClass("active-icon");
+			}
+	);
+
+
+
+
+
+
+
+
+	
+
+});
+
+//var topics=[];
+
+function addOption(){
+   
+	$("p[name='check-result']").text("").removeClass();
+    var element=$(this);
+    element.siblings("#check-result").text("").removeClass();
+    var id=element.attr('id');
+    //console.log("call addoption",id);
+   	var tmptopic = $(this).val();
+
+   	//console.log("new topic", tmptopic, topics.indexOf(tmptopic) );
+	/*$.map( $(".feedback-row select[name='topic']:first option"), function (option){
+		topics.push(option.value);
+	} 
+	);*/
+   //var options= $(el).parent().children("select option");
+
+  var msg='';
+  var status='success';
+
+   if( tmptopic!="")
+   {
+
+   		 if( topics.indexOf(tmptopic) == -1){
+
+   		 	var currentid=element.parent().children("select").attr("id");
+   			console.log("in if", currentid);
+
+   				topics.push(tmptopic);
+   				$(".feedback-row select[name='topic']").each(function(){
+    	
+					$(this).append( new Option( tmptopic, $('#new-topic').val(), false, false) );
+    			//$(this).options[$(this).options.length] = new Option('New Element', '0', false, false);
+    			});
+   				//console.log(element.parent().children("select").attr("id"));
+				element.parent().children("select").val(tmptopic);
+				//element.parent().children("select").css('background-color','yellow');
+				//$(el).parent().children("select option[value='"+tmptopic+"']").attr('selected','selected');
+				all_idea_units[currentid]['topic'] =tmptopic;
+	   		 	console.log(JSON.stringify(all_idea_units[currentid]));
+	    		//element.siblings("#check-result").text("Successfully added"+).addClass('success');
+	    		msg="'"+tmptopic+"' is added!";
+	    		status='success';
+   				
+   		 }else
+   		 {
+   		 		msg="'"+tmptopic+"' alrady exists!";
+   				status='fail';
+   		 } 
+
+   		 element.siblings("[name='check-result']").text(msg).addClass(status);
+		element.val("");
+   		
+   }
+  
+    
+}
+
+
+
+
+function finishAnnoate(){
+
+	createTopicArray();
+	renderElement();
+	renderFactual();
+
+	$('#page-2').show();
+	$('#page-1').hide();
+}
+
+
+function backAnnotate(){
+
+	$('#page-1').show();
+	$('#page-2').hide();
+}
+//For page 2
+    
+function createTopicArray()
+{
+	topicArray={};
+	//var number_of_idea= Object.keys(all_idea_units).length;
+	for (var key in all_idea_units) {
+    // check if the property/key is defined in the object itself, not in parent
+    //console.log(all_idea_units[key]['topic']);
+    var current_topic=all_idea_units[key]['topic'];
+    var current_sentiment=all_idea_units[key]['sentiment'];
+    //console.log(current_topic,current_sentiment );	
+    	if(current_topic!=null && current_sentiment!=0){
+	    	if(!(current_topic in topicArray))
+	    	{
+	    		var currentArray={};
+	    		sentimentName.forEach(function(element) {
+  					currentArray[element] =new Array();
+				});
+
+	    		topicArray[current_topic] = currentArray;
+	    	}
+	    	topicArray[current_topic][current_sentiment].push(all_idea_units[key]);
+	    	//console.log(JSON.stringify(topicArray));
+		}
+
+    }
+}
+
+function generateSummaryTable()
+{
+	console.log("refresh summary table");
+
+}
+
+
+
+	
+function print(par)
+{
+	console.log(par);
+}	
+
+
+function renderElement2(){
+	
+	$("#paneltest").empty();
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+
+		var inser_html="";
+		
+		inser_html=inser_html+"<tr id='"+topicKey+"'><th scope='row'>"+topicKey+"</th>";
+		var sentimentNum=0;
+		for (var sentimentKey in currentTopic) {
+
+			
+			inser_html+="<td id='sentiment"+sentimentKey+"'>";
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+				people_id++;
+			}
+			inser_html+="</td>";
+			sentimentNum++;
+		}
+		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderElement(){
+	
+	$("#paneltest").empty();
+	for (var topicKey in topicArray) {
+		
+		var currentTopic=topicArray[topicKey];
+
+		var inser_html="";
+		
+		inser_html=inser_html+"<div class='row'><div class='col-md-2' id='"+topicKey+"'>"+topicKey+"</div><div class='col-md-10'>";
+		var sentimentNum=0;
+		for (var sentimentKey in currentTopic) {
+
+			
+			inser_html+="<div id='sentiment"+sentimentKey+"'>";
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicKey+'-'+sentimentKey+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+				people_id++;
+			}
+			inser_html+="</div>";
+			sentimentNum++;
+		}
+		inser_html+="</div></div>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderFactual(){
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-');
+		//console.log("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]);
+		$("#"+all_idea_units[key]['topic']+'-'+all_idea_units[key]['sentiment']+'-'+people_id[0]+" > span").css('color','black');	
+	}
+
+}
+	
+
+
+function renderElementbk(){
+	
+	for(var i=0; i<topicArray.length;i++)// looping the topic
+	{		
+		var inser_html="";
+		 inser_html=inser_html+"<tr id='"+topicName[i]+"'><th scope='row'>"+topicName[i]+"</th>";
+		//$("#paneltest").append("<tr><th scope='row'>"+topicName[i]+"</th>");
+			//console.log(inser_html);
+		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+		{
+			var currentArray=topicArray[i][sentiment];
+			inser_html+="<td id='sentiment"+sentiment+"'>";
+			var people_id=1;
+			for(var index=0; index<number_of_providers;index++)// lopping the topic
+			{
+				inser_html=inser_html+"<a class='tableelement' data-toggle='tooltip' id='"+topicName[i]+'-'+sentiment+'-'+people_id+"'><span class='fa fa-user' style='color:#c2d6d6; font-size:24px;margin-right:3px'></span></a>";
+
+				
+				people_id++;
+			}
+			inser_html+="</td>";
+			//$("#paneltest").append(renderCell);
+		}
+		inser_html+="</tr>";
+		
+		$("#paneltest").append(inser_html);
+	}
+}
+
+function renderFactualbk(){
+
+
+		for(var i=0; i<topicArray.length;i++)// lopping the topic
+		{		
+
+		
+		for(var sentiment=0; sentiment < topicArray[i].length;sentiment++)
+		{
+			var currentArray=topicArray[i][sentiment];
+
+			for(var idx_unit=0; idx_unit<currentArray.length;idx_unit++)// lopping the topic
+			{
+				var people_id=(currentArray[idx_unit].id).split('-');
+				//print(people_id[0]);
+				$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").css('color','black');	
+				
+			}
+
+			//$("tr#"+topicName[i]+' > td#sentiment'+sentiment+" > a#"+people_id[0]).css('color','yellow');		
+			//console.log("tr#"+topicArray[i]+' > td#sentiment'+sentiment);	
+			//$("#paneltest").append(renderCell);
+		}
+
+	}
+
+}
+	
+
+function renderInterpretation(){
+
+	var numToString=['low','low','low','medium','high','high'];
+	
+	var checked_effort = [];
+	var checked_criticality = [];
+	var need_discussion = [];
+	var agreement = [];
+
+
+	$('input[name=effort]:checked').each(function() {checked_effort.push($(this).attr('value'));});
+	$('input[name=criticality]:checked').each(function() {checked_criticality.push($(this).attr('value'));});
+	$('input[name=discussion]:checked').each(function() {need_discussion.push($(this).attr('value'));});
+	$('input[name=agree]:checked').each(function() {agreement.push($(this).attr('value'));});
+//if nothing is selected 
+if( checked_effort.length > 0 || checked_criticality.length>0 || need_discussion.length>0 || agreement.length>0 )
+{
+
+
+	for (var key in all_idea_units) {
+		var people_id=key.split('-')[0];
+
+		var current_topic = all_idea_units[key]['topic'];
+		var current_sentiment = all_idea_units[key]['sentiment'];
+
+		var current_effort = all_idea_units[key]['effort'];
+		var current_criticality = all_idea_units[key]['criticality'];
+
+		var current_discussion = all_idea_units[key]['discussion'];
+		var current_agreement = all_idea_units[key]['agree'];
+
+
+		if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
+			&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
+			&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
+			&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
+		{
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").addClass('highlight');	
+		}
+		else
+		{
+			$(".tableelement#"+current_topic+'-'+current_sentiment+'-'+people_id+" > span").removeClass('highlight');	
+		}		
+	}
+	
+  /*	for( i = 0; i < topicArray.length;i++)// looping the topic
+	{				
+		for( sentiment=0; sentiment < topicArray[i].length;sentiment++)//sentiment
+		{
+			 currentArray=topicArray[i][sentiment];
+
+			for(idx_unit=0; idx_unit<currentArray.length;idx_unit++)//idea units
+			{
+				var current_effort = numToString[currentArray[idx_unit].effort];
+				var current_criticality = numToString[currentArray[idx_unit].urgency];
+
+				var current_discussion = currentArray[idx_unit].discussion;
+				var current_agreement = currentArray[idx_unit].agree;
+
+				var content = currentArray[idx_unit].content;
+				var tmp=currentArray[idx_unit];
+				//console.log( current_effort, current_criticality, current_discussion,current_agreement);
+
+				//console.log(checked_effort.indexOf(current_effort),checked_criticality.indexOf(current_criticality),need_discussion.indexOf(current_discussion),agreement.indexOf(current_agreement));
+				//console.log(current_effort, checked_effort.indexOf(current_effort));
+				var people_id=(currentArray[idx_unit].id).split('-');
+
+				if( (checked_effort.length>0 == checked_effort.indexOf(current_effort)>-1) 
+					&& (checked_criticality.length>0 == checked_criticality.indexOf(current_criticality)>-1 )
+					&& (need_discussion.length>0 == need_discussion.indexOf(current_discussion)>-1 )
+					&& (agreement.length>0 == agreement.indexOf(current_agreement)>-1))
+				{
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").addClass('highlight');	
+				}
+				else
+				{
+					$("#"+topicName[i]+'-'+sentiment+'-'+people_id[0]+" > span").removeClass('highlight');	
+				}	
+							
+			}
+			
+		}
+
+	}
+	*/
+}else{
+	$('.tableelement span').removeClass('highlight');
+}
+
+}
+
+
+</script>
